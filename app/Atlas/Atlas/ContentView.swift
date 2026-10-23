@@ -3,6 +3,8 @@ import SwiftUI
 struct ContentView: View {
     @State private var query = ""
     @State private var path: [String] = []
+    @State private var standaloneID: String?
+    @State private var handledLaunch = false
 
     private var requestedEntry: AtlasEntry? {
         let args = ProcessInfo.processInfo.arguments
@@ -34,6 +36,18 @@ struct ContentView: View {
             .preferredColorScheme(.light)
             .dynamicTypeSize(.large)
             .statusBarHidden()
+        } else if let standaloneID {
+            VStack(spacing: 0) {
+                HStack {
+                    Button { self.standaloneID = nil } label: { Label("Atlas", systemImage: "chevron.left") }
+                        .accessibilityIdentifier("back-to-atlas")
+                    Spacer()
+                }
+                .font(.subheadline).padding(.horizontal).padding(.vertical, 8)
+                .background(.bar)
+                AtlasCatalog.demo(for: standaloneID)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
         } else {
             catalog
         }
@@ -53,14 +67,13 @@ struct ContentView: View {
                 ForEach(categories, id: \.self) { category in
                     Section(category) {
                         ForEach(filtered.filter { $0.category == category }) { entry in
-                            NavigationLink(value: entry.id) {
-                                VStack(alignment: .leading, spacing: 5) {
-                                    Text(entry.title).font(.headline)
-                                    Text(entry.summary).font(.subheadline).foregroundStyle(.secondary)
-                                    if !entry.isSupported {
-                                        Text("iOS \(entry.minimumOS)+").font(.caption).foregroundStyle(.secondary)
-                                    }
-                                }.padding(.vertical, 5)
+                            Group {
+                                if entry.ownsNavigation {
+                                    Button { standaloneID = entry.id } label: { entryLabel(entry) }
+                                        .buttonStyle(.plain)
+                                } else {
+                                    NavigationLink(value: entry.id) { entryLabel(entry) }
+                                }
                             }.accessibilityIdentifier("entry-\(entry.id)")
                         }
                     }
@@ -72,26 +85,27 @@ struct ContentView: View {
             .navigationTitle("Atlas")
             .searchable(text: $query, prompt: "Search examples or APIs")
             .navigationDestination(for: String.self) { id in
-                if AtlasCatalog.entries.first(where: { $0.id == id })?.ownsNavigation == true {
-                    AtlasCatalog.demo(for: id)
-                        .safeAreaInset(edge: .top, spacing: 0) {
-                            HStack {
-                                Button { path = [] } label: { Label("Atlas", systemImage: "chevron.left") }
-                                    .accessibilityIdentifier("back-to-atlas")
-                                Spacer()
-                            }
-                            .font(.subheadline).padding(.horizontal).padding(.vertical, 8)
-                            .background(.bar)
-                        }
-                        .toolbar(.hidden, for: .navigationBar)
-                } else {
-                    AtlasCatalog.demo(for: id)
+                AtlasCatalog.demo(for: id)
+            }
+            .task {
+                guard !handledLaunch else { return }
+                handledLaunch = true
+                if let entry = requestedEntry {
+                    if entry.ownsNavigation { standaloneID = entry.id }
+                    else { path = [entry.id] }
                 }
             }
-            .onAppear {
-                if path.isEmpty, let entry = requestedEntry { path = [entry.id] }
-            }
         }
+    }
+
+    private func entryLabel(_ entry: AtlasEntry) -> some View {
+        VStack(alignment: .leading, spacing: 5) {
+            Text(entry.title).font(.headline)
+            Text(entry.summary).font(.subheadline).foregroundStyle(.secondary)
+            if !entry.isSupported {
+                Text("iOS \(entry.minimumOS)+").font(.caption).foregroundStyle(.secondary)
+            }
+        }.padding(.vertical, 5)
     }
 }
 
