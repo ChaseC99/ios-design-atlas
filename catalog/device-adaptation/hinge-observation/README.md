@@ -46,6 +46,11 @@ struct LiveHingeAngle: View {
 ## Captures
 
 <!-- captures:start -->
+### iPhone Duo · iOS 27.1
+
+default. light appearance; Large text; en_US.
+
+![Live hinge observation on iPhone Duo, iOS 27.1](captures/ios-27-1-atlas-iphone-duo-default-1792765928.559.png)
 <!-- captures:end -->
 
 ## Full example

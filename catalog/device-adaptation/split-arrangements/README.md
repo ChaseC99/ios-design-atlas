@@ -43,6 +43,11 @@ struct PrimaryAndSecondary: View {
 ## Captures
 
 <!-- captures:start -->
+### iPhone Duo · iOS 27.1
+
+default. light appearance; Large text; en_US.
+
+![Native split arrangements on iPhone Duo, iOS 27.1](captures/ios-27-1-atlas-iphone-duo-default-1792765985.38.png)
 <!-- captures:end -->
 
 ## Full example

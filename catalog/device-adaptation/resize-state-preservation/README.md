@@ -43,6 +43,11 @@ struct ResizingCounter: View {
 ## Captures
 
 <!-- captures:start -->
+### iPhone Duo · iOS 27.1
+
+default. light appearance; Large text; en_US.
+
+![Preserving state while resizing on iPhone Duo, iOS 27.1](captures/ios-27-1-atlas-iphone-duo-default-1792765960.905.png)
 <!-- captures:end -->
 
 ## Full example

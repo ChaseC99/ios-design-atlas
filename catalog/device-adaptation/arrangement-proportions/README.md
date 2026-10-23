@@ -45,6 +45,11 @@ struct WeightedArrangement: View {
 ## Captures
 
 <!-- captures:start -->
+### iPhone Duo · iOS 27.1
+
+default. light appearance; Large text; en_US.
+
+![Arrangement proportions on iPhone Duo, iOS 27.1](captures/ios-27-1-atlas-iphone-duo-default-1792765907.947.png)
 <!-- captures:end -->
 
 ## Full example

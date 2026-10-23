@@ -1,1 +1,21 @@
-{"captures": []}
+{
+  "captures": [
+    {
+      "file": "ios-27-1-atlas-iphone-duo-default-1792765985.38.png",
+      "device": "iPhone Duo",
+      "os": "27.1",
+      "osBuild": "24A94425",
+      "simulatorName": "Atlas iPhone Duo",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T14:33:05.380Z",
+      "environmentNotes": "Duo simulator in its initial closed posture. The hinge example reported 0 degrees; no pose change was simulated.",
+      "framing": "screen",
+      "sourceSHA256": "ff6d36d71fa50612508105d51caf7d0dea2be470e38a868249a5018a520b868c"
+    }
+  ]
+}

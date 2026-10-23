@@ -48,6 +48,11 @@ struct DivisionRegions: View {
 ## Captures
 
 <!-- captures:start -->
+### iPhone Duo · iOS 27.1
+
+default. light appearance; Large text; en_US.
+
+![Reserved regions on iPhone Duo, iOS 27.1](captures/ios-27-1-atlas-iphone-duo-default-1792765951.461.png)
 <!-- captures:end -->
 
 ## Full example

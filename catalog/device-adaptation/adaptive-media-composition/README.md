@@ -44,6 +44,11 @@ struct MediaAndControls: View {
 ## Captures
 
 <!-- captures:start -->
+### iPhone Duo · iOS 27.1
+
+default. light appearance; Large text; en_US.
+
+![Adaptive media composition on iPhone Duo, iOS 27.1](captures/ios-27-1-atlas-iphone-duo-default-1792765885.869.png)
 <!-- captures:end -->
 
 ## Full example

@@ -46,6 +46,11 @@ struct AdaptiveOverlay: View {
 ## Captures
 
 <!-- captures:start -->
+### iPhone Duo · iOS 27.1
+
+default. light appearance; Large text; en_US.
+
+![Native overlay arrangements on iPhone Duo, iOS 27.1](captures/ios-27-1-atlas-iphone-duo-default-1792765941.2.png)
 <!-- captures:end -->
 
 ## Full example
