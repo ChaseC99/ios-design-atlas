@@ -1,0 +1,1 @@
+../../../../catalog/toolbars/toolbar-minimization/ToolbarMinimizationDemo.swift

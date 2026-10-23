@@ -1,0 +1,1 @@
+../../../../catalog/scrolling/bottom-anchored-chat/BottomAnchoredChatDemo.swift
