@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import { getCollection } from 'astro:content';
-import { github } from '../lib/catalog';
+import { github, collections } from '../lib/catalog';
 interface Props { title?: string; description?: string; active?: string }
 const { title = 'iOS Design Atlas', description = 'A visual reference for native iOS interfaces. Runnable Swift examples, captures, and observations.', active } = Astro.props;
 const entries = (await getCollection('catalog')).sort((a, b) => a.data.order - b.data.order);
@@ -22,9 +22,11 @@ const entries = (await getCollection('catalog')).sort((a, b) => a.data.order - b
       <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">a<span>↗</span></span><span>iOS Design<br /><strong>Atlas</strong></span></a>
       <div class="sidebar-label">THE COLLECTION</div>
       <a class:list={['nav-overview', { selected: !active }]} href="/"><span>All examples</span><span class="count">{entries.length.toString().padStart(2, '0')}</span></a>
-      <div class="nav-section"><span class="section-dot"></span> Presentation</div>
-      <nav class="entry-nav">
-        {entries.map(entry => <a href={`/examples/${entry.id}/`} aria-current={active === entry.id ? 'page' : undefined}>{entry.data.title}</a>)}
+      <nav class="collection-nav">
+        {collections(entries).map(group => <details open={group.entries.some(entry => active === entry.id)}>
+          <summary>{group.name}<span>{group.entries.length}</span></summary>
+          <div class="entry-nav">{group.entries.map(entry => <a href={`/examples/${entry.id}/`} aria-current={active === entry.id ? 'page' : undefined}>{entry.data.title}</a>)}</div>
+        </details>)}
       </nav>
       <div class="sidebar-bottom"><span class="status-dot"></span> An evolving reference<br /><a href={github}>View on GitHub <span aria-hidden="true">↗</span></a></div>
     </aside>

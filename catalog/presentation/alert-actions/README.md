@@ -6,6 +6,8 @@ category: "Presentation"
 family: "Alerts"
 order: 1
 kind: "native"
+captureNavigation: false
+captureStyle: "isolated"
 demoMinIOS: "18.0"
 swiftFile: "AlertActionsDemo.swift"
 view: "AlertActionsDemo"
@@ -48,6 +50,18 @@ struct DeleteAlert: View {
 Two actions; destructive primary; isolated presentation. light appearance; Large text; en_US.
 
 ![Alert actions on iPhone 18 Pro, iOS 27.0](captures/ios-27-0-iphone-18-pro-clean-1792760499.935.png)
+
+### iPhone 16 Pro · iOS 18.5
+
+Two actions; destructive primary; isolated presentation. light appearance; Large text; en_US.
+
+![Alert actions on iPhone 16 Pro, iOS 18.5](captures/ios-18-5-iphone-16-pro-clean-1792762060.28.png)
+
+### iPhone 17 Pro · iOS 26.5
+
+Two actions; destructive primary; isolated presentation. light appearance; Large text; en_US.
+
+![Alert actions on iPhone 17 Pro, iOS 26.5](captures/ios-26-5-iphone-17-pro-clean-1792762188.435.png)
 <!-- captures:end -->
 
 ## Full example

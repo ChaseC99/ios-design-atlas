@@ -14,6 +14,36 @@
       "capturedAt": "2026-10-23T13:01:39.935Z",
       "framing": "isolated",
       "sourceSHA256": "4a718f146e3d4b09b1da93c2b097c549a521e63c202517cfa65d51b9855efd8f"
+    },
+    {
+      "file": "ios-18-5-iphone-16-pro-clean-1792762060.28.png",
+      "device": "iPhone 16 Pro",
+      "os": "18.5",
+      "osBuild": "22F77",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "Two actions; destructive primary; isolated presentation",
+      "capturedAt": "2026-10-23T13:27:40.280Z",
+      "framing": "isolated",
+      "sourceSHA256": "4a718f146e3d4b09b1da93c2b097c549a521e63c202517cfa65d51b9855efd8f"
+    },
+    {
+      "file": "ios-26-5-iphone-17-pro-clean-1792762188.435.png",
+      "device": "iPhone 17 Pro",
+      "os": "26.5",
+      "osBuild": "23F77",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "Two actions; destructive primary; isolated presentation",
+      "capturedAt": "2026-10-23T13:29:48.435Z",
+      "framing": "isolated",
+      "sourceSHA256": "4a718f146e3d4b09b1da93c2b097c549a521e63c202517cfa65d51b9855efd8f"
     }
   ]
 }
