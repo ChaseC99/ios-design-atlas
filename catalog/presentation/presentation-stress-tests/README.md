@@ -13,6 +13,7 @@ apis: ["alert", "DynamicTypeSize", "ButtonRole"]
 tags: ["dynamic-type", "localization", "long-text"]
 captureNavigation: false
 captureStyle: "screen"
+captureReadyLabel: "Save Changes"
 ---
 
 # Long text & accessibility
@@ -44,6 +45,23 @@ struct LongMessageAlert: View {
 ## Captures
 
 <!-- captures:start -->
+### iPhone 16 Pro · iOS 18.5
+
+default. light appearance; Large text; en_US.
+
+![Long text & accessibility on iPhone 16 Pro, iOS 18.5](captures/ios-18-5-iphone-16-pro-default-1792764290.467.png)
+
+### iPhone 17 Pro · iOS 26.5
+
+default. light appearance; Large text; en_US.
+
+![Long text & accessibility on iPhone 17 Pro, iOS 26.5](captures/ios-26-5-iphone-17-pro-default-1792763828.546.png)
+
+### iPhone 18 Pro · iOS 27.0
+
+default. light appearance; Large text; en_US.
+
+![Long text & accessibility on iPhone 18 Pro, iOS 27.0](captures/ios-27-0-iphone-18-pro-default-1792764081.166.png)
 <!-- captures:end -->
 
 ## Full example

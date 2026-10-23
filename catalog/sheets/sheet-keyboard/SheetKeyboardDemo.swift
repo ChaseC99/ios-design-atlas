@@ -22,12 +22,13 @@ struct SheetKeyboardDemo: View {
             }
         }
         .navigationTitle("Keyboards inside sheets")
-        .sheet(isPresented: $isPresented) {
+        .sheet(isPresented: $isPresented, onDismiss: { focusedField = nil }) {
             NavigationStack {
                 Form {
                     Section("Title") {
                         TextField("A name for this moment", text: $title)
                             .focused($focusedField, equals: .title)
+                            .accessibilityIdentifier("capture-focus")
                             .submitLabel(.next)
                             .onSubmit { focusedField = .note }
                     }
@@ -61,7 +62,12 @@ struct SheetKeyboardDemo: View {
             }
             .presentationDetents([.medium, .large])
             .accessibilityIdentifier("capture-ready")
-            .task { if focusOnOpen { focusedField = .title } }
+            .task {
+                guard focusOnOpen else { return }
+                try? await Task.sleep(for: .milliseconds(450))
+                guard !Task.isCancelled else { return }
+                focusedField = .title
+            }
         }
         .task { if isCapturing { isPresented = true } }
     }

@@ -32,6 +32,7 @@ struct KeyboardSafeAreasDemo: View {
                     .lineLimit(1...4).padding(12)
                     .background(Color(uiColor: .secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 20))
                     .focused($focused)
+                    .accessibilityIdentifier("capture-focus")
                 Button("Send", systemImage: "arrow.up.circle.fill") { send() }
                     .font(.title).labelStyle(.iconOnly).tint(.teal)
                     .disabled(draft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)

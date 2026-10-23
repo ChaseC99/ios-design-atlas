@@ -31,6 +31,7 @@ struct ColoredNavigationBar: View {
                 Text($0)
             }
             .navigationTitle("Reading")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(.indigo, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
             .toolbarColorScheme(.dark, for: .navigationBar)

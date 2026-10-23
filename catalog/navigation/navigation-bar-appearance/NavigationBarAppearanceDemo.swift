@@ -31,6 +31,7 @@ struct NavigationBarAppearanceDemo: View {
                 }
             }
             .navigationTitle("Reading")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(colored ? Color.indigo : Color.clear, for: .navigationBar)
             .toolbarBackground(colored ? .visible : .automatic, for: .navigationBar)
             .toolbarColorScheme(colored && darkBar ? .dark : nil, for: .navigationBar)

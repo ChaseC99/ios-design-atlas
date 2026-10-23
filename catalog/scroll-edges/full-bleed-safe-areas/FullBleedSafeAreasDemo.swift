@@ -4,10 +4,10 @@ struct FullBleedSafeAreasDemo: View {
     @State private var saved = false
     var body: some View {
         ZStack {
-            LinearGradient(colors: [.indigo, .teal, Color(red: 0.65, green: 0.85, blue: 0.75)], startPoint: .topLeading, endPoint: .bottomTrailing)
+            LinearGradient(colors: [Color(red: 0.20, green: 0.23, blue: 0.50), Color(red: 0.04, green: 0.32, blue: 0.37), Color(red: 0.06, green: 0.25, blue: 0.28)], startPoint: .topLeading, endPoint: .bottomTrailing)
                 .ignoresSafeArea()
             GeometryReader { geometry in
-                Circle().fill(.white.opacity(0.18))
+                Circle().fill(.white.opacity(0.12))
                     .frame(width: geometry.size.width * 1.3)
                     .offset(x: geometry.size.width * 0.3, y: geometry.size.height * 0.1)
             }.ignoresSafeArea().accessibilityHidden(true)

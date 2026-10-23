@@ -24,7 +24,8 @@ struct TabBottomAccessoryDemo: View {
                                         Text("Atlas Sessions").font(.caption).foregroundStyle(.secondary)
                                     }
                                     Spacer()
-                                    Button("Play track \(index)", systemImage: "play.fill") { playing = true }.buttonStyle(.borderless)
+                                    Button("Play track \(index)", systemImage: "play.fill") { playing = true }
+                                        .labelStyle(.iconOnly).buttonStyle(.borderless)
                                 }.padding(.vertical, 6)
                             }
                         }

@@ -11,6 +11,7 @@ swiftFile: "ScrollEdgeStylesDemo.swift"
 view: "ScrollEdgeStylesDemo"
 captureNavigation: true
 captureStyle: "screen"
+captureScroll: true
 apis: ["scrollEdgeEffectStyle", "ScrollEdgeEffectStyle"]
 tags: ["scroll", "bars", "contrast"]
 ---

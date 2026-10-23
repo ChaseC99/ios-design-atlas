@@ -1,1 +1,19 @@
-{"captures": []}
+{
+  "captures": [
+    {
+      "file": "ios-27-0-iphone-18-pro-default-1792763076.759.png",
+      "device": "iPhone 18 Pro",
+      "os": "27.0",
+      "osBuild": "24A434",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T13:44:36.759Z",
+      "framing": "screen",
+      "sourceSHA256": "b1fb5da9c866613550cdd5d8c73ee3e316bcd88b36bf115b5add2458ee31dd00"
+    }
+  ]
+}

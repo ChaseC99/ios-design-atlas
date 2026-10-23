@@ -13,6 +13,7 @@ apis: ["FocusState", "scrollDismissesKeyboard", "toolbar", "presentationDetents"
 tags: ["keyboard", "focus", "text-input", "safe-area"]
 captureNavigation: false
 captureStyle: "screen"
+captureKeyboard: true
 ---
 
 # Keyboards inside sheets
@@ -46,7 +47,23 @@ struct SheetKeyboardRecipe: View {
 ## Captures
 
 <!-- captures:start -->
-Captures have not been recorded yet.
+### iPhone 16 Pro · iOS 18.5
+
+default. light appearance; Large text; en_US.
+
+![Keyboards inside sheets on iPhone 16 Pro, iOS 18.5](captures/ios-18-5-iphone-16-pro-default-1792764313.921.png)
+
+### iPhone 17 Pro · iOS 26.5
+
+default. light appearance; Large text; en_US.
+
+![Keyboards inside sheets on iPhone 17 Pro, iOS 26.5](captures/ios-26-5-iphone-17-pro-default-1792763845.68.png)
+
+### iPhone 18 Pro · iOS 27.0
+
+default. light appearance; Large text; en_US.
+
+![Keyboards inside sheets on iPhone 18 Pro, iOS 27.0](captures/ios-27-0-iphone-18-pro-default-1792764125.389.png)
 <!-- captures:end -->
 
 ## Full example

@@ -1,3 +1,49 @@
 {
-  "captures": []
+  "captures": [
+    {
+      "file": "ios-18-5-iphone-16-pro-default-1792764303.618.png",
+      "device": "iPhone 16 Pro",
+      "os": "18.5",
+      "osBuild": "22F77",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T14:05:03.618Z",
+      "framing": "screen",
+      "sourceSHA256": "5c726effe6c582e58c19f537bca622729a41ae1c9ec71c020268a60acff5b1bd"
+    },
+    {
+      "file": "ios-26-5-iphone-17-pro-default-1792763836.239.png",
+      "device": "iPhone 17 Pro",
+      "os": "26.5",
+      "osBuild": "23F77",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T13:57:16.239Z",
+      "framing": "screen",
+      "sourceSHA256": "5c726effe6c582e58c19f537bca622729a41ae1c9ec71c020268a60acff5b1bd"
+    },
+    {
+      "file": "ios-27-0-iphone-18-pro-default-1792764097.396.png",
+      "device": "iPhone 18 Pro",
+      "os": "27.0",
+      "osBuild": "24A434",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T14:01:37.396Z",
+      "framing": "screen",
+      "sourceSHA256": "5c726effe6c582e58c19f537bca622729a41ae1c9ec71c020268a60acff5b1bd"
+    }
+  ]
 }

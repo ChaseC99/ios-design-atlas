@@ -45,6 +45,11 @@ struct JoinedGlass: View {
 ## Captures
 
 <!-- captures:start -->
+### iPhone 18 Pro · iOS 27.0
+
+default. light appearance; Large text; en_US.
+
+![Joining glass elements on iPhone 18 Pro, iOS 27.0](captures/ios-27-0-iphone-18-pro-default-1792762710.041.png)
 <!-- captures:end -->
 
 ## Full example

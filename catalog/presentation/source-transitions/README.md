@@ -43,6 +43,11 @@ struct ZoomPresentation: View {
 ## Captures
 
 <!-- captures:start -->
+### iPhone 18 Pro · iOS 27.0
+
+default. light appearance; Large text; en_US.
+
+![Source-linked transitions on iPhone 18 Pro, iOS 27.0](captures/ios-27-0-iphone-18-pro-default-1792763067.649.png)
 <!-- captures:end -->
 
 ## Full example

@@ -51,8 +51,9 @@ struct SheetFullScreenDemo: View {
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar { Button("Done") { isFullScreen = false } }
             }
+            .accessibilityIdentifier("capture-ready")
         }
-        .task { if isCapturing { isPresented = true } }
+        .task { if isCapturing { isFullScreen = true } }
     }
 
     private var guide: some View {

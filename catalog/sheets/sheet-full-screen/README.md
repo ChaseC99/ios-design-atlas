@@ -52,7 +52,23 @@ struct FullScreenHandoffRecipe: View {
 ## Captures
 
 <!-- captures:start -->
-Captures have not been recorded yet.
+### iPhone 16 Pro · iOS 18.5
+
+default. light appearance; Large text; en_US.
+
+![From sheet to full screen on iPhone 16 Pro, iOS 18.5](captures/ios-18-5-iphone-16-pro-default-1792764303.618.png)
+
+### iPhone 17 Pro · iOS 26.5
+
+default. light appearance; Large text; en_US.
+
+![From sheet to full screen on iPhone 17 Pro, iOS 26.5](captures/ios-26-5-iphone-17-pro-default-1792763836.239.png)
+
+### iPhone 18 Pro · iOS 27.0
+
+default. light appearance; Large text; en_US.
+
+![From sheet to full screen on iPhone 18 Pro, iOS 27.0](captures/ios-27-0-iphone-18-pro-default-1792764097.396.png)
 <!-- captures:end -->
 
 ## Full example

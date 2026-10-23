@@ -42,6 +42,11 @@ struct CircularGlassButton: View {
 ## Captures
 
 <!-- captures:start -->
+### iPhone 18 Pro · iOS 27.0
+
+default. light appearance; Large text; en_US.
+
+![Glass shapes and interaction on iPhone 18 Pro, iOS 27.0](captures/ios-27-0-iphone-18-pro-default-1792762728.07.png)
 <!-- captures:end -->
 
 ## Full example

@@ -49,6 +49,11 @@ struct SearchTabs: View {
 ## Captures
 
 <!-- captures:start -->
+### iPhone 18 Pro · iOS 27.0
+
+default. light appearance; Large text; en_US.
+
+![Search tabs on iPhone 18 Pro, iOS 27.0](captures/ios-27-0-iphone-18-pro-default-1792762946.234.png)
 <!-- captures:end -->
 
 ## Full example

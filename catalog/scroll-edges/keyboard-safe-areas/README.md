@@ -11,6 +11,7 @@ swiftFile: "KeyboardSafeAreasDemo.swift"
 view: "KeyboardSafeAreasDemo"
 captureNavigation: true
 captureStyle: "screen"
+captureKeyboard: true
 apis: ["safeAreaInset", "scrollDismissesKeyboard", "ignoresSafeArea"]
 tags: ["keyboard", "composer", "focus"]
 ---

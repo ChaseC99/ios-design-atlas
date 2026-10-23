@@ -13,6 +13,7 @@ apis: ["confirmationDialog", "ButtonRole"]
 tags: ["actions", "adaptive", "destructive"]
 captureNavigation: false
 captureStyle: "screen"
+captureReadyLabel: "Save a Copy"
 ---
 
 # Confirmation dialogs
@@ -42,6 +43,23 @@ struct PhotoActions: View {
 ## Captures
 
 <!-- captures:start -->
+### iPhone 16 Pro · iOS 18.5
+
+default. light appearance; Large text; en_US.
+
+![Confirmation dialogs on iPhone 16 Pro, iOS 18.5](captures/ios-18-5-iphone-16-pro-default-1792764284.519.png)
+
+### iPhone 17 Pro · iOS 26.5
+
+default. light appearance; Large text; en_US.
+
+![Confirmation dialogs on iPhone 17 Pro, iOS 26.5](captures/ios-26-5-iphone-17-pro-default-1792763819.898.png)
+
+### iPhone 18 Pro · iOS 27.0
+
+default. light appearance; Large text; en_US.
+
+![Confirmation dialogs on iPhone 18 Pro, iOS 27.0](captures/ios-27-0-iphone-18-pro-default-1792764070.03.png)
 <!-- captures:end -->
 
 ## Full example
