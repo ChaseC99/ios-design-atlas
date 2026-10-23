@@ -1,0 +1,1 @@
+../../../../catalog/visuals/image-fitting-avatars/ImageFittingAvatarsDemo.swift

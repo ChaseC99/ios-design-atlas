@@ -1,0 +1,1 @@
+../../../../catalog/visuals/variable-symbols-effects/VariableSymbolsEffectsDemo.swift

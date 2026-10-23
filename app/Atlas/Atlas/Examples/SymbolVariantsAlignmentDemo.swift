@@ -1,0 +1,1 @@
+../../../../catalog/visuals/symbol-variants-alignment/SymbolVariantsAlignmentDemo.swift
