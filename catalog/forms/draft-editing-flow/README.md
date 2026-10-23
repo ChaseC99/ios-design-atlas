@@ -51,6 +51,11 @@ struct DraftEditor: View {
 ## Captures
 
 <!-- captures:start -->
+### iPhone 16 Pro · iOS 18.5
+
+default. light appearance; Large text; en_US.
+
+![Draft editing and unsaved changes on iPhone 16 Pro, iOS 18.5](captures/ios-18-5-iphone-16-pro-default-1792770601.692.png)
 <!-- captures:end -->
 
 ## Example notes

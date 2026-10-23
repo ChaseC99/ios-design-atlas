@@ -66,6 +66,12 @@ default. light appearance; Large text; en_US.
 default. light appearance; Large text; en_US.
 
 ![Navigation and nested sheets on iPhone 18 Pro, iOS 27.0](captures/ios-27-0-iphone-18-pro-default-1792763027.483.png)
+
+### iPhone 16 Pro · iOS 18.5
+
+default. light appearance; Large text; en_US.
+
+![Navigation and nested sheets on iPhone 16 Pro, iOS 18.5](captures/ios-18-5-iphone-16-pro-default-1792771048.935.png)
 <!-- captures:end -->
 
 ## Full example

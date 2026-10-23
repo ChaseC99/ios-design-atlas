@@ -64,6 +64,12 @@ default. light appearance; Large text; en_US.
 Compact centered sheet shows complete content and controls; no clipping.. light appearance; Large text; en_US.
 
 ![Content-sized sheets on iPad Pro 11-inch (M5), iOS 27.0](captures/ios-27-0-ipad-pro-11-inch-m5-default-1792768505.926.png)
+
+### iPhone 16 Pro · iOS 18.5
+
+default. light appearance; Large text; en_US.
+
+![Content-sized sheets on iPhone 16 Pro, iOS 18.5](captures/ios-18-5-iphone-16-pro-default-1792770582.514.png)
 <!-- captures:end -->
 
 ## Full example

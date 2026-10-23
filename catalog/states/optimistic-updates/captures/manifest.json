@@ -1,3 +1,19 @@
 {
-  "captures": []
+  "captures": [
+    {
+      "file": "ios-18-5-iphone-16-pro-default-1792770861.094.png",
+      "device": "iPhone 16 Pro",
+      "os": "18.5",
+      "osBuild": "22F77",
+      "sdk": "iOS 27.1",
+      "xcode": "Xcode 27.1; Build version 27A9275",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T15:54:21.094Z",
+      "framing": "screen",
+      "sourceSHA256": "a1901cea34ae8ebfbe42bc5bba70e42297f2fe8c0b87cce02334a2c5d7446357"
+    }
+  ]
 }

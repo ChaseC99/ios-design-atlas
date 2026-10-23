@@ -47,6 +47,11 @@ struct DraftFilterSheet: View {
 ## Captures
 
 <!-- captures:start -->
+### iPhone 16 Pro · iOS 18.5
+
+default. light appearance; Large text; en_US.
+
+![Filter and sort sheets on iPhone 16 Pro, iOS 18.5](captures/ios-18-5-iphone-16-pro-default-1792770643.528.png)
 <!-- captures:end -->
 
 ## Example notes

@@ -60,6 +60,12 @@ default. light appearance; Large text; en_US.
 Centered native form presentation is visible and legible.. light appearance; Large text; en_US.
 
 ![Compact sheet adaptation on iPad Pro 11-inch (M5), iOS 27.0](captures/ios-27-0-ipad-pro-11-inch-m5-default-1792768604.617.png)
+
+### iPhone 16 Pro · iOS 18.5
+
+default. light appearance; Large text; en_US.
+
+![Compact sheet adaptation on iPhone 16 Pro, iOS 18.5](captures/ios-18-5-iphone-16-pro-default-1792771036.438.png)
 <!-- captures:end -->
 
 ## Full example

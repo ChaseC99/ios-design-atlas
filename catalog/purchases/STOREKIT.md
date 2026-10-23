@@ -45,7 +45,7 @@ The management example exposes genuine native affordances, but its initial captu
 
 For an interactive local run, select `AtlasPurchases.storekit` in **Edit Scheme → Run → Options → StoreKit Configuration**. This scheme setting is an alternative to the UI-test setup, not a reason to create App Store Connect products. Keep the scheme configuration local to the sample workflow. The atlas examples display an honest unavailable/setup state if their products cannot load.
 
-Local ProductView, StoreView, SubscriptionStoreView, and custom-plan captures are verified on iOS 18.5 and 27.0. The iOS 26.5 run returned unavailable fixture products and requires an isolated activation check. Purchase-management refresh was subsequently simplified and awaits recapture. No transactions have been initiated.
+Native ProductView, StoreView, SubscriptionStoreView, and custom-plan captures are verified on iOS 18.5 and 27.0. Revised purchase management is verified on iOS 27.0. iOS 26.5 SKTestSession fails to save/configure the local fixture with SKInternalErrorDomain Code=3; an isolated run and simulator restart did not resolve it. This is a test-session setup failure, not evidence of API incompatibility. No transactions have been initiated.
 
 ## Sources
 

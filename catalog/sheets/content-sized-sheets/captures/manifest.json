@@ -45,6 +45,21 @@
       "environmentNotes": "Portrait iPad simulator; adaptive containers may collapse or overlay columns. No hardware input was simulated.",
       "framing": "screen",
       "sourceSHA256": "aeceb1142c622b5a361b4047856cf2f1e9018f217a6e2f45048a4d7c7f0ea862"
+    },
+    {
+      "file": "ios-18-5-iphone-16-pro-default-1792770582.514.png",
+      "device": "iPhone 16 Pro",
+      "os": "18.5",
+      "osBuild": "22F77",
+      "sdk": "iOS 27.1",
+      "xcode": "Xcode 27.1; Build version 27A9275",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T15:49:42.514Z",
+      "framing": "screen",
+      "sourceSHA256": "aeceb1142c622b5a361b4047856cf2f1e9018f217a6e2f45048a4d7c7f0ea862"
     }
   ]
 }

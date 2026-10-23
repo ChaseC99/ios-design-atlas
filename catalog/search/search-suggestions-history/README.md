@@ -46,6 +46,11 @@ struct SuggestedSearch: View {
 ## Captures
 
 <!-- captures:start -->
+### iPhone 16 Pro · iOS 18.5
+
+default. light appearance; Large text; en_US.
+
+![Suggestions and recent searches on iPhone 16 Pro, iOS 18.5](captures/ios-18-5-iphone-16-pro-default-1792770961.093.png)
 <!-- captures:end -->
 
 ## Full example

@@ -43,7 +43,11 @@ struct ReorderRecipe: View {
 ## Captures
 
 <!-- captures:start -->
-Captures have not been recorded yet.
+### iPhone 16 Pro · iOS 18.5
+
+default. light appearance; Large text; en_US.
+
+![Reordering and insertion on iPhone 16 Pro, iOS 18.5](captures/ios-18-5-iphone-16-pro-default-1792770921.729.png)
 <!-- captures:end -->
 
 ## Full example

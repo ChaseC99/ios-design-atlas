@@ -48,6 +48,11 @@ struct NativeSwitch: UIViewRepresentable {
 ## Captures
 
 <!-- captures:start -->
+### iPhone 16 Pro · iOS 18.5
+
+default. light appearance; Large text; en_US.
+
+![Equivalent UIKit and SwiftUI controls on iPhone 16 Pro, iOS 18.5](captures/ios-18-5-iphone-16-pro-default-1792771208.443.png)
 <!-- captures:end -->
 
 ## Example notes
