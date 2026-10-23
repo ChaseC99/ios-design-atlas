@@ -31,7 +31,7 @@ struct SecureFieldVisibilityDemo: View {
                         let wasFocused = focus != nil
                         visible.toggle()
                         if wasFocused { focus = visible ? .visible : .hidden }
-                    }.labelStyle(.iconOnly)
+                    }.labelStyle(.iconOnly).accessibilityIdentifier("capture-open")
                 }
             }
             Section {

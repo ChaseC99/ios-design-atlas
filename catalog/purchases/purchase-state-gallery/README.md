@@ -35,6 +35,11 @@ struct PendingPurchaseFeedback: View {
 ## Captures
 
 <!-- captures:start -->
+### iPhone 16 Pro · iOS 18.5
+
+default. light appearance; Large text; en_US.
+
+![App purchase and access states on iPhone 16 Pro, iOS 18.5](captures/ios-18-5-iphone-16-pro-default-1792769256.412.png)
 <!-- captures:end -->
 
 ## Example notes

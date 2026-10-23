@@ -1,1 +1,19 @@
-{"captures": []}
+{
+  "captures": [
+    {
+      "file": "ios-18-5-iphone-16-pro-default-1792769266.915.png",
+      "device": "iPhone 16 Pro",
+      "os": "18.5",
+      "osBuild": "22F77",
+      "sdk": "iOS 27.1",
+      "xcode": "Xcode 27.1; Build version 27A9275",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "Local sample password revealed with the visibility control; software keyboard open.",
+      "capturedAt": "2026-10-23T15:27:46.915Z",
+      "framing": "screen",
+      "sourceSHA256": "ca3eb34323857f24b356770fda568a8876c7036d340ea5327cf31c0f0215bdbf"
+    }
+  ]
+}

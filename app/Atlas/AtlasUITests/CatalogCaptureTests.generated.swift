@@ -481,7 +481,7 @@ final class CatalogCaptureTests: XCTestCase {
     }
 
     func testCapture_secure_field_visibility() throws {
-        try capture("secure-field-visibility", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: true, scroll: false, storeKit: false, capturedVersions: [])
+        try capture("secure-field-visibility", minimumMajor: 18, minimumMinor: 0, action: "tap", readyLabel: nil, keyboard: true, scroll: false, storeKit: false, capturedVersions: [])
     }
 
     func testCapture_multiline_text_fields() throws {

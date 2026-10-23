@@ -12,6 +12,8 @@ view: "SecureFieldVisibilityDemo"
 captureNavigation: true
 ownsNavigation: false
 captureKeyboard: true
+captureAction: "tap"
+captureState: "Local sample password revealed with the visibility control; software keyboard open."
 apis: ["SecureField", "FocusState", "textContentType"]
 tags: ["password", "visibility", "autofill"]
 ---
@@ -52,6 +54,11 @@ struct PasswordField: View {
 ## Captures
 
 <!-- captures:start -->
+### iPhone 16 Pro · iOS 18.5
+
+Local sample password revealed with the visibility control; software keyboard open.. light appearance; Large text; en_US.
+
+![Password visibility on iPhone 16 Pro, iOS 18.5](captures/ios-18-5-iphone-16-pro-default-1792769266.915.png)
 <!-- captures:end -->
 
 ## Full example
