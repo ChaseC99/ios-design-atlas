@@ -50,6 +50,12 @@ default. light appearance; Large text; en_US.
 default. light appearance; Large text; en_US.
 
 ![Pointer and keyboard actions on iPhone 17 Pro, iOS 26.5](captures/ios-26-5-iphone-17-pro-default-1792766153.824.png)
+
+### iPhone Duo · iOS 27.1
+
+default. light appearance; Large text; en_US.
+
+![Pointer and keyboard actions on iPhone Duo, iOS 27.1](captures/ios-27-1-atlas-iphone-duo-default-1792767885.708.png)
 <!-- captures:end -->
 
 ## Full example

@@ -64,6 +64,12 @@ default. light appearance; Large text; en_US.
 default. light appearance; Large text; en_US.
 
 ![Tabs that become a sidebar on iPhone 17 Pro, iOS 26.5](captures/ios-26-5-iphone-17-pro-default-1792766478.388.png)
+
+### iPhone Duo · iOS 27.1
+
+default. light appearance; Large text; en_US.
+
+![Tabs that become a sidebar on iPhone Duo, iOS 27.1](captures/ios-27-1-atlas-iphone-duo-default-1792767930.366.png)
 <!-- captures:end -->
 
 ## Full example

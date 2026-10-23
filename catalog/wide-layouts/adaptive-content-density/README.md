@@ -54,6 +54,12 @@ default. light appearance; Large text; en_US.
 default. light appearance; Large text; en_US.
 
 ![A grid that uses the window on iPhone 17 Pro, iOS 26.5](captures/ios-26-5-iphone-17-pro-default-1792765302.722.png)
+
+### iPhone Duo · iOS 27.1
+
+default. light appearance; Large text; en_US.
+
+![A grid that uses the window on iPhone Duo, iOS 27.1](captures/ios-27-1-atlas-iphone-duo-default-1792767836.268.png)
 <!-- captures:end -->
 
 ## Full example

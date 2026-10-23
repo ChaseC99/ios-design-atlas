@@ -67,6 +67,12 @@ default. light appearance; Large text; en_US.
 default. light appearance; Large text; en_US.
 
 ![Three-column navigation on iPhone 17 Pro, iOS 26.5](captures/ios-26-5-iphone-17-pro-default-1792766644.29.png)
+
+### iPhone Duo · iOS 27.1
+
+default. light appearance; Large text; en_US.
+
+![Three-column navigation on iPhone Duo, iOS 27.1](captures/ios-27-1-atlas-iphone-duo-default-1792767940.843.png)
 <!-- captures:end -->
 
 ## Full example
