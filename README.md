@@ -31,7 +31,7 @@ open app/Atlas/Atlas.xcodeproj
 
 Select the **Atlas** scheme and an iPhone or iPad simulator, then Run. Build with Xcode 27.1 or later. The deployment target is iOS 18.0; newer APIs are guarded at runtime. A development team is only needed when running on a physical device.
 
-The app groups entries by collection and searches their titles, topics, and API names. Newer APIs show their minimum iOS version. Each demo exposes its own options and uses real system presentations. No network services or accounts are required.
+The app groups entries by collection and searches their titles, topics, and API names. Newer APIs show their minimum iOS version. Each demo exposes its own options and uses real system presentations. Core examples run locally; some integrations need device hardware, permissions, or account configuration, as described in their source and entry.
 
 For a direct launch during debugging:
 

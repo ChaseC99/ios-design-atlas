@@ -1,0 +1,1 @@
+../../../../catalog/custom-patterns/sliding-selection-indicator/SlidingSelectionIndicatorDemo.swift

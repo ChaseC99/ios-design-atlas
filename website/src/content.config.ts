@@ -13,6 +13,7 @@ const catalog = defineCollection({
     family: z.string(), order: z.number(), kind: z.enum(['native', 'custom', 'observation']),
     demoMinIOS: z.string(), swiftFile: z.string(), view: z.string(),
     captureState: z.string().optional(), captureEnvironmentNotes: z.string().optional(),
+    captureManual: z.boolean().optional(), captureManualReason: z.string().optional(), captureStoreKit: z.boolean().optional(),
     captureAction: z.enum(['tap', 'longPress']).optional(), captureReadyLabel: z.string().optional(), captureKeyboard: z.boolean().optional(), captureScroll: z.boolean().optional(),
     ownsNavigation: z.boolean().optional(), captureNavigation: z.boolean().optional(), captureStyle: z.enum(['screen', 'isolated']).optional(),
     apis: z.array(z.string()), tags: z.array(z.string()),

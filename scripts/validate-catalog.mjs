@@ -17,9 +17,10 @@ for (const entry of catalog) {
   ids.add(entry.id); names.add(entry.swiftFile);
   if (!/^\d+\.\d+$/.test(entry.demoMinIOS ?? '')) fail('demoMinIOS must be major.minor');
   if (!Number.isFinite(entry.order)) fail('order must be a number');
-  for (const field of ['ownsNavigation', 'captureKeyboard', 'captureScroll']) {
+  for (const field of ['ownsNavigation', 'captureKeyboard', 'captureScroll', 'captureManual', 'captureStoreKit']) {
     if (entry[field] !== undefined && typeof entry[field] !== 'boolean') fail(`${field} must be boolean`);
   }
+  if (entry.captureManual && !entry.captureManualReason) fail('manual captures require a reason');
   if (entry.captureAction && !['tap', 'longPress'].includes(entry.captureAction)) fail('unsupported captureAction');
   if (entry.captureNavigation !== undefined && typeof entry.captureNavigation !== 'boolean') fail('captureNavigation must be boolean');
   if (!Array.isArray(entry.apis) || !entry.apis.length) fail('APIs are required');

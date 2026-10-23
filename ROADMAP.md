@@ -5,10 +5,11 @@ This checklist preserves the original scope. Bullets can be grouped into focused
 ## Progress
 
 - [CATALOG.md](CATALOG.md) is generated from the current entries and capture manifests, including exact version coverage.
-- Presentation, Sheets, Navigation, Tabs, Toolbars, Scrolling, Scroll edges, Materials, Lists, Grids, Buttons, Controls, Text input, Search, Typography, Visuals, Layout, Animation, Accessibility, and Localization: runnable sources and standalone recipes type-check; the integrated app and website build. Native capture review continues.
-- Device adaptation and Wide layouts: runnable examples are integrated. Five Duo APIs require iOS 27.1; older runtimes skip them. Actual posture and regular-width comparisons remain pending.
-- Gestures, States, Forms, Charts, Media/drawing, and Maps: implementation in progress.
-- Remaining collections: queued below. A runnable entry is not a claim that every related backlog bullet or interaction matrix is complete.
+- Collections 1–31 and 34–35 have grouped runnable examples and concise recipes. The integrated app and website build; capture and interaction verification continue. [COVERAGE.md](COVERAGE.md) records the concrete gaps within each collection.
+- Device adaptation and Wide layouts include actual iPhone Duo captures in its initial closed posture. Five Duo APIs require iOS 27.1; older runtimes skip them. Open-posture, hinge-transition, and regular-width comparisons remain pending.
+- System surfaces has an embedded WidgetKit extension with two real widgets and clearly labeled app previews. Home/Lock Screen captures, Live Activities, controls, and App Intents system surfaces remain pending.
+- Purchases includes local StoreKit fixtures; product loading and native purchase-view captures still require serial runtime verification. Apple-app case studies (33) remain queued.
+- A runnable entry is not a claim that every related backlog bullet or interaction matrix is complete.
 - Manual checks still needed include VoiceOver/Voice Control/Switch Control, IMEs, interrupted gestures, pointer/Pencil hardware, multiwindow behavior, and motion. Older-SDK comparisons require separate builds; changing only the simulator runtime cannot provide them.
 
 Capture provenance lives beside each example. A missing capture is displayed as pending, and unsupported OS versions are never represented by fabricated screenshots. Static captures document appearance; motion and gesture behavior need a real interaction check.

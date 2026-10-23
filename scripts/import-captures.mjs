@@ -63,11 +63,12 @@ for (const entry of catalog.filter(entry => selected.has(entry.id))) {
     const file = `ios-${slug(environment.os)}-${slug(environment.device)}-${scenario}-${attachment.timestamp}.png`;
     const destination = path.join(entry.directory, 'captures', file);
     const capture = {
-      file, device: attachment.deviceName, os: environment.os, osBuild: environment.osBuild,
+      file, device: environment.deviceModel ?? attachment.deviceName, os: environment.os, osBuild: environment.osBuild,
+      ...(environment.deviceModel && environment.deviceModel !== attachment.deviceName ? { simulatorName: attachment.deviceName } : {}),
       sdk: environment.sdk, xcode: environment.xcode, appearance: environment.appearance,
       textSize: environment.textSize, locale: environment.locale,
       state: environment.states?.[entry.id] ?? entry.captureState ?? scenario, capturedAt,
-      ...(entry.captureEnvironmentNotes ? { environmentNotes: entry.captureEnvironmentNotes } : {}),
+      ...([environment.environmentNotes, entry.captureEnvironmentNotes].some(Boolean) ? { environmentNotes: [environment.environmentNotes, entry.captureEnvironmentNotes].filter(Boolean).join(' ') } : {}),
       framing: environment.framing ?? entry.captureStyle ?? 'screen',
       sourceSHA256,
     };

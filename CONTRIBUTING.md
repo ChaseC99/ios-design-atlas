@@ -79,6 +79,10 @@ Compare the original images before committing. For split views, sidebars, inspec
 
 For a large comparison run, `node scripts/sync-capture-tests.mjs --skip-existing` generates tests that skip OS generations already captured from the same Swift source hash. Regenerate with `npm run sync` afterward to restore normal tests. This optimization is for iPhone-only runs and only uses existing iPhone captures. Generate the normal tests before running iPad or Duo-specific comparisons.
 
-Native menus can declare `captureAction: tap` or `longPress`, with `capture-open` on their real trigger. `captureReadyLabel` waits for a system action whose identifier is not preserved. Keyboard subjects declare `captureKeyboard: true` and put `capture-focus` on the editable field; the harness asserts the real software keyboard is visible.
+Native menus can declare `captureAction: tap` or `longPress`, with `capture-open` on their real trigger. `captureReadyLabel` waits for a system action whose identifier is not preserved. Keyboard subjects declare `captureKeyboard: true` and put `capture-focus` on the editable field; the harness waits for existing focus before tapping and asserts the real software keyboard is visible.
 
 Use `captureScroll: true` when the initial subject requires an actual upward scroll. `captureState` describes the recorded state, and `captureEnvironmentNotes` records local locale, direction, or display overrides without changing device settings.
+
+Set `captureManual: true` with `captureManualReason` for system surfaces that cannot be truthfully recorded inside the app, such as installed widgets. The generated test skips them rather than treating an app preview as a Home Screen capture.
+
+StoreKit entries use `captureStoreKit: true` and the shared local fixture described in [the StoreKit guide](catalog/purchases/STOREKIT.md). Run those tests serially. The harness loads fictional product metadata and waits for `storekit-products-loaded`; it never taps purchase, restore, management, or redemption actions.

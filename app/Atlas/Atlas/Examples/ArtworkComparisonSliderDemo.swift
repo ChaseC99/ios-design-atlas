@@ -1,0 +1,1 @@
+../../../../catalog/custom-patterns/artwork-comparison-slider/ArtworkComparisonSliderDemo.swift

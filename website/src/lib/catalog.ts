@@ -12,6 +12,7 @@ export interface Capture {
   appearance: string; textSize: string; locale: string; xcode: string; sdk: string;
   capturedAt: string; sourceSHA256: string; image?: ImageMetadata;
   framing?: 'screen' | 'isolated'; environmentNotes?: string;
+  simulatorName?: string;
 }
 export async function details(entry: CollectionEntry<'catalog'>) {
   const manifestPath = Object.keys(manifests).find(key => key.endsWith(`/${entry.id}/captures/manifest.json`));

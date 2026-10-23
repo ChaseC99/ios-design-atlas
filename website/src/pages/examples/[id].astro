@@ -31,7 +31,7 @@ const sourceURL = `${github}/blob/main/${catalogPath}/${entry.data.swiftFile}`;
             </a>
             <figcaption>
               <div class="capture-caption"><strong>iOS {capture.os}</strong><span>{capture.device}</span></div>
-              <details><summary>Details</summary><dl><dt>State</dt><dd>{capture.state}</dd>{capture.environmentNotes && <><dt>Environment overrides</dt><dd>{capture.environmentNotes}</dd></>}<dt>OS build</dt><dd>{capture.osBuild}</dd><dt>Build SDK</dt><dd>{capture.sdk}</dd><dt>Xcode</dt><dd>{capture.xcode}</dd><dt>Appearance</dt><dd>{capture.appearance}</dd><dt>Text size</dt><dd>{capture.textSize}</dd><dt>Locale</dt><dd>{capture.locale}</dd><dt>Recorded</dt><dd>{capture.capturedAt.slice(0, 10)}</dd><dt>Source SHA-256</dt><dd class="hash">{capture.sourceSHA256}</dd></dl></details>
+              <details><summary>Details</summary><dl><dt>State</dt><dd>{capture.state}</dd>{capture.environmentNotes && <><dt>Environment overrides</dt><dd>{capture.environmentNotes}</dd></>}{capture.simulatorName && <><dt>Simulator name</dt><dd>{capture.simulatorName}</dd></>}<dt>OS build</dt><dd>{capture.osBuild}</dd><dt>Build SDK</dt><dd>{capture.sdk}</dd><dt>Xcode</dt><dd>{capture.xcode}</dd><dt>Appearance</dt><dd>{capture.appearance}</dd><dt>Text size</dt><dd>{capture.textSize}</dd><dt>Locale</dt><dd>{capture.locale}</dd><dt>Recorded</dt><dd>{capture.capturedAt.slice(0, 10)}</dd><dt>Source SHA-256</dt><dd class="hash">{capture.sourceSHA256}</dd></dl></details>
             </figcaption>
           </figure>
         )}</div> : <p class="pending-notice">Capture coming soon.</p>}

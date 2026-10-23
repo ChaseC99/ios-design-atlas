@@ -229,6 +229,20 @@ enum AtlasCatalog {
         AtlasEntry(id: "batch-editing-recovery", title: "Batch actions and recovery", summary: "A selection flow groups related actions, confirms destructive changes, and offers a direct undo.", category: "Forms", family: "Flows", apis: ["List(selection:)", "confirmationDialog", "sheet", "EditMode"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
         AtlasEntry(id: "import-progress-flow", title: "Import progress and cancellation", summary: "A processing flow keeps progress, pause, cancellation, and completion tied to the same state.", category: "Forms", family: "Flows", apis: ["ProgressView", "task(id:)", "ContentUnavailableView"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
         AtlasEntry(id: "filter-sort-sheet-flow", title: "Filter and sort sheets", summary: "A separate draft lets a sheet apply several filter and sort changes together.", category: "Forms", family: "Forms", apis: ["sheet", "Form", "Picker", "Toggle", "presentationDetents"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "system-photo-selection", title: "System photo selection", summary: "Choose one image or a small set with PhotosPicker.", category: "Media & drawing", family: "Photos", apis: ["PhotosPicker", "PhotosPickerItem.loadTransferable"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "artwork-gallery-transition", title: "A gallery with a zoom transition", summary: "Open an artwork from its matching thumbnail.", category: "Media & drawing", family: "Photo viewers", apis: ["matchedTransitionSource", "navigationTransition", "fullScreenCover"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "zoom-pan-artwork", title: "Pinch, pan, and double-tap", summary: "Inspect artwork with bounded zoom and pan gestures.", category: "Media & drawing", family: "Photo viewers", apis: ["MagnifyGesture", "DragGesture", "SimultaneousGesture"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "native-video-player", title: "Native video playback", summary: "Play an original local movie with the system player.", category: "Media & drawing", family: "Playback", apis: ["AVPlayerViewController", "AVAssetWriter", "AVPlayer"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "local-audio-queue", title: "An audio queue with a mini player", summary: "Play a short local tone and expand its controls.", category: "Media & drawing", family: "Playback", apis: ["AVAudioPlayer", "presentationDetents", "TimelineView"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "microphone-recording-state", title: "Recording and microphone states", summary: "Start recording explicitly and show the real input level.", category: "Media & drawing", family: "Capture", apis: ["AVAudioRecorder", "AVAudioApplication"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "camera-capture-entry", title: "A camera capture entry", summary: "Open the system camera only after an explicit action.", category: "Media & drawing", family: "Capture", apis: ["UIImagePickerController", "AVCaptureDevice"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "artwork-markup-tools", title: "Draw over an artwork", summary: "Annotate an original illustration with undo and color controls.", category: "Media & drawing", family: "Editing", apis: ["Canvas", "DragGesture", "Path"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "map-styles-and-location", title: "Map styles and location access", summary: "Change the map’s appearance and request location explicitly.", category: "Maps", family: "Map foundations", apis: ["Map", "MapStyle", "CLLocationManager"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "map-place-selection", title: "Markers and selected place cards", summary: "Keep the selected map marker and its detail card in sync.", category: "Maps", family: "Map selection", apis: ["Map(selection:)", "Marker", "Annotation"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "map-route-overlays", title: "Paths and region overlays", summary: "Layer an illustrative route and shaded area on the map.", category: "Maps", family: "Map overlays", apis: ["MapPolyline", "MapPolygon", "MapCameraPosition"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "map-local-search-results", title: "Results connected to a map", summary: "Filter local sample places and select their markers.", category: "Maps", family: "Search and maps", apis: ["searchable", "Map(selection:)", "MapCameraPosition"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "map-movable-place-sheet", title: "A map with a movable sheet", summary: "Keep the map interactive behind a compact place sheet.", category: "Maps", family: "Map presentations", apis: ["presentationDetents", "presentationBackgroundInteraction", "Map"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "native-annotation-clustering", title: "Native annotation clustering", summary: "Let MapKit group nearby annotations as the map zooms.", category: "Maps", family: "Map annotations", apis: ["MKMapView", "MKMarkerAnnotationView", "clusteringIdentifier"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
         AtlasEntry(id: "chart-mark-types", title: "Chart marks and axes", summary: "Bar, line, area, and point marks present the same data with different emphasis.", category: "Charts", family: "Charts", apis: ["Chart", "BarMark", "LineMark", "AreaMark", "PointMark", "RuleMark", "AxisMarks"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
         AtlasEntry(id: "chart-selection", title: "Chart selection and scrubbing", summary: "Native chart selection maps a gesture to a domain value that drives a visible annotation.", category: "Charts", family: "Charts", apis: ["Chart", "chartXSelection", "RuleMark", "PointMark", "annotation"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
         AtlasEntry(id: "sector-chart-selection", title: "Sector and donut charts", summary: "Sector marks show parts of a whole and expose their selected angular value.", category: "Charts", family: "Charts", apis: ["Chart", "SectorMark", "chartAngleSelection", "chartForegroundStyleScale"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
@@ -239,6 +253,46 @@ enum AtlasCatalog {
         AtlasEntry(id: "heatmap-table-chart", title: "Heatmaps and sortable data", summary: "Rectangle marks reveal a two-dimensional pattern while a table exposes exact values.", category: "Charts", family: "Charts", apis: ["Chart", "RectangleMark", "chartForegroundStyleScale", "Table", "TableColumn", "KeyPathComparator"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
         AtlasEntry(id: "three-dimensional-charts", title: "Three-dimensional charts", summary: "Chart3D plots three numeric dimensions and lets the viewer rotate the native chart.", category: "Charts", family: "Charts", apis: ["Chart3D", "PointMark", "chart3DPose", "chartZScale"], minimumOS: "26.0", captureNavigation: true, ownsNavigation: false),
         AtlasEntry(id: "timeline-chart", title: "Timeline charts", summary: "Ranged bar marks place durations on a shared timeline and make overlaps visible.", category: "Charts", family: "Charts", apis: ["Chart", "BarMark", "RuleMark", "chartXScale", "AxisMarks"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "sharing-content", title: "Sharing text, links, and files", summary: "Offer the system share interface for local content.", category: "Integrations", family: "Sharing", apis: ["ShareLink", "SharePreview", "UIGraphicsImageRenderer"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "files-and-quick-look", title: "Files and Quick Look", summary: "Import, export, and preview a small text document.", category: "Integrations", family: "Documents", apis: ["fileImporter", "fileExporter", "FileDocument", "quickLookPreview"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "native-web-presentation", title: "Web views and browser presentation", summary: "Compare embedded local HTML with a system browser.", category: "Integrations", family: "Web content", apis: ["WKWebView", "SFSafariViewController", "UIViewRepresentable", "UIViewControllerRepresentable"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "composition-and-contacts", title: "Mail, messages, and contact selection", summary: "Present native composers and a contact picker.", category: "Integrations", family: "Communication", apis: ["MFMailComposeViewController", "MFMessageComposeViewController", "CNContactPickerViewController"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "calendar-event-editor", title: "Calendar event editing", summary: "Let the system edit and save a proposed event.", category: "Integrations", family: "Calendar", apis: ["EKEventEditViewController", "EKEvent", "EKEventStore"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "scanning-and-printing", title: "Scanning and printing", summary: "Bridge native document, text, and print interfaces.", category: "Integrations", family: "UIKit interfaces", apis: ["VNDocumentCameraViewController", "DataScannerViewController", "UIPrintInteractionController", "UIViewControllerRepresentable"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "translation-and-writing-tools", title: "Translation and Writing Tools", summary: "Offer system language tools beside editable text.", category: "Integrations", family: "Text services", apis: ["translationPresentation", "TextEditor", "writingToolsBehavior"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "tipkit-education", title: "Contextual education with TipKit", summary: "Place a native tip beside its related action.", category: "Integrations", family: "Education", apis: ["Tip", "TipView", "Tips.configure", "invalidate"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "sign-in-with-apple", title: "Sign in with Apple", summary: "Use the native authentication button with an explicit setup gate.", category: "Privacy", family: "Authentication", apis: ["SignInWithAppleButton", "ASAuthorizationAppleIDRequest", "ASAuthorizationError"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "passkeys-and-passwords", title: "Passkeys and password fields", summary: "Connect native credential controls to a configured service.", category: "Privacy", family: "Authentication", apis: ["authorizationController", "ASAuthorizationPlatformPublicKeyCredentialProvider", "SecureField", "textContentType"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "biometrics-and-reauthentication", title: "Biometrics and reauthentication", summary: "Unlock a local sample with system authentication.", category: "Privacy", family: "Authentication", apis: ["LAContext", "canEvaluatePolicy", "evaluatePolicy", "invalidate"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "contextual-permissions", title: "Permissions in context", summary: "Read real access states and request only from a relevant action.", category: "Privacy", family: "Permissions", apis: ["AVCaptureDevice.requestAccess", "PHPhotoLibrary", "CLLocationManager", "UNUserNotificationCenter", "PhotosPicker"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "sensitive-content-reveal", title: "Sensitive content and reveal controls", summary: "Obscure a local value and hide it when the app becomes inactive.", category: "Privacy", family: "Privacy", apis: ["privacySensitive", "scenePhase", "accessibilityLabel"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "local-account-and-data", title: "Account privacy and data controls", summary: "Export or remove a clearly scoped local sample.", category: "Privacy", family: "Account controls", apis: ["fileExporter", "FileDocument", "confirmationDialog", "Toggle"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "storekit-product-view", title: "Native product views", summary: "ProductView presents a StoreKit product with localized metadata and a native purchase control.", category: "Purchases", family: "Purchases and subscriptions", apis: ["ProductView", "Product.products(for:)", "productViewStyle", "onInAppPurchaseCompletion"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "storekit-store-view", title: "Native product collections", summary: "StoreView lays out several real StoreKit products and their native purchase controls.", category: "Purchases", family: "Purchases and subscriptions", apis: ["StoreView", "Product.products(for:)", "productViewStyle", "storeButton"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "storekit-subscription-view", title: "Native subscription choices", summary: "SubscriptionStoreView presents plan choices, billing details, introductory eligibility, and a native subscription action.", category: "Purchases", family: "Purchases and subscriptions", apis: ["SubscriptionStoreView", "subscriptionStoreControlStyle", "subscriptionStoreButtonLabel", "storeButton"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "purchase-management", title: "Purchase status and management", summary: "Verified entitlements drive access status while explicit actions expose restoration and native subscription management.", category: "Purchases", family: "Purchases and subscriptions", apis: ["Transaction.currentEntitlements", "Product.SubscriptionInfo.status", "AppStore.sync", "manageSubscriptionsSheet", "offerCodeRedemption"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "custom-plan-comparison", title: "Custom plan comparison", summary: "App-specific benefits and selection can surround real StoreKit product metadata and a native purchase control.", category: "Purchases", family: "Purchases and subscriptions", apis: ["Product.products(for:)", "Product.displayPrice", "ProductView", "Product.SubscriptionInfo"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "purchase-state-gallery", title: "App purchase and access states", summary: "Explicit app-level states distinguish progress, cancellation, approval, errors, and access without imitating a system payment sheet.", category: "Purchases", family: "Purchases and subscriptions", apis: ["ContentUnavailableView", "ProgressView", "Picker", "Button"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "widget-families", title: "Widget families", summary: "A widget adapts the same timeline entry to Home Screen and Lock Screen families.", category: "System surfaces", family: "Widgets and activities", apis: ["Widget", "StaticConfiguration", "TimelineProvider", "widgetFamily"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "interactive-widget", title: "Interactive widgets", summary: "An App Intent button can update a widget without opening the containing app.", category: "System surfaces", family: "Widgets and activities", apis: ["AppIntent", "Button(intent:)", "WidgetCenter"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "expandable-trip-card", title: "An expandable card", summary: "Reveal the useful details inside a compact trip card.", category: "Custom patterns", family: "Disclosure patterns", apis: ["Button", "withAnimation", "transition"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "floating-creation-tray", title: "A floating action tray", summary: "Expose a small set of creation actions above the content.", category: "Custom patterns", family: "Action patterns", apis: ["safeAreaInset", "transition", "Button"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "undo-notice", title: "An undo notice", summary: "Confirm an action while keeping its reversal close by.", category: "Custom patterns", family: "Feedback patterns", apis: ["safeAreaInset", "Task", "transition"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "growing-chat-composer", title: "A growing chat composer", summary: "Let a short message grow while keeping send within reach.", category: "Custom patterns", family: "Conversation patterns", apis: ["TextField(axis:)", "safeAreaInset", "ScrollViewReader"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "command-search-palette", title: "A searchable command palette", summary: "Find an action and apply it to the current workspace.", category: "Custom patterns", family: "Action patterns", apis: ["TextField", "keyboardShortcut", "overlay"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "day-plan-timeline", title: "A day-plan timeline", summary: "Connect scheduled events with a continuous visual rhythm.", category: "Custom patterns", family: "Information patterns", apis: ["VStack", "fixedSize", "Button"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "sliding-selection-indicator", title: "A sliding selection indicator", summary: "Move one visual selection between custom segments.", category: "Custom patterns", family: "Selection patterns", apis: ["matchedGeometryEffect", "Namespace", "Picker"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "swipeable-reading-cards", title: "Swipeable reading cards", summary: "Save or skip a card with a gesture or explicit button.", category: "Custom patterns", family: "Card patterns", apis: ["DragGesture", "rotationEffect", "accessibilityAction"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "artwork-comparison-slider", title: "An artwork comparison slider", summary: "Reveal two versions of the same composition.", category: "Custom patterns", family: "Comparison patterns", apis: ["mask", "DragGesture", "accessibilityAdjustableAction"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "plain-button-hit-area", title: "One modifier, a larger hit area", summary: "Include the empty space inside a custom plain button.", category: "Custom patterns", family: "Community discoveries", apis: ["contentShape", "buttonStyle(.plain)", "Button"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "uiview-binding-bridge", title: "Two-way UIKit bindings", summary: "A coordinator carries UIKit target-action changes back into SwiftUI state.", category: "Versions & interop", family: "Interoperability", apis: ["UIViewRepresentable", "Coordinator", "UISlider", "Binding"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "swiftui-in-uikit", title: "SwiftUI inside a UIKit controller", summary: "A UIHostingController embeds a SwiftUI view using UIKit’s normal child-controller lifecycle.", category: "Versions & interop", family: "Interoperability", apis: ["UIHostingController", "UIViewControllerRepresentable", "addChild", "didMove(toParent:)"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "hosting-configuration-cells", title: "SwiftUI content in UIKit cells", summary: "UIHostingConfiguration supplies SwiftUI content while UIKit owns the table and cell lifecycle.", category: "Versions & interop", family: "Interoperability", apis: ["UIHostingConfiguration", "UITableView", "UITableViewDataSource", "UIViewRepresentable"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "uikit-swiftui-controls", title: "Equivalent UIKit and SwiftUI controls", summary: "The same bindings drive native controls from both frameworks for a direct appearance and interaction comparison.", category: "Versions & interop", family: "Interoperability", apis: ["Toggle", "Slider", "Picker", "UISwitch", "UISlider", "UISegmentedControl", "UIViewRepresentable"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "uikit-keyboard-boundary", title: "Keyboard layout at a framework boundary", summary: "A UIKit keyboard layout guide positions a native composer inside a SwiftUI-hosted controller.", category: "Versions & interop", family: "Interoperability", apis: ["UIViewControllerRepresentable", "UIKeyboardLayoutGuide", "UITextField", "UIHostingController", "ignoresSafeArea"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "presentation-control-environment", title: "Control environments in presentations", summary: "A presentation can establish different control defaults from the view that presents it.", category: "Versions & interop", family: "Interoperability", apis: ["sheet", "popover", "controlSize", "buttonSizing", "buttonRepeatBehavior", "menuIndicator", "buttonBorderShape"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "selectable-text-gesture-priority", title: "Selectable text and custom gestures", summary: "Selectable Text can share a gesture region with app interactions whose priority is explicit.", category: "Versions & interop", family: "Interoperability", apis: ["textSelection", "simultaneousGesture", "highPriorityGesture", "TapGesture"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "runtime-control-baseline", title: "Default controls across runtimes", summary: "A stable screen of standard controls provides a baseline for captures from different iOS runtimes.", category: "Versions & interop", family: "Interoperability", apis: ["Form", "Button", "Toggle", "Picker", "Stepper", "ProgressView"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
     ]
 
     @MainActor
@@ -865,6 +919,48 @@ enum AtlasCatalog {
         case "filter-sort-sheet-flow":
             if #available(iOS 18.0, *) { return AnyView(FilterSortSheetFlowDemo()) }
             else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "system-photo-selection":
+            if #available(iOS 18.0, *) { return AnyView(SystemPhotoSelectionDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "artwork-gallery-transition":
+            if #available(iOS 18.0, *) { return AnyView(ArtworkGalleryTransitionDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "zoom-pan-artwork":
+            if #available(iOS 18.0, *) { return AnyView(ZoomPanArtworkDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "native-video-player":
+            if #available(iOS 18.0, *) { return AnyView(NativeVideoPlayerDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "local-audio-queue":
+            if #available(iOS 18.0, *) { return AnyView(LocalAudioQueueDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "microphone-recording-state":
+            if #available(iOS 18.0, *) { return AnyView(MicrophoneRecordingStateDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "camera-capture-entry":
+            if #available(iOS 18.0, *) { return AnyView(CameraCaptureEntryDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "artwork-markup-tools":
+            if #available(iOS 18.0, *) { return AnyView(ArtworkMarkupToolsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "map-styles-and-location":
+            if #available(iOS 18.0, *) { return AnyView(MapStylesLocationDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "map-place-selection":
+            if #available(iOS 18.0, *) { return AnyView(MapPlaceSelectionDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "map-route-overlays":
+            if #available(iOS 18.0, *) { return AnyView(MapRouteOverlaysDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "map-local-search-results":
+            if #available(iOS 18.0, *) { return AnyView(MapLocalSearchResultsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "map-movable-place-sheet":
+            if #available(iOS 18.0, *) { return AnyView(MapMovablePlaceSheetDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "native-annotation-clustering":
+            if #available(iOS 18.0, *) { return AnyView(NativeAnnotationClusteringDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "chart-mark-types":
             if #available(iOS 18.0, *) { return AnyView(ChartMarkTypesDemo()) }
             else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
@@ -894,6 +990,126 @@ enum AtlasCatalog {
             else { return AnyView(ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "timeline-chart":
             if #available(iOS 18.0, *) { return AnyView(TimelineChartDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "sharing-content":
+            if #available(iOS 18.0, *) { return AnyView(SharingContentDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "files-and-quick-look":
+            if #available(iOS 18.0, *) { return AnyView(FilesQuickLookDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "native-web-presentation":
+            if #available(iOS 18.0, *) { return AnyView(NativeWebPresentationDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "composition-and-contacts":
+            if #available(iOS 18.0, *) { return AnyView(CompositionContactsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "calendar-event-editor":
+            if #available(iOS 18.0, *) { return AnyView(CalendarEventEditorDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "scanning-and-printing":
+            if #available(iOS 18.0, *) { return AnyView(ScanningPrintingDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "translation-and-writing-tools":
+            if #available(iOS 18.0, *) { return AnyView(TranslationWritingToolsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "tipkit-education":
+            if #available(iOS 18.0, *) { return AnyView(TipKitEducationDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "sign-in-with-apple":
+            if #available(iOS 18.0, *) { return AnyView(AppleSignInDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "passkeys-and-passwords":
+            if #available(iOS 18.0, *) { return AnyView(PasskeysPasswordsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "biometrics-and-reauthentication":
+            if #available(iOS 18.0, *) { return AnyView(BiometricsReauthenticationDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "contextual-permissions":
+            if #available(iOS 18.0, *) { return AnyView(ContextualPermissionsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "sensitive-content-reveal":
+            if #available(iOS 18.0, *) { return AnyView(SensitiveContentRevealDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "local-account-and-data":
+            if #available(iOS 18.0, *) { return AnyView(LocalAccountDataDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "storekit-product-view":
+            if #available(iOS 18.0, *) { return AnyView(StoreKitProductViewDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "storekit-store-view":
+            if #available(iOS 18.0, *) { return AnyView(StoreKitStoreViewDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "storekit-subscription-view":
+            if #available(iOS 18.0, *) { return AnyView(StoreKitSubscriptionViewDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "purchase-management":
+            if #available(iOS 18.0, *) { return AnyView(PurchaseManagementDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "custom-plan-comparison":
+            if #available(iOS 18.0, *) { return AnyView(CustomPlanComparisonDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "purchase-state-gallery":
+            if #available(iOS 18.0, *) { return AnyView(PurchaseStateGalleryDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "widget-families":
+            if #available(iOS 18.0, *) { return AnyView(WidgetFamiliesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "interactive-widget":
+            if #available(iOS 18.0, *) { return AnyView(InteractiveWidgetDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "expandable-trip-card":
+            if #available(iOS 18.0, *) { return AnyView(ExpandableTripCardDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "floating-creation-tray":
+            if #available(iOS 18.0, *) { return AnyView(FloatingCreationTrayDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "undo-notice":
+            if #available(iOS 18.0, *) { return AnyView(UndoNoticeDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "growing-chat-composer":
+            if #available(iOS 18.0, *) { return AnyView(GrowingChatComposerDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "command-search-palette":
+            if #available(iOS 18.0, *) { return AnyView(CommandSearchPaletteDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "day-plan-timeline":
+            if #available(iOS 18.0, *) { return AnyView(DayPlanTimelineDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "sliding-selection-indicator":
+            if #available(iOS 18.0, *) { return AnyView(SlidingSelectionIndicatorDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "swipeable-reading-cards":
+            if #available(iOS 18.0, *) { return AnyView(SwipeableReadingCardsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "artwork-comparison-slider":
+            if #available(iOS 18.0, *) { return AnyView(ArtworkComparisonSliderDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "plain-button-hit-area":
+            if #available(iOS 18.0, *) { return AnyView(PlainButtonHitAreaDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "uiview-binding-bridge":
+            if #available(iOS 18.0, *) { return AnyView(UIViewBindingBridgeDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "swiftui-in-uikit":
+            if #available(iOS 18.0, *) { return AnyView(SwiftUIInUIKitDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "hosting-configuration-cells":
+            if #available(iOS 18.0, *) { return AnyView(HostingConfigurationCellsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "uikit-swiftui-controls":
+            if #available(iOS 18.0, *) { return AnyView(UIKitSwiftUIControlsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "uikit-keyboard-boundary":
+            if #available(iOS 18.0, *) { return AnyView(UIKitKeyboardBoundaryDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "presentation-control-environment":
+            if #available(iOS 18.0, *) { return AnyView(PresentationControlEnvironmentDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "selectable-text-gesture-priority":
+            if #available(iOS 18.0, *) { return AnyView(SelectableTextGesturePriorityDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "runtime-control-baseline":
+            if #available(iOS 18.0, *) { return AnyView(RuntimeControlBaselineDemo()) }
             else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         default: return AnyView(ContentUnavailableView("Example unavailable", systemImage: "questionmark.folder"))
         }

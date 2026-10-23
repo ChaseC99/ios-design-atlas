@@ -1,0 +1,1 @@
+../../../../catalog/custom-patterns/swipeable-reading-cards/SwipeableReadingCardsDemo.swift

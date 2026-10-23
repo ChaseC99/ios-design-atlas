@@ -1,0 +1,1 @@
+../../../../catalog/custom-patterns/expandable-trip-card/ExpandableTripCardDemo.swift

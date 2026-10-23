@@ -1,0 +1,1 @@
+../../../../catalog/custom-patterns/command-search-palette/CommandSearchPaletteDemo.swift

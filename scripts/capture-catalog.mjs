@@ -64,7 +64,8 @@ for (const entry of catalog.filter(item => selectedIDs.has(item.id))) {
 }
 for (const { device, runtime } of devices) {
   await writeFile(path.join(output, `environment-${device.udid}.json`), `${JSON.stringify({
-    device: device.name, os: runtime.version, osBuild: runtime.buildversion,
+    device: device.name, deviceModel: inventory.devicetypes.find(type => type.identifier === device.deviceTypeIdentifier)?.name,
+    os: runtime.version, osBuild: runtime.buildversion,
     sdk: `iOS ${sdk}`, xcode, appearance: 'light', textSize: 'Large', locale: 'en_US',
     sourceHashes, states: {},
   }, null, 2)}\n`);
@@ -73,8 +74,8 @@ await writeFile(path.join(output, 'run.json'), `${JSON.stringify({ selectedIDs: 
 const resultBundle = path.join(output, 'Results.xcresult');
 const args = ['-project', 'app/Atlas/Atlas.xcodeproj', '-scheme', 'Atlas',
   '-derivedDataPath', path.join(output, 'DerivedData'), '-resultBundlePath', resultBundle,
-  '-parallel-testing-enabled', 'YES', '-parallel-testing-worker-count', '1',
-  '-maximum-concurrent-test-simulator-destinations', '3', '-collect-test-diagnostics', 'never'];
+  '-parallel-testing-enabled', 'NO',
+  '-maximum-concurrent-test-simulator-destinations', '1', '-collect-test-diagnostics', 'never'];
 for (const { device } of devices) args.push('-destination', `platform=iOS Simulator,id=${device.udid}`);
 for (const id of selectedIDs) args.push(`-only-testing:AtlasUITests/CatalogCaptureTests/testCapture_${id.replaceAll('-', '_')}`);
 args.push('test', 'CODE_SIGNING_ALLOWED=NO');

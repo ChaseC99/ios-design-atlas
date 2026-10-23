@@ -1,0 +1,1 @@
+../../../../catalog/custom-patterns/growing-chat-composer/GrowingChatComposerDemo.swift
