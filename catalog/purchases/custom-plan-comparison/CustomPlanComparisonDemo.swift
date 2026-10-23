@@ -33,7 +33,12 @@ struct CustomPlanComparisonDemo: View {
                         }
                     }.accessibilityIdentifier("storekit-products-loaded")
                     if let product = products.first(where: { $0.id == selected }) {
-                        ProductView(product).productViewStyle(.compact)
+                        ProductView(product) {
+                            Image(systemName: "square.stack.3d.up.fill")
+                                .font(.system(size: 28)).foregroundStyle(.white)
+                                .frame(width: 64, height: 64)
+                                .background(.indigo.gradient, in: .rect(cornerRadius: 16))
+                        }.productViewStyle(.compact)
                         Text("Renews automatically until cancelled. Manage your plan in App Store subscriptions.").font(.footnote).foregroundStyle(.secondary)
                     }
                 } else if loading { ProgressView("Loading local plans…") }

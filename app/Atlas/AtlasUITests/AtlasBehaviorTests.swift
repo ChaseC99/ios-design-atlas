@@ -120,17 +120,17 @@ final class AtlasBehaviorTests: XCTestCase {
         let libraryDestination = "A page inside Small adventures"
         XCTAssertTrue(app.staticTexts[libraryDestination].firstMatch.waitForExistence(timeout: 5))
 
-        tap(app.buttons["Favorites"])
+        tap(app.buttons["Favorites"].firstMatch)
         tap(app.buttons["Quiet mornings"])
         XCTAssertTrue(app.staticTexts["Quiet mornings"].firstMatch.waitForExistence(timeout: 5))
-        tap(app.buttons["Library"])
+        tap(app.buttons["Library"].firstMatch)
         XCTAssertTrue(app.staticTexts[libraryDestination].firstMatch.waitForExistence(timeout: 5))
-        tap(app.buttons["Favorites"])
+        tap(app.buttons["Favorites"].firstMatch)
         XCTAssertTrue(app.staticTexts["Quiet mornings"].firstMatch.waitForExistence(timeout: 5))
 
         tap(app.buttons["Return to this tab’s root"])
         XCTAssertTrue(app.buttons["By the water"].waitForExistence(timeout: 5))
-        tap(app.buttons["Library"])
+        tap(app.buttons["Library"].firstMatch)
         XCTAssertTrue(app.staticTexts[libraryDestination].firstMatch.waitForExistence(timeout: 5))
     }
 

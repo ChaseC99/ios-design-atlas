@@ -16,6 +16,8 @@ struct StoreKitSubscriptionViewDemo: View {
                         Text("A little more possibility.").font(.system(.largeTitle, design: .serif).bold()).multilineTextAlignment(.center)
                         Text("Unlimited collections, thoughtful themes, and room for every idea.").foregroundStyle(.secondary).multilineTextAlignment(.center)
                     }.padding(.horizontal, 26).padding(.vertical, 22)
+                        .accessibilityElement(children: .combine)
+                        .accessibilityIdentifier("storekit-products-loaded")
                 }
                 .subscriptionStoreControlStyle(.prominentPicker)
                 .subscriptionStoreButtonLabel(.multiline)
@@ -23,7 +25,6 @@ struct StoreKitSubscriptionViewDemo: View {
                 .storeButton(.hidden, for: .cancellation)
                 .subscriptionStorePolicyDestination(for: .privacyPolicy) { Text("Local design example. No account or analytics data is collected by this demonstration.").padding() }
                 .subscriptionStorePolicyDestination(for: .termsOfService) { Text("Fictional products for local StoreKit testing. This example grants no real service.").padding() }
-                .accessibilityIdentifier("storekit-products-loaded")
             } else if loading { ProgressView("Loading local plans…") }
             else {
                 VStack {
@@ -42,6 +43,7 @@ struct StoreKitSubscriptionViewDemo: View {
             if case .success(.success(.verified(let transaction))) = result { await transaction.finish() }
         }
         .navigationTitle("Atlas Plus").navigationBarTitleDisplayMode(.inline)
+        .accessibilityElement(children: .contain)
         .accessibilityIdentifier("capture-ready")
     }
 }

@@ -14,6 +14,8 @@ struct StoreKitStoreViewDemo: View {
                 Text("Small additions.\nA little more you.").font(.system(.largeTitle, design: .serif).bold())
                 Text("Make your collection feel like home.").foregroundStyle(.secondary)
             }.padding(24)
+                .accessibilityElement(children: .combine)
+                .accessibilityIdentifier(products.count == ids.count ? "storekit-products-loaded" : "storekit-products-loading")
             if products.count == ids.count {
                 StoreView(products: products) { product in
                     Image(systemName: symbol(product.id)).font(.system(size: 34)).foregroundStyle(.white)
@@ -21,7 +23,6 @@ struct StoreKitStoreViewDemo: View {
                 }
                 .productViewStyle(.compact)
                 .storeButton(.hidden, for: .cancellation)
-                .accessibilityIdentifier("storekit-products-loaded")
             } else if loading { ProgressView("Loading local products…").frame(maxWidth: .infinity, maxHeight: .infinity) }
             else {
                 ContentUnavailableView("Local products unavailable", systemImage: "bag", description: Text("Run with AtlasPurchases.storekit enabled in Xcode."))
@@ -44,6 +45,7 @@ struct StoreKitStoreViewDemo: View {
             }
         }
         .navigationTitle("The collection shop").navigationBarTitleDisplayMode(.inline)
+        .accessibilityElement(children: .contain)
         .accessibilityIdentifier("capture-ready")
     }
     private func symbol(_ id: String) -> String { id.hasSuffix("notes") ? "book.closed.fill" : id.hasSuffix("icons") ? "leaf.fill" : "paintpalette.fill" }
