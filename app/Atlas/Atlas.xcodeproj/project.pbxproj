@@ -6,6 +6,12 @@
 	objectVersion = 110;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		AB81703F308BA90E0019CCDE /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB81703E308BA90E0019CCDE /* WidgetKit.framework */; };
+		AB817041308BA90E0019CCDE /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB817040308BA90E0019CCDE /* SwiftUI.framework */; };
+		AB81704C308BA9130019CCDE /* AtlasWidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AB81703C308BA90E0019CCDE /* AtlasWidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		AB816E49308B8B9D0019CCDE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -21,13 +27,45 @@
 			remoteGlobalIDString = AB816E3A308B8B9B0019CCDE;
 			remoteInfo = Atlas;
 		};
+		AB81704A308BA9130019CCDE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AB816E33308B8B9B0019CCDE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AB81703B308BA90E0019CCDE;
+			remoteInfo = AtlasWidgetsExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AB817051308BA9130019CCDE /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			dstPath = "";
+			dstSubfolder = PlugIns;
+			files = (
+				AB81704C308BA9130019CCDE /* AtlasWidgetsExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		AB816E3B308B8B9B0019CCDE /* Atlas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Atlas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB816E48308B8B9D0019CCDE /* AtlasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtlasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB816E52308B8B9D0019CCDE /* AtlasUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtlasUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB81703C308BA90E0019CCDE /* AtlasWidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AtlasWidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB81703E308BA90E0019CCDE /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = /System/Library/Frameworks/WidgetKit.framework; sourceTree = "<absolute>"; };
+		AB817040308BA90E0019CCDE /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = /System/Library/Frameworks/SwiftUI.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		AB81704D308BA9130019CCDE /* Exceptions for "AtlasWidgets" folder in "AtlasWidgetsExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = AB81703B308BA90E0019CCDE /* AtlasWidgetsExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		AB816E3D308B8B9B0019CCDE /* Atlas */ = {
@@ -43,6 +81,14 @@
 		AB816E55308B8B9D0019CCDE /* AtlasUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = AtlasUITests;
+			sourceTree = "<group>";
+		};
+		AB817042308BA90E0019CCDE /* AtlasWidgets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				AB81704D308BA9130019CCDE /* Exceptions for "AtlasWidgets" folder in "AtlasWidgetsExtension" target */,
+			);
+			path = AtlasWidgets;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -63,6 +109,13 @@
 			files = (
 			);
 		};
+		AB817039308BA90E0019CCDE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+				AB817041308BA90E0019CCDE /* SwiftUI.framework in Frameworks */,
+				AB81703F308BA90E0019CCDE /* WidgetKit.framework in Frameworks */,
+			);
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -72,6 +125,8 @@
 				AB816E3D308B8B9B0019CCDE /* Atlas */,
 				AB816E4B308B8B9D0019CCDE /* AtlasTests */,
 				AB816E55308B8B9D0019CCDE /* AtlasUITests */,
+				AB817042308BA90E0019CCDE /* AtlasWidgets */,
+				AB81703D308BA90E0019CCDE /* Frameworks */,
 				AB816E3C308B8B9B0019CCDE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -82,8 +137,18 @@
 				AB816E3B308B8B9B0019CCDE /* Atlas.app */,
 				AB816E48308B8B9D0019CCDE /* AtlasTests.xctest */,
 				AB816E52308B8B9D0019CCDE /* AtlasUITests.xctest */,
+				AB81703C308BA90E0019CCDE /* AtlasWidgetsExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		AB81703D308BA90E0019CCDE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AB81703E308BA90E0019CCDE /* WidgetKit.framework */,
+				AB817040308BA90E0019CCDE /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,8 +161,12 @@
 				AB816E37308B8B9B0019CCDE /* Sources */,
 				AB816E38308B8B9B0019CCDE /* Frameworks */,
 				AB816E39308B8B9B0019CCDE /* Resources */,
+				AB817051308BA9130019CCDE /* Embed Foundation Extensions */,
 			);
 			buildRules = (
+			);
+			dependencies = (
+				AB81704B308BA9130019CCDE /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				AB816E3D308B8B9B0019CCDE /* Atlas */,
@@ -149,6 +218,24 @@
 			productReference = AB816E52308B8B9D0019CCDE /* AtlasUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		AB81703B308BA90E0019CCDE /* AtlasWidgetsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB81704E308BA9130019CCDE /* Build configuration list for PBXNativeTarget "AtlasWidgetsExtension" */;
+			buildPhases = (
+				AB817038308BA90E0019CCDE /* Sources */,
+				AB817039308BA90E0019CCDE /* Frameworks */,
+				AB81703A308BA90E0019CCDE /* Resources */,
+			);
+			buildRules = (
+			);
+			fileSystemSynchronizedGroups = (
+				AB817042308BA90E0019CCDE /* AtlasWidgets */,
+			);
+			name = AtlasWidgetsExtension;
+			productName = AtlasWidgetsExtension;
+			productReference = AB81703C308BA90E0019CCDE /* AtlasWidgetsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -170,6 +257,9 @@
 						CreatedOnToolsVersion = 27.1;
 						TestTargetID = AB816E3A308B8B9B0019CCDE;
 					};
+					AB81703B308BA90E0019CCDE = {
+						CreatedOnToolsVersion = 27.1;
+					};
 				};
 			};
 			buildConfigurationList = AB816E36308B8B9B0019CCDE /* Build configuration list for PBXProject "Atlas" */;
@@ -189,6 +279,7 @@
 				AB816E3A308B8B9B0019CCDE /* Atlas */,
 				AB816E47308B8B9D0019CCDE /* AtlasTests */,
 				AB816E51308B8B9D0019CCDE /* AtlasUITests */,
+				AB81703B308BA90E0019CCDE /* AtlasWidgetsExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -205,6 +296,11 @@
 			);
 		};
 		AB816E50308B8B9D0019CCDE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+			);
+		};
+		AB81703A308BA90E0019CCDE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
 			);
@@ -227,6 +323,11 @@
 			files = (
 			);
 		};
+		AB817038308BA90E0019CCDE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+			);
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -239,6 +340,11 @@
 			isa = PBXTargetDependency;
 			target = AB816E3A308B8B9B0019CCDE /* Atlas */;
 			targetProxy = AB816E53308B8B9D0019CCDE /* PBXContainerItemProxy */;
+		};
+		AB81704B308BA9130019CCDE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AB81703B308BA90E0019CCDE /* AtlasWidgetsExtension */;
+			targetProxy = AB81704A308BA9130019CCDE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -539,6 +645,88 @@
 			};
 			name = Release;
 		};
+		AB81704F308BA9130019CCDE /* Debug configuration for PBXNativeTarget "AtlasWidgetsExtension" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AtlasWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AtlasWidgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.7;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chase.Atlas.AtlasWidgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = ATLAS_WIDGET_EXTENSION;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 27.0;
+			};
+			name = Debug;
+		};
+		AB817050308BA9130019CCDE /* Release configuration for PBXNativeTarget "AtlasWidgetsExtension" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AtlasWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AtlasWidgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.7;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chase.Atlas.AtlasWidgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = ATLAS_WIDGET_EXTENSION;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 27.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -571,6 +759,14 @@
 			buildConfigurations = (
 				AB816E61308B8B9D0019CCDE /* Debug configuration for PBXNativeTarget "AtlasUITests" */,
 				AB816E62308B8B9D0019CCDE /* Release configuration for PBXNativeTarget "AtlasUITests" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		AB81704E308BA9130019CCDE /* Build configuration list for PBXNativeTarget "AtlasWidgetsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB81704F308BA9130019CCDE /* Debug configuration for PBXNativeTarget "AtlasWidgetsExtension" */,
+				AB817050308BA9130019CCDE /* Release configuration for PBXNativeTarget "AtlasWidgetsExtension" */,
 			);
 			defaultConfigurationName = Release;
 		};
