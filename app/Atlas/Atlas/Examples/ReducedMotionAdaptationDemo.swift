@@ -1,0 +1,1 @@
+../../../../catalog/accessibility/reduced-motion-adaptation/ReducedMotionAdaptationDemo.swift
