@@ -28,21 +28,28 @@ A secure field obscures a password while an explicit visibility control lets the
 import SwiftUI
 
 struct PasswordField: View {
+    private enum Field: Hashable { case hidden, visible }
     @State private var password = ""
     @State private var visible = false
+    @FocusState private var focus: Field?
 
     var body: some View {
         HStack {
             Group {
-                if visible { TextField("Password", text: $password) }
-                else { SecureField("Password", text: $password) }
+                if visible {
+                    TextField("Password", text: $password).focused($focus, equals: .visible)
+                } else {
+                    SecureField("Password", text: $password).focused($focus, equals: .hidden)
+                }
             }
-            .textContentType(.password)
+            .textContentType(.newPassword)
             .textInputAutocapitalization(.never)
             .autocorrectionDisabled()
             Button(visible ? "Hide password" : "Show password",
                    systemImage: visible ? "eye.slash" : "eye") {
+                let wasFocused = focus != nil
                 visible.toggle()
+                if wasFocused { focus = visible ? .visible : .hidden }
             }
             .labelStyle(.iconOnly)
         }

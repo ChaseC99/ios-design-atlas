@@ -2,7 +2,7 @@
 
 A visual reference for native iOS interfaces: runnable SwiftUI examples, brief Markdown descriptions and Swift recipes, and original simulator captures.
 
-Browse [the catalog index](CATALOG.md) for focused collections of native interface examples. Each entry has a runnable SwiftUI demo, a short recipe, and original simulator captures as they are verified. [The roadmap](ROADMAP.md) tracks the full catalog scope and remaining work.
+Browse [the catalog index](CATALOG.md) for focused collections of native interface examples. Each entry has a runnable SwiftUI demo, a short recipe, and original simulator captures as they are verified. [The roadmap](ROADMAP.md) preserves the original 35-collection brainstorm. The implemented examples provide grouped coverage; they do not complete every backlog bullet or verification requirement.
 
 ## Run the website
 

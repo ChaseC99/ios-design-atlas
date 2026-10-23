@@ -55,4 +55,4 @@ default. light appearance; Large text; en_US.
 
 ## Reference
 
-[Apple: scaledToFit](https://developer.apple.com/documentation/swiftui/view/scaledtofill()).
+[Apple: scaledToFill](https://developer.apple.com/documentation/swiftui/view/scaledtofill()).

@@ -37,7 +37,7 @@ Run `npm run sync`, then select the generated `CatalogCaptureTests` for the desi
 
 The comparison set is **iOS 18, iOS 26, and iOS 27**, where the API and simulator support the example. Keep source, state, appearance, locale, and text size consistent, and record device differences. Use the actual point-release version, not only its generation. Do not automatically open camera, microphone, purchase, or account flows while collecting screenshots.
 
-Use `framing: "isolated"` in capture import metadata for these clean scenes. The website centers the presentation in a square preview; clicking it opens the unedited full-screen PNG. Use `framing: "screen"` for examples where the surrounding interface matters.
+Use `framing: "isolated"` only for centered alerts. The website centers the presentation in a square preview; clicking it opens the unedited full-screen PNG. Sheets, anchored popovers, and full interfaces use `framing: "screen"`.
 
 For a repeatable command-line run, list available devices with `xcrun simctl list devices available`, then run:
 
@@ -79,7 +79,7 @@ Compare the original images before committing. For split views, sidebars, inspec
 
 For a large comparison run, `node scripts/sync-capture-tests.mjs --skip-existing` generates tests that skip OS generations already captured from the same Swift source hash. Regenerate with `npm run sync` afterward to restore normal tests. This optimization is for iPhone-only runs and only uses existing iPhone captures. Generate the normal tests before running iPad or Duo-specific comparisons.
 
-Native menus can declare `captureAction: tap` or `longPress`, with `capture-open` on their real trigger. `captureReadyLabel` waits for a system action whose identifier is not preserved. Keyboard subjects declare `captureKeyboard: true` and put `capture-focus` on the editable field; the harness waits for existing focus before tapping and asserts the real software keyboard is visible.
+Native menus can declare `captureAction: tap` or `longPress`, with `capture-open` on their real trigger. `captureReadyLabel` waits for a system action whose identifier is not preserved. Keyboard subjects declare `captureKeyboard: true` and put `capture-focus` on the editable field; the harness checks for an already-visible software keyboard before tapping and asserts the real software keyboard is visible.
 
 Use `captureScroll: true` when the initial subject requires an actual upward scroll. `captureState` describes the recorded state, and `captureEnvironmentNotes` records local locale, direction, or display overrides without changing device settings.
 

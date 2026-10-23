@@ -1,6 +1,6 @@
 # Catalog coverage audit
 
-Snapshot: 2026-10-23T14:56:40.295Z. Read-only audit of original ROADMAP categories 1–30 and 34–35. Categories 31/32 are active elsewhere and 33 is queued; they are excluded.
+Historical scope audit from 2026-10-23T14:56:40.295Z of original ROADMAP categories 1–30 and 34–35. Counts, capture gaps, and test outcomes below describe that snapshot unless explicitly updated. Categories 31–33 were excluded.
 
 This is a dated scope audit. Current entry and capture totals are in [CATALOG.md](CATALOG.md); later verification is recorded in commit history and capture manifests.
 
@@ -12,7 +12,7 @@ Sources inspected: ROADMAP.md; canonical catalog README metadata, first recipes 
 
 “Implemented” below means a self-contained source/recipe entry exists for the grouped subject. It does not mean all original bullets are finished. Earlier standalone checks did not all enable MemberImportVisibility; the parent found and repaired missing Combine imports in three media/map demos during integration. The newest full-app build result must be checked separately. No builds/tests/simulators were run by this audit.
 
-## Imported capture inventory
+## Imported capture inventory at audit snapshot
 
 | Roadmap | Collection | Entries | Captures | Entries captured | Runtime versions |
 |---|---|---:|---:|---:|---|
@@ -452,12 +452,12 @@ Most imported captures use light appearance, en_US and Dynamic Type Large (the d
 
 These are targeted findings in this agent’s own frozen sources. They are not reproduced failures; no frozen source was changed.
 
-1. **Swipe-card interruption can retain transient state.** Resolved in source after the audit: gesture-scoped translation and explicit cancellation reset; manual interruption verification remains pending.  `catalog/custom-patterns/swipeable-reading-cards/SwipeableReadingCardsDemo.swift:32` writes drag offset to State and clears it only in onEnded. A cancelled gesture may leave an offset. At line 54, disappearance cancels moveTask; its cancellation return at line 63 leaves moving/offset unchanged. If the view is retained and reappears during that window, its controls may remain disabled/offscreen. Prefer gesture-scoped transient state and a deliberate disappearance/reset policy; reproduce interruption before acceptance.
-2. **Annotation cancellation can join unrelated strokes.** Resolved in source after the audit: cancelled/disappearing gesture drafts clear; manual interruption verification remains pending.  `catalog/media-drawing/artwork-markup-tools/ArtworkMarkupToolsDemo.swift:19` appends current points and clears them only onEnded. Cancellation can retain a partial stroke that the next drag extends. Gesture-scoped points or explicit cancellation cleanup is needed. The aspect-ratio toggle is accurately called a canvas change, not an exported crop.
+1. **Swipe-card interruption.** Resolved in source after the audit: gesture-scoped translation and explicit cancellation reset. Manual interruption verification remains pending.
+2. **Annotation cancellation.** Resolved in source after the audit: cancelled or disappearing gesture drafts clear. Manual interruption verification remains pending.
 3. **Video capture readiness precedes visible media.** `catalog/media-drawing/native-video-player/NativeVideoPlayerDemo.swift:15` marks ready once an AVPlayer exists (assigned at line 36), not once the first frame is ready for display. The harness settlement delay may be adequate but is not a guarantee. A black/loading native player must be excluded if observed; use a first-frame readiness signal before recapture.
 4. **Keyboard-toolbar capture may miss its defining UI.** The subsequent image review verified visible keyboard accessories on both iOS 18.5 and 26.5, while a readiness improvement remains useful.  `catalog/toolbars/keyboard-toolbars/KeyboardToolbarsDemo.swift:29` focuses after a fixed 300 ms while the form is immediately capture-ready. Unlike repaired keyboard-safe-areas, its README lacks captureKeyboard and the field lacks capture-focus. A screenshot can therefore pass readiness without showing a keyboard/accessory. Verify the actual PNG; use the harness focus/keyboard wait if missing.
 
-## Suggested honest checkpoint
+## Checkpoint at audit snapshot
 
 The catalog now has 263 grouped source examples in the audited collections, including newly published integration and privacy examples. 78 screenshots are imported with matching source provenance; most of the requested cross-version and device matrix is still pending. Three sheet behaviors have passing three-version checks, and two navigation/tab checks pass in the latest reviewed iOS 27 repair run. Setup-dependent authentication, real Duo posture changes, multiwindow/hardware interactions, accessibility sessions, older-SDK comparisons and several concrete content gaps remain. The catalog is broad in runnable source, but it is not yet exhaustive or fully validated.
 

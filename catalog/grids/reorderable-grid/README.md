@@ -71,4 +71,4 @@ default. light appearance; Large text; en_US.
 
 ## Reference
 
-[Apple: draggable](https://developer.apple.com/documentation/swiftui/view/dropdestination(for:action:istargeted:)).
+[Apple: dropDestination](https://developer.apple.com/documentation/swiftui/view/dropdestination(for:action:istargeted:)).
