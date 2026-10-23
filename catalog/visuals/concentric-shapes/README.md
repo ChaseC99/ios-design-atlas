@@ -41,6 +41,11 @@ struct NestedCorners: View {
 ## Captures
 
 <!-- captures:start -->
+### iPhone 17 Pro · iOS 26.5
+
+default. light appearance; Large text; en_US.
+
+![Concentric shapes and elevation on iPhone 17 Pro, iOS 26.5](captures/ios-26-5-iphone-17-pro-default-1792765417.736.png)
 <!-- captures:end -->
 
 ## Full example

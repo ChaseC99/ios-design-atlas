@@ -45,6 +45,18 @@ struct IndependentScrollMargins: View {
 default. light appearance; Large text; en_US.
 
 ![Content and indicator margins on iPhone 18 Pro, iOS 27.0](captures/ios-27-0-iphone-18-pro-default-1792762918.741.png)
+
+### iPhone 16 Pro · iOS 18.5
+
+default. light appearance; Large text; en_US.
+
+![Content and indicator margins on iPhone 16 Pro, iOS 18.5](captures/ios-18-5-iphone-16-pro-default-1792766533.956.png)
+
+### iPhone 17 Pro · iOS 26.5
+
+default. light appearance; Large text; en_US.
+
+![Content and indicator margins on iPhone 17 Pro, iOS 26.5](captures/ios-26-5-iphone-17-pro-default-1792766279.149.png)
 <!-- captures:end -->
 
 ## Full example

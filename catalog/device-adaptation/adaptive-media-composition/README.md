@@ -49,6 +49,18 @@ struct MediaAndControls: View {
 default. light appearance; Large text; en_US.
 
 ![Adaptive media composition on iPhone Duo, iOS 27.1](captures/ios-27-1-atlas-iphone-duo-default-1792765885.869.png)
+
+### iPhone 16 Pro · iOS 18.5
+
+default. light appearance; Large text; en_US.
+
+![Adaptive media composition on iPhone 16 Pro, iOS 18.5](captures/ios-18-5-iphone-16-pro-default-1792765364.93.png)
+
+### iPhone 17 Pro · iOS 26.5
+
+default. light appearance; Large text; en_US.
+
+![Adaptive media composition on iPhone 17 Pro, iOS 26.5](captures/ios-26-5-iphone-17-pro-default-1792765316.541.png)
 <!-- captures:end -->
 
 ## Full example

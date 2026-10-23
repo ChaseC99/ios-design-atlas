@@ -1,1 +1,36 @@
-{"captures": []}
+{
+  "captures": [
+    {
+      "file": "ios-18-5-iphone-16-pro-default-1792766175.606.png",
+      "device": "iPhone 16 Pro",
+      "os": "18.5",
+      "osBuild": "22F77",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T14:36:15.606Z",
+      "environmentNotes": "Capture uses Arabic fixture text, Unicode FSI/PDI isolation, and local ar / rightToLeft overrides. The example.com address and 555 phone number are fictional sample data.",
+      "framing": "screen",
+      "sourceSHA256": "83428520c4ac3620feb5585803c5ae4a116682d055ab11a04ae9f0e6c0dcb785"
+    },
+    {
+      "file": "ios-26-5-iphone-17-pro-default-1792765988.839.png",
+      "device": "iPhone 17 Pro",
+      "os": "26.5",
+      "osBuild": "23F77",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T14:33:08.839Z",
+      "environmentNotes": "Capture uses Arabic fixture text, Unicode FSI/PDI isolation, and local ar / rightToLeft overrides. The example.com address and 555 phone number are fictional sample data.",
+      "framing": "screen",
+      "sourceSHA256": "83428520c4ac3620feb5585803c5ae4a116682d055ab11a04ae9f0e6c0dcb785"
+    }
+  ]
+}

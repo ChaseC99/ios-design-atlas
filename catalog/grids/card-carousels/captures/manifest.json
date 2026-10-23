@@ -1,1 +1,34 @@
-{"captures": []}
+{
+  "captures": [
+    {
+      "file": "ios-18-5-iphone-16-pro-default-1792765485.928.png",
+      "device": "iPhone 16 Pro",
+      "os": "18.5",
+      "osBuild": "22F77",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T14:24:45.928Z",
+      "framing": "screen",
+      "sourceSHA256": "dedf999493ff3386b039310fe8cea8e2ff792c1e57d44c82ee8314dfe3dc8d6e"
+    },
+    {
+      "file": "ios-26-5-iphone-17-pro-default-1792765392.511.png",
+      "device": "iPhone 17 Pro",
+      "os": "26.5",
+      "osBuild": "23F77",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T14:23:12.511Z",
+      "framing": "screen",
+      "sourceSHA256": "dedf999493ff3386b039310fe8cea8e2ff792c1e57d44c82ee8314dfe3dc8d6e"
+    }
+  ]
+}

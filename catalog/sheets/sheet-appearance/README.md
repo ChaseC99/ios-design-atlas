@@ -54,6 +54,12 @@ default. light appearance; Large text; en_US.
 default. light appearance; Large text; en_US.
 
 ![Sheet appearance on iPhone 18 Pro, iOS 27.0](captures/ios-27-0-iphone-18-pro-default-1792762963.995.png)
+
+### iPhone 16 Pro · iOS 18.5
+
+default. light appearance; Large text; en_US.
+
+![Sheet appearance on iPhone 16 Pro, iOS 18.5](captures/ios-18-5-iphone-16-pro-default-1792766721.548.png)
 <!-- captures:end -->
 
 ## Full example

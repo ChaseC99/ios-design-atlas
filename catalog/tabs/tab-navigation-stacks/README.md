@@ -55,6 +55,18 @@ struct IndependentTabs: View {
 default. light appearance; Large text; en_US.
 
 ![Independent tab stacks on iPhone 18 Pro, iOS 27.0](captures/ios-27-0-iphone-18-pro-default-1792763104.588.png)
+
+### iPhone 16 Pro · iOS 18.5
+
+default. light appearance; Large text; en_US.
+
+![Independent tab stacks on iPhone 16 Pro, iOS 18.5](captures/ios-18-5-iphone-16-pro-default-1792766875.459.png)
+
+### iPhone 17 Pro · iOS 26.5
+
+default. light appearance; Large text; en_US.
+
+![Independent tab stacks on iPhone 17 Pro, iOS 26.5](captures/ios-26-5-iphone-17-pro-default-1792766596.547.png)
 <!-- captures:end -->
 
 ## Full example

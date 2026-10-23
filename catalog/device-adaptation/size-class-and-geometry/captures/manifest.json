@@ -16,6 +16,36 @@
       "environmentNotes": "Duo simulator in its initial closed posture. The hinge example reported 0 degrees; no pose change was simulated.",
       "framing": "screen",
       "sourceSHA256": "b7a63314e3fbf95b9ce6324c6758138e3d2aef1be6c5247af648f772dd3c2c93"
+    },
+    {
+      "file": "ios-18-5-iphone-16-pro-default-1792766807.959.png",
+      "device": "iPhone 16 Pro",
+      "os": "18.5",
+      "osBuild": "22F77",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T14:46:47.959Z",
+      "framing": "screen",
+      "sourceSHA256": "b7a63314e3fbf95b9ce6324c6758138e3d2aef1be6c5247af648f772dd3c2c93"
+    },
+    {
+      "file": "ios-26-5-iphone-17-pro-default-1792766499.902.png",
+      "device": "iPhone 17 Pro",
+      "os": "26.5",
+      "osBuild": "23F77",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T14:41:39.902Z",
+      "framing": "screen",
+      "sourceSHA256": "b7a63314e3fbf95b9ce6324c6758138e3d2aef1be6c5247af648f772dd3c2c93"
     }
   ]
 }

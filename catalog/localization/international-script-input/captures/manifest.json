@@ -1,1 +1,36 @@
-{"captures": []}
+{
+  "captures": [
+    {
+      "file": "ios-18-5-iphone-16-pro-default-1792765951.827.png",
+      "device": "iPhone 16 Pro",
+      "os": "18.5",
+      "osBuild": "22F77",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T14:32:31.827Z",
+      "environmentNotes": "Capture includes hand-authored Japanese, Arabic, Hindi, Korean, and Thai fixture strings with per-row locale/direction overrides. Keyboard language follows the person’s enabled keyboards; the app does not change it. Native-speaker review and IME/dictation input checks remain pending.",
+      "framing": "screen",
+      "sourceSHA256": "1807a7519c396ad03e7ee52d4751f3b9f32d94c4f52a2e0f17d14548046815ae"
+    },
+    {
+      "file": "ios-26-5-iphone-17-pro-default-1792765713.661.png",
+      "device": "iPhone 17 Pro",
+      "os": "26.5",
+      "osBuild": "23F77",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T14:28:33.661Z",
+      "environmentNotes": "Capture includes hand-authored Japanese, Arabic, Hindi, Korean, and Thai fixture strings with per-row locale/direction overrides. Keyboard language follows the person’s enabled keyboards; the app does not change it. Native-speaker review and IME/dictation input checks remain pending.",
+      "framing": "screen",
+      "sourceSHA256": "1807a7519c396ad03e7ee52d4751f3b9f32d94c4f52a2e0f17d14548046815ae"
+    }
+  ]
+}

@@ -1,1 +1,36 @@
-{"captures": []}
+{
+  "captures": [
+    {
+      "file": "ios-18-5-iphone-16-pro-default-1792765280.084.png",
+      "device": "iPhone 16 Pro",
+      "os": "18.5",
+      "osBuild": "22F77",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T14:21:20.084Z",
+      "environmentNotes": "Capture shows a real sheet. Accessibility focus and spoken announcements require manual assistive-technology checks.",
+      "framing": "screen",
+      "sourceSHA256": "94eb5f5ed375154b961e998590ae84b49d6d520477fc80a5bca2342b517f4e0c"
+    },
+    {
+      "file": "ios-26-5-iphone-17-pro-default-1792765254.447.png",
+      "device": "iPhone 17 Pro",
+      "os": "26.5",
+      "osBuild": "23F77",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T14:20:54.447Z",
+      "environmentNotes": "Capture shows a real sheet. Accessibility focus and spoken announcements require manual assistive-technology checks.",
+      "framing": "screen",
+      "sourceSHA256": "94eb5f5ed375154b961e998590ae84b49d6d520477fc80a5bca2342b517f4e0c"
+    }
+  ]
+}

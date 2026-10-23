@@ -14,6 +14,36 @@
       "capturedAt": "2026-10-23T13:39:07.270Z",
       "framing": "screen",
       "sourceSHA256": "39c2f96c3ac8019ac67e00d82609b7e03f57b34a261c852fb222c5c8d52b6c6b"
+    },
+    {
+      "file": "ios-18-5-iphone-16-pro-default-1792765944.852.png",
+      "device": "iPhone 16 Pro",
+      "os": "18.5",
+      "osBuild": "22F77",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T14:32:24.852Z",
+      "framing": "screen",
+      "sourceSHA256": "39c2f96c3ac8019ac67e00d82609b7e03f57b34a261c852fb222c5c8d52b6c6b"
+    },
+    {
+      "file": "ios-26-5-iphone-17-pro-default-1792765706.965.png",
+      "device": "iPhone 17 Pro",
+      "os": "26.5",
+      "osBuild": "23F77",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T14:28:26.965Z",
+      "framing": "screen",
+      "sourceSHA256": "39c2f96c3ac8019ac67e00d82609b7e03f57b34a261c852fb222c5c8d52b6c6b"
     }
   ]
 }

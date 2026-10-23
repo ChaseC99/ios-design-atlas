@@ -38,7 +38,17 @@ struct ColorPickerRecipe: View {
 ## Captures
 
 <!-- captures:start -->
-Captures have not been recorded yet.
+### iPhone 16 Pro · iOS 18.5
+
+default. light appearance; Large text; en_US.
+
+![Color pickers on iPhone 16 Pro, iOS 18.5](captures/ios-18-5-iphone-16-pro-default-1792765506.969.png)
+
+### iPhone 17 Pro · iOS 26.5
+
+default. light appearance; Large text; en_US.
+
+![Color pickers on iPhone 17 Pro, iOS 26.5](captures/ios-26-5-iphone-17-pro-default-1792765407.034.png)
 <!-- captures:end -->
 
 ## Full example

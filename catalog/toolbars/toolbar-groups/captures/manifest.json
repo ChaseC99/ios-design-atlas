@@ -1,1 +1,19 @@
-{"captures": []}
+{
+  "captures": [
+    {
+      "file": "ios-26-5-iphone-17-pro-default-1792766665.483.png",
+      "device": "iPhone 17 Pro",
+      "os": "26.5",
+      "osBuild": "23F77",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T14:44:25.483Z",
+      "framing": "screen",
+      "sourceSHA256": "b0c2ec79490e99c7edc773dc38591402fa276c14d701620714a56761e353b6ae"
+    }
+  ]
+}

@@ -42,6 +42,17 @@ struct ContentSizedBounce: View {
 ## Captures
 
 <!-- captures:start -->
+### iPhone 16 Pro · iOS 18.5
+
+default. light appearance; Large text; en_US.
+
+![Bounce and scroll indicators on iPhone 16 Pro, iOS 18.5](captures/ios-18-5-iphone-16-pro-default-1792766528.039.png)
+
+### iPhone 17 Pro · iOS 26.5
+
+default. light appearance; Large text; en_US.
+
+![Bounce and scroll indicators on iPhone 17 Pro, iOS 26.5](captures/ios-26-5-iphone-17-pro-default-1792766272.421.png)
 <!-- captures:end -->
 
 ## Full example

@@ -1,1 +1,36 @@
-{"captures": []}
+{
+  "captures": [
+    {
+      "file": "ios-18-5-iphone-16-pro-default-1792765883.484.png",
+      "device": "iPhone 16 Pro",
+      "os": "18.5",
+      "osBuild": "22F77",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T14:31:23.484Z",
+      "environmentNotes": "English source copy with a local en_US locale override demonstrates system grammatical agreement. Production translations need String Catalog plural variations and language-specific review; this sample does not claim equivalent grammar in every language.",
+      "framing": "screen",
+      "sourceSHA256": "d5635a0bf6a41b3eceeff1da8f01b116280012a898374bdefe2002ab528622dc"
+    },
+    {
+      "file": "ios-26-5-iphone-17-pro-default-1792765639.742.png",
+      "device": "iPhone 17 Pro",
+      "os": "26.5",
+      "osBuild": "23F77",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T14:27:19.742Z",
+      "environmentNotes": "English source copy with a local en_US locale override demonstrates system grammatical agreement. Production translations need String Catalog plural variations and language-specific review; this sample does not claim equivalent grammar in every language.",
+      "framing": "screen",
+      "sourceSHA256": "d5635a0bf6a41b3eceeff1da8f01b116280012a898374bdefe2002ab528622dc"
+    }
+  ]
+}

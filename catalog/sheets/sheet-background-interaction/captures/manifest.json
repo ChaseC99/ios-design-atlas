@@ -29,6 +29,21 @@
       "capturedAt": "2026-10-23T13:42:52.943Z",
       "framing": "screen",
       "sourceSHA256": "0270c49bf0b906df5cc6a8d4bd986ef742842515e42408821d9c8277bdfecce5"
+    },
+    {
+      "file": "ios-18-5-iphone-16-pro-default-1792766741.223.png",
+      "device": "iPhone 16 Pro",
+      "os": "18.5",
+      "osBuild": "22F77",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T14:45:41.223Z",
+      "framing": "screen",
+      "sourceSHA256": "0270c49bf0b906df5cc6a8d4bd986ef742842515e42408821d9c8277bdfecce5"
     }
   ]
 }

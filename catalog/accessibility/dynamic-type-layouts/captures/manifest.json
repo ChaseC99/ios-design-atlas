@@ -1,1 +1,36 @@
-{"captures": []}
+{
+  "captures": [
+    {
+      "file": "ios-18-5-iphone-16-pro-default-1792765598.145.png",
+      "device": "iPhone 16 Pro",
+      "os": "18.5",
+      "osBuild": "22F77",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T14:26:38.145Z",
+      "environmentNotes": "The default capture uses the system Large text setting. Preview controls affect only this example.",
+      "framing": "screen",
+      "sourceSHA256": "2daff1a5f1a392422bf88e7a53f5564c47a7031a7f17b4f5bfd4b3e2455be21d"
+    },
+    {
+      "file": "ios-26-5-iphone-17-pro-default-1792765526.817.png",
+      "device": "iPhone 17 Pro",
+      "os": "26.5",
+      "osBuild": "23F77",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T14:25:26.817Z",
+      "environmentNotes": "The default capture uses the system Large text setting. Preview controls affect only this example.",
+      "framing": "screen",
+      "sourceSHA256": "2daff1a5f1a392422bf88e7a53f5564c47a7031a7f17b4f5bfd4b3e2455be21d"
+    }
+  ]
+}

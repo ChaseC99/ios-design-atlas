@@ -14,6 +14,21 @@
       "capturedAt": "2026-10-23T13:39:34.122Z",
       "framing": "screen",
       "sourceSHA256": "d9798144c49b82fc5c4a534839d106cfb9eb1aab7e8e6cd6e2d5ae9ffd185342"
+    },
+    {
+      "file": "ios-26-5-iphone-17-pro-default-1792765982.412.png",
+      "device": "iPhone 17 Pro",
+      "os": "26.5",
+      "osBuild": "23F77",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T14:33:02.412Z",
+      "framing": "screen",
+      "sourceSHA256": "d9798144c49b82fc5c4a534839d106cfb9eb1aab7e8e6cd6e2d5ae9ffd185342"
     }
   ]
 }

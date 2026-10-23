@@ -52,6 +52,11 @@ struct DragReorderingGrid: View {
 ## Captures
 
 <!-- captures:start -->
+### iPhone 17 Pro · iOS 26.5
+
+default. light appearance; Large text; en_US.
+
+![Reorderable grids on iPhone 17 Pro, iOS 26.5](captures/ios-26-5-iphone-17-pro-default-1792766210.211.png)
 <!-- captures:end -->
 
 ## Full example

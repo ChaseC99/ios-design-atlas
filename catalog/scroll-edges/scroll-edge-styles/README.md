@@ -45,6 +45,11 @@ struct SoftScrollEdges: View {
 ## Captures
 
 <!-- captures:start -->
+### iPhone 17 Pro · iOS 26.5
+
+default. light appearance; Large text; en_US.
+
+![Scroll edge styles on iPhone 17 Pro, iOS 26.5](captures/ios-26-5-iphone-17-pro-default-1792766335.438.png)
 <!-- captures:end -->
 
 ## Full example

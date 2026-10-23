@@ -43,6 +43,17 @@ struct RefreshableList: View {
 ## Captures
 
 <!-- captures:start -->
+### iPhone 16 Pro · iOS 18.5
+
+default. light appearance; Large text; en_US.
+
+![Refresh and pagination on iPhone 16 Pro, iOS 18.5](captures/ios-18-5-iphone-16-pro-default-1792766477.394.png)
+
+### iPhone 17 Pro · iOS 26.5
+
+default. light appearance; Large text; en_US.
+
+![Refresh and pagination on iPhone 17 Pro, iOS 26.5](captures/ios-26-5-iphone-17-pro-default-1792766203.705.png)
 <!-- captures:end -->
 
 ## Full example

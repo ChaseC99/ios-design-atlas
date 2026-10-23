@@ -1,1 +1,36 @@
-{"captures": []}
+{
+  "captures": [
+    {
+      "file": "ios-18-5-iphone-16-pro-default-1792766102.2.png",
+      "device": "iPhone 16 Pro",
+      "os": "18.5",
+      "osBuild": "22F77",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T14:35:02.200Z",
+      "environmentNotes": "Capture uses hand-authored German fixture strings with a local de locale override. English and Finnish fixtures are selectable. These are layout fixtures, not a production translation catalog.",
+      "framing": "screen",
+      "sourceSHA256": "ae51d1eabb5d23b92b8e3ec9a1eee61e0b240817fe5e2cfed95d2725858a8aca"
+    },
+    {
+      "file": "ios-26-5-iphone-17-pro-default-1792765901.995.png",
+      "device": "iPhone 17 Pro",
+      "os": "26.5",
+      "osBuild": "23F77",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T14:31:41.995Z",
+      "environmentNotes": "Capture uses hand-authored German fixture strings with a local de locale override. English and Finnish fixtures are selectable. These are layout fixtures, not a production translation catalog.",
+      "framing": "screen",
+      "sourceSHA256": "ae51d1eabb5d23b92b8e3ec9a1eee61e0b240817fe5e2cfed95d2725858a8aca"
+    }
+  ]
+}

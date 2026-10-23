@@ -48,6 +48,18 @@ struct ResizingCounter: View {
 default. light appearance; Large text; en_US.
 
 ![Preserving state while resizing on iPhone Duo, iOS 27.1](captures/ios-27-1-atlas-iphone-duo-default-1792765960.905.png)
+
+### iPhone 16 Pro · iOS 18.5
+
+default. light appearance; Large text; en_US.
+
+![Preserving state while resizing on iPhone 16 Pro, iOS 18.5](captures/ios-18-5-iphone-16-pro-default-1792766502.88.png)
+
+### iPhone 17 Pro · iOS 26.5
+
+default. light appearance; Large text; en_US.
+
+![Preserving state while resizing on iPhone 17 Pro, iOS 26.5](captures/ios-26-5-iphone-17-pro-default-1792766224.079.png)
 <!-- captures:end -->
 
 ## Full example
