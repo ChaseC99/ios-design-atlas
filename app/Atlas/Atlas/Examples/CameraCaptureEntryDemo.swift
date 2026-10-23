@@ -1,0 +1,1 @@
+../../../../catalog/media-drawing/camera-capture-entry/CameraCaptureEntryDemo.swift

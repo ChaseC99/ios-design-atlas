@@ -1,0 +1,1 @@
+../../../../catalog/media-drawing/native-video-player/NativeVideoPlayerDemo.swift
