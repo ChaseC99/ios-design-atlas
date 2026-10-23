@@ -11,39 +11,40 @@ swiftFile: "SourceTransitionsDemo.swift"
 view: "SourceTransitionsDemo"
 apis: ["matchedTransitionSource", "navigationTransition", "sheet"]
 tags: ["animation", "zoom", "source"]
+captureNavigation: false
+captureStyle: "screen"
 ---
 
 # Source-linked transitions
 
-A source-linked zoom connects a reference card to its detail presentation. The switch makes it possible to compare the zoom with the default sheet transition using the same content.
+A source-linked zoom connects a presented destination to the view that opened it; run the example to see the motion.
 
-## Try it in the app
+## SwiftUI
 
-1. Open the reference with Use source zoom enabled.
-2. Dismiss using Done or the system dismissal gesture.
-3. Disable zoom and repeat. Also try Reduce Motion.
+```swift
+import SwiftUI
 
-## What to notice
-
-- The namespace and source ID connect the source view to its destination.
-- The source card remains in the underlying view hierarchy.
-- A screenshot shows an endpoint. Inspect the actual animation in the example app.
+struct ZoomPresentation: View {
+    @Namespace private var transition
+    @State private var showing = false
+    var body: some View {
+        Button("Open reference") { showing = true }
+            .matchedTransitionSource(id: "reference", in: transition)
+            .sheet(isPresented: $showing) {
+                Text("Presentation study")
+                    .navigationTransition(
+                        .zoom(sourceID: "reference", in: transition)
+                    )
+            }
+    }
+}
+```
 
 ## Captures
 
 <!-- captures:start -->
-Captures have not been recorded yet.
 <!-- captures:end -->
 
-## Comparison checklist
+## Full example
 
-- [ ] Compare appearance and dismissal on each runtime.
-- [ ] Check interrupted gestures and reduced-motion behavior.
-
-## Swift source
-
-[Open the complete runnable example](SourceTransitionsDemo.swift). The website displays this exact file.
-
-## References
-
-- [Apple: enhance your UI animations and transitions](https://developer.apple.com/videos/play/wwdc2024/10145/)
+[Open the complete runnable example](SourceTransitionsDemo.swift).

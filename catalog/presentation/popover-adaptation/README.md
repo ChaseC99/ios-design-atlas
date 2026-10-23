@@ -11,39 +11,37 @@ swiftFile: "PopoverAdaptationDemo.swift"
 view: "PopoverAdaptationDemo"
 apis: ["popover", "presentationCompactAdaptation"]
 tags: ["compact", "sheet", "adaptive"]
+captureNavigation: false
+captureStyle: "screen"
 ---
 
 # Popover adaptation
 
-The same popover content can be presented differently when space is compact. The Keep popover switch makes that adaptation preference explicit.
+A popover can adapt to a sheet in compact layouts, or request an anchored presentation with presentationCompactAdaptation.
 
-## Try it in the app
+## SwiftUI
 
-1. Present with Keep popover off.
-2. Dismiss, turn Keep popover on, and present again.
-3. Repeat the comparison on an iPad or wider window.
+```swift
+import SwiftUI
 
-## What to notice
-
-- Automatic adaptation lets the system choose a suitable presentation.
-- The explicit popover preference is applied to the presented content.
-- Close and reopen after changing the configuration for a clear comparison.
+struct ReadingPopover: View {
+    @State private var showing = false
+    var body: some View {
+        Button("Reading options") { showing = true }
+            .popover(isPresented: $showing) {
+                Text("Reading options")
+                    .padding(24)
+                    .presentationCompactAdaptation(.popover)
+            }
+    }
+}
+```
 
 ## Captures
 
 <!-- captures:start -->
-Captures have not been recorded yet.
 <!-- captures:end -->
 
-## Comparison checklist
+## Full example
 
-- [ ] Compare both configurations on the same runtime and device.
-- [ ] Check landscape and accessibility text sizes as well as portrait.
-
-## Swift source
-
-[Open the complete runnable example](PopoverAdaptationDemo.swift). The website displays this exact file.
-
-## References
-
-- [Apple: modal presentations](https://developer.apple.com/documentation/swiftui/modal-presentations)
+[Open the complete runnable example](PopoverAdaptationDemo.swift).

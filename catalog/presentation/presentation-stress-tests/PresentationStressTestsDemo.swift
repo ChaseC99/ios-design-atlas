@@ -1,12 +1,34 @@
 import SwiftUI
 
 struct PresentationStressTestsDemo: View {
+    private let isCapturing = ProcessInfo.processInfo.arguments.contains("--capture")
     @State private var isPresented = false
     @State private var useGerman = false
     @State private var longMessage = true
     @State private var outcome = "No action taken"
 
     var body: some View {
+        Group {
+            if isCapturing {
+                Color(uiColor: .systemBackground).ignoresSafeArea()
+            } else {
+                interactiveDemo
+            }
+        }
+        .alert(useGerman ? "Änderungen an dieser Sammlung sichern?" : "Save changes to this shared collection?", isPresented: $isPresented) {
+            Button(useGerman ? "Änderungen sichern" : "Save Changes") { outcome = "Saved" }
+                .accessibilityIdentifier("capture-ready")
+            Button(useGerman ? "Änderungen verwerfen" : "Discard Changes", role: .destructive) { outcome = "Discarded" }
+            Button(useGerman ? "Weiter bearbeiten" : "Keep Editing", role: .cancel) { outcome = "Kept editing" }
+        } message: {
+            Text(message)
+        }
+        .navigationTitle("Long text & accessibility")
+        .navigationBarTitleDisplayMode(.inline)
+        .task { if isCapturing { isPresented = true } }
+    }
+
+    private var interactiveDemo: some View {
         Form {
             Section("Content stress") {
                 Toggle("Long message", isOn: $longMessage)
@@ -17,13 +39,7 @@ struct PresentationStressTestsDemo: View {
             Section {
                 Button("Present stress test") { isPresented = true }
                     .accessibilityIdentifier("present")
-                    .alert(useGerman ? "Änderungen an dieser Sammlung sichern?" : "Save changes to this shared collection?", isPresented: $isPresented) {
-                        Button(useGerman ? "Änderungen sichern" : "Save Changes") { outcome = "Saved" }
-                        Button(useGerman ? "Änderungen verwerfen" : "Discard Changes", role: .destructive) { outcome = "Discarded" }
-                        Button(useGerman ? "Weiter bearbeiten" : "Keep Editing", role: .cancel) { outcome = "Kept editing" }
-                    } message: {
-                        Text(message)
-                    }
+
             }
             Section("Outcome") { Text(outcome).accessibilityIdentifier("outcome") }
             Section("Accessibility checks") {
@@ -31,8 +47,6 @@ struct PresentationStressTestsDemo: View {
                     .foregroundStyle(.secondary)
             }
         }
-        .navigationTitle("Long text & accessibility")
-        .navigationBarTitleDisplayMode(.inline)
     }
 
     private var message: String {

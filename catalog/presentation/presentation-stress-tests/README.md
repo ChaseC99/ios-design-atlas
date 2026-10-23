@@ -11,39 +11,41 @@ swiftFile: "PresentationStressTestsDemo.swift"
 view: "PresentationStressTestsDemo"
 apis: ["alert", "DynamicTypeSize", "ButtonRole"]
 tags: ["dynamic-type", "localization", "long-text"]
+captureNavigation: false
+captureStyle: "screen"
 ---
 
 # Long text & accessibility
 
-Presentation layouts need to accommodate real content. This example uses a longer message, three actions, and explicit German sample copy to expose wrapping and action layout.
+Long messages and translated action labels reveal how alerts reflow as content and text size change.
 
-## Try it in the app
+## SwiftUI
 
-1. Present with short and long messages.
-2. Switch to German sample copy and compare action labels.
-3. Increase the simulator text size and enable VoiceOver.
+```swift
+import SwiftUI
 
-## What to notice
-
-- The German switch changes sample copy, not the application locale or layout direction.
-- Use actual simulator language settings to evaluate right-to-left behavior.
-- A capture at default text size does not establish accessibility support.
+struct LongMessageAlert: View {
+    @State private var showing = false
+    var body: some View {
+        Button("Review changes") { showing = true }
+            .alert("Save changes to this shared collection?",
+                   isPresented: $showing) {
+                Button("Save Changes") { /* Save. */ }
+                Button("Discard Changes", role: .destructive) { /* Discard. */ }
+                Button("Keep Editing", role: .cancel) { }
+            } message: {
+                Text("You changed the name, description, and order. "
+                     + "Save to keep your changes for the next time you open it.")
+            }
+    }
+}
+```
 
 ## Captures
 
 <!-- captures:start -->
-Captures have not been recorded yet.
 <!-- captures:end -->
 
-## Comparison checklist
+## Full example
 
-- [ ] Verify that the full message and every action remain reachable.
-- [ ] Record the text-size setting and language alongside each accessibility capture.
-
-## Swift source
-
-[Open the complete runnable example](PresentationStressTestsDemo.swift). The website displays this exact file.
-
-## References
-
-- [Apple: modal presentations](https://developer.apple.com/documentation/swiftui/modal-presentations)
+[Open the complete runnable example](PresentationStressTestsDemo.swift).

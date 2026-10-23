@@ -11,39 +11,39 @@ swiftFile: "ConfirmationDialogsDemo.swift"
 view: "ConfirmationDialogsDemo"
 apis: ["confirmationDialog", "ButtonRole"]
 tags: ["actions", "adaptive", "destructive"]
+captureNavigation: false
+captureStyle: "screen"
 ---
 
 # Confirmation dialogs
 
-A confirmation dialog offers a short list of actions for the selected item. The trigger is also the presentation source, which matters when the dialog adapts to a popover.
+A confirmation dialog offers actions for a selected item, separating destructive choices from cancellation.
 
-## Try it in the app
+## SwiftUI
 
-1. Open Photo actions and choose Save a Copy.
-2. Toggle title visibility and compare the result.
-3. Open the same example on a regular-width device.
+```swift
+import SwiftUI
 
-## What to notice
-
-- The system may reorder actions according to their roles.
-- Regular-width presentations can use a popover, with outside tapping handling cancellation.
-- Use text labels for confirmation-dialog actions.
+struct PhotoActions: View {
+    @State private var showing = false
+    var body: some View {
+        Button("Photo actions") { showing = true }
+            .confirmationDialog("Choose an action",
+                                isPresented: $showing,
+                                titleVisibility: .visible) {
+                Button("Save a Copy") { /* Save the copy. */ }
+                Button("Delete", role: .destructive) { /* Delete. */ }
+                Button("Cancel", role: .cancel) { }
+            }
+    }
+}
+```
 
 ## Captures
 
 <!-- captures:start -->
-Captures have not been recorded yet.
 <!-- captures:end -->
 
-## Comparison checklist
+## Full example
 
-- [ ] Compare compact and regular-width presentation.
-- [ ] Verify the destructive action remains distinct without relying on color alone.
-
-## Swift source
-
-[Open the complete runnable example](ConfirmationDialogsDemo.swift). The website displays this exact file.
-
-## References
-
-- [Apple: modal presentations](https://developer.apple.com/documentation/swiftui/modal-presentations)
+[Open the complete runnable example](ConfirmationDialogsDemo.swift).

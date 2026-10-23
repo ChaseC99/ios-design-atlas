@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct InspectorsDemo: View {
+    private let isCapturing = ProcessInfo.processInfo.arguments.contains("--capture")
     @State private var isPresented = false
     @State private var title = "Morning light"
     @State private var favorite = false
@@ -15,17 +16,20 @@ struct InspectorsDemo: View {
                     .overlay { Image(systemName: "sun.max.fill").font(.system(size: 72)).foregroundStyle(.white) }
                     .accessibilityLabel("Illustrated sun on an orange background")
                 Text(title).font(.largeTitle.bold())
-                Text("An inspector keeps attributes near the selected content. Change the title or mark this reference as a favorite.")
-                    .foregroundStyle(.secondary)
-                Label(favorite ? "Favorite" : "Not a favorite", systemImage: favorite ? "star.fill" : "star")
-                Button("Show inspector", systemImage: "sidebar.trailing") { isPresented = true }
-                    .buttonStyle(.borderedProminent)
-                    .accessibilityIdentifier("present")
+                if !isCapturing {
+                    Text("An inspector keeps attributes near the selected content. Change the title or mark this reference as a favorite.")
+                        .foregroundStyle(.secondary)
+                    Label(favorite ? "Favorite" : "Not a favorite", systemImage: favorite ? "star.fill" : "star")
+                    Button("Show inspector", systemImage: "sidebar.trailing") { isPresented = true }
+                        .buttonStyle(.borderedProminent)
+                        .accessibilityIdentifier("present")
+                }
             }
             .padding(24)
             .frame(maxWidth: 680)
             .frame(maxWidth: .infinity)
         }
+        .background(Color(uiColor: .systemBackground))
         .navigationTitle("Inspectors")
         .navigationBarTitleDisplayMode(.inline)
         .inspector(isPresented: $isPresented) {
@@ -38,15 +42,19 @@ struct InspectorsDemo: View {
                 Section {
                     Button("Done") { isPresented = false }
                 }
-                Section {
-                    Text("On a wide layout this can be a trailing column. In compact width it adapts to a sheet.")
-                        .foregroundStyle(.secondary)
+                if !isCapturing {
+                    Section {
+                        Text("On a wide layout this can be a trailing column. In compact width it adapts to a sheet.")
+                            .foregroundStyle(.secondary)
+                    }
                 }
             }
             .inspectorColumnWidth(min: 280, ideal: 320, max: 400)
             .presentationDetents([.medium, .large])
             .presentationDragIndicator(.visible)
+            .accessibilityIdentifier("capture-ready")
         }
+        .task { if isCapturing { isPresented = true } }
     }
 }
 
