@@ -1,0 +1,19 @@
+{
+  "captures": [
+    {
+      "file": "ios-27-0-iphone-18-pro-clean-1792760510.971.png",
+      "device": "iPhone 18 Pro",
+      "os": "27.0",
+      "osBuild": "24A434",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "Rename alert; isolated presentation; software keyboard hidden",
+      "capturedAt": "2026-10-23T13:01:50.971Z",
+      "framing": "isolated",
+      "sourceSHA256": "a35001c5c1f9c269ada22332aba5a673dca5769f08118bf9ec4976f4a3ba2f7a"
+    }
+  ]
+}

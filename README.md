@@ -1,0 +1,81 @@
+# iOS Design Atlas
+
+A visual reference for native iOS interfaces: runnable SwiftUI examples, brief Markdown descriptions and Swift recipes, and original simulator captures.
+
+The first collection covers **alerts, confirmation dialogs, popovers, and inspectors**. There are nine focused examples; the rest of the catalog will grow after this foundation is reviewed.
+
+## Run the website
+
+Requires Node.js 22.12+ (Node 24 recommended).
+
+```sh
+npm ci
+npm run dev
+```
+
+Open the localhost URL printed by Astro. Search by pattern, API, or topic and filter by presentation family.
+
+```sh
+npm run build     # validate the catalog, type-check, build, and index search
+npm run preview --workspace website
+```
+
+Astro reads Markdown, Swift source, and captures directly from `catalog/`. Pagefind indexes the generated entry pages. Development search also works without a Pagefind build.
+
+## Run the app
+
+```sh
+npm run sync
+open app/Atlas/Atlas.xcodeproj
+```
+
+Select the **Atlas** scheme and an iPhone or iPad simulator, then Run. The deployment target is iOS 18.0. A development team is only needed when running on a physical device.
+
+The app offers the same nine entries and searchable API names. Each demo exposes its own options and uses real system presentations. No network services or accounts are required.
+
+For a direct launch during debugging:
+
+```sh
+xcrun simctl launch booted com.chase.Atlas --entry alert-actions
+```
+
+## Repository structure
+
+```text
+app/Atlas/                Xcode project, app shell, and native tests
+catalog/presentation/     One folder per example: README, Swift, captures
+website/                  Astro templates, styles, and search
+scripts/                  Catalog synchronization, validation, capture import
+```
+
+Each entry's Markdown frontmatter is the source for its ID, title, summary, API names, and app destination. `npm run sync` generates the app registry and relative symlinks to the original Swift files. The app compiles those files directly. Capture originals are stored once, next to their entry; optimized website images are disposable build outputs.
+
+## First collection
+
+| Example | Focus |
+| --- | --- |
+| [Alert actions](catalog/presentation/alert-actions/README.md) | Action counts, roles, cancellation |
+| [Alert text fields](catalog/presentation/alert-text-fields/README.md) | Draft editing, validation, keyboard |
+| [Confirmation dialogs](catalog/presentation/confirmation-dialogs/README.md) | Contextual actions and adaptation |
+| [Popover anchors](catalog/presentation/popover-anchors/README.md) | Attachment, requested arrow edge, sizing |
+| [Popover adaptation](catalog/presentation/popover-adaptation/README.md) | Automatic versus explicit compact behavior |
+| [Popover content](catalog/presentation/popover-content/README.md) | Navigation, lists, and forms |
+| [Inspectors](catalog/presentation/inspectors/README.md) | Compact sheets and trailing columns |
+| [Source transitions](catalog/presentation/source-transitions/README.md) | Default presentation versus a source-linked zoom |
+| [Long text & accessibility](catalog/presentation/presentation-stress-tests/README.md) | Long messages, German sample labels, accessibility checks |
+
+## Captures and verification
+
+Alert captures use an empty presentation screen so the system component is the focus. The website shows a centered preview and keeps the original full-screen PNG available on click. The future comparison set is iOS 18, iOS 26, and iOS 27; only iOS 27 is captured for this review.
+
+Every capture has a neighboring `captures/manifest.json` recording its device, exact OS/build, build SDK, Xcode version, appearance, text size, locale, scenario, timestamp, and source SHA-256. A screenshot establishes only that recorded state; accessibility and unrecorded versions remain explicit comparison work.
+
+Run the native tests in Xcode with **Product → Test**. The UI suite checks cancellation, rename behavior, and reopening a popover. `testCaptureAlerts` records only the two alert examples as named XCTest attachments. The other examples remain without captures while the initial format is reviewed. See [CONTRIBUTING.md](CONTRIBUTING.md) for the capture workflow and entry format.
+
+## Current scope
+
+- Native SwiftUI demonstrations with an iOS 18 baseline.
+- A static Astro catalog, with no backend or media duplication.
+- Screenshots document appearances; source transitions should also be inspected in the app.
+- The German example uses explicit sample strings. It does not represent a fully localized app.
+- SDK and OS versions are tracked separately. Different device models are identified so their captures are not mistaken for a controlled same-device comparison.

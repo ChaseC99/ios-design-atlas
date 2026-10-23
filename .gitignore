@@ -1,0 +1,10 @@
+node_modules/
+website/.astro/
+website/dist/
+work/
+.DS_Store
+**/xcuserdata/
+**/*.xcuserstate
+**/.build/
+**/DerivedData/
+

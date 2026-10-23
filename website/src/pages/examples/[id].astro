@@ -1,0 +1,67 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import { Code } from 'astro:components';
+import { details, github } from '../../lib/catalog';
+
+export async function getStaticPaths() {
+  return (await getCollection('catalog')).map(entry => ({ params: { id: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const { captures, source, description, snippet } = await details(entry);
+const sourceURL = `${github}/blob/main/catalog/presentation/${entry.id}/${entry.data.swiftFile}`;
+---
+<Layout title={entry.data.title} description={description} active={entry.id}>
+  <article class="entry-page entry-minimal" data-pagefind-body>
+    <span hidden data-pagefind-meta="entry-id">{entry.id}</span>
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Catalog</a><span>/</span><span>{entry.data.family}</span></nav>
+    <header class="entry-header">
+      <h1 data-pagefind-meta="title">{entry.data.title}</h1>
+      <p class="entry-summary">{description}</p>
+    </header>
+
+    <div class:list={['example-showcase', { 'has-snippet': snippet, 'multiple-captures': captures.length > 1 }]}>
+      <section id="captures" class="capture-section" aria-label="Captures">
+        {captures.length ? <div class="capture-gallery">{captures.map(capture =>
+          <figure class:list={['capture-figure', { isolated: capture.framing === 'isolated' }]}>
+            <a href={capture.image?.src} target="_blank" aria-label={`Open full-resolution capture: ${capture.device}, iOS ${capture.os}`}>
+              {capture.image && <Image src={capture.image} alt={`${entry.data.title} on ${capture.device}, iOS ${capture.os}`} width={600} format="png" />}
+            </a>
+            <figcaption>
+              <div class="capture-caption"><strong>iOS {capture.os}</strong><span>{capture.device}</span></div>
+              <details><summary>Details</summary><dl><dt>State</dt><dd>{capture.state}</dd><dt>OS build</dt><dd>{capture.osBuild}</dd><dt>Build SDK</dt><dd>{capture.sdk}</dd><dt>Xcode</dt><dd>{capture.xcode}</dd><dt>Appearance</dt><dd>{capture.appearance}</dd><dt>Text size</dt><dd>{capture.textSize}</dd><dt>Locale</dt><dd>{capture.locale}</dd><dt>Recorded</dt><dd>{capture.capturedAt.slice(0, 10)}</dd><dt>Source SHA-256</dt><dd class="hash">{capture.sourceSHA256}</dd></dl></details>
+            </figcaption>
+          </figure>
+        )}</div> : <p class="pending-notice">Capture coming soon.</p>}
+      </section>
+
+      {snippet && <section class="snippet-section" aria-labelledby="snippet-title">
+        <div class="snippet-heading"><h2 id="snippet-title">SwiftUI</h2><button type="button" class="copy-snippet" aria-label="Copy Swift example" data-copy-snippet>Copy</button></div>
+        <div class="snippet-code"><Code code={snippet} lang="swift" theme="github-light" /></div>
+        <span class="visually-hidden" role="status" data-copy-status></span>
+      </section>}
+    </div>
+
+    <section id="swift-source" class="source-section" aria-label="Full example">
+      <details class="code-disclosure"><summary><span>Full example</span><span>{entry.data.swiftFile}</span></summary><div class="source-link"><a href={sourceURL}>Open on GitHub ↗</a></div><Code code={source} lang="swift" theme="github-light" /></details>
+    </section>
+  </article>
+</Layout>
+<script>
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-copy-snippet]')) {
+    button.addEventListener('click', async () => {
+      const section = button.closest('.snippet-section')!;
+      const code = section.querySelector('pre code')?.textContent ?? '';
+      const status = section.querySelector<HTMLElement>('[data-copy-status]')!;
+      try {
+        await navigator.clipboard.writeText(code);
+        button.textContent = 'Copied';
+        status.textContent = 'Swift example copied.';
+        setTimeout(() => { button.textContent = 'Copy'; }, 1800);
+      } catch {
+        status.textContent = 'Could not copy. Select the code to copy it manually.';
+      }
+    });
+  }
+</script>

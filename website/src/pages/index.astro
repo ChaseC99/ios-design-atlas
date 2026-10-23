@@ -1,0 +1,90 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import { details } from '../lib/catalog';
+const entries = (await getCollection('catalog')).sort((a, b) => a.data.order - b.data.order);
+const items = await Promise.all(entries.map(async entry => ({ entry, ...await details(entry) })));
+const families = [...new Set(entries.map(e => e.data.family))];
+const captureCount = items.reduce((total, item) => total + item.captures.length, 0);
+---
+<Layout>
+  <div class="catalog-home" data-pagefind-ignore>
+    <section class="intro">
+      <p class="eyebrow"><span class="section-dot"></span> THE NATIVE INTERFACE, DOCUMENTED</p>
+      <h1>Small details.<br /><span>Better interfaces.</span></h1>
+      <p class="intro-copy">Explore how iOS looks, moves, and adapts.<br class="desktop-break" /> Real SwiftUI examples, with the code and captures to match.</p>
+      <div class="intro-stats"><span><strong>{entries.length.toString().padStart(2, '0')}</strong> runnable examples</span><span><strong>{captureCount.toString().padStart(2, '0')}</strong> simulator captures</span><span>SwiftUI · iOS 18+</span></div>
+      <div class="intro-index" aria-hidden="true"><span>ATLAS / 001</span><div class="atlas-glyph">⊞</div><span>OPEN REFERENCE SERIES</span></div>
+    </section>
+    <section class="collection" aria-labelledby="collection-title">
+      <div class="collection-header"><div><p class="eyebrow">COLLECTION 01</p><h2 id="collection-title">A moment of attention.</h2><p>Alerts, dialogs, popovers, and inspectors.</p></div><span class="collection-number">01—09</span></div>
+      <div class="filter-bar"><div class="filters" role="group" aria-label="Filter by presentation family"><button class="filter active" data-family="All" aria-pressed="true">All examples</button>{families.map(family => <button class="filter" data-family={family} aria-pressed="false">{family}</button>)}</div><span id="result-count" aria-live="polite">{entries.length} examples</span></div>
+      <div class="example-grid" id="example-grid">
+        {items.map(({ entry, captures }) => {
+          const hero = captures[0];
+          return <article class="example-card" data-id={entry.id} data-family={entry.data.family} data-search={[entry.data.title, entry.data.summary, ...entry.data.apis, ...entry.data.tags, entry.body].join(' ').toLowerCase()}>
+            <a href={`/examples/${entry.id}/`} class="card-link">
+              <div class:list={['card-preview', `tone-${(entry.data.order - 1) % 4}`, { 'isolated-capture': hero?.framing === 'isolated' }]}>
+                <span class="preview-index">{String(entry.data.order).padStart(2, '0')}</span>
+                {hero?.image ? <Image src={hero.image} alt={`${entry.data.title} on ${hero.device}, iOS ${hero.os}`} width={600} format="webp" class="capture-thumbnail" /> : <div class="capture-pending"><span aria-hidden="true">▧</span><span>Capture pending</span><small>Runnable in the example app</small></div>}
+                <span class="preview-platform">{hero ? `iOS ${hero.os}` : 'SwiftUI'}</span>
+              </div>
+              <div class="card-content"><div class="card-meta">{entry.data.family}<span aria-hidden="true">↗</span></div><h3>{entry.data.title}</h3><p>{entry.data.summary}</p><code>{entry.data.apis[0]}</code></div>
+            </a>
+          </article>;
+        })}
+      </div>
+      <div class="empty-state" id="empty-state" hidden><h3>No matching examples.</h3><p>Try an API name such as “popover”, or clear the filters.</p><button id="reset-search" class="text-button">Clear search and filters ↗</button></div>
+    </section>
+  </div>
+</Layout>
+<script>
+  const input = document.querySelector<HTMLInputElement>('#site-search')!;
+  const form = input.closest('form')!;
+  const cards = [...document.querySelectorAll<HTMLElement>('.example-card')];
+  const filters = [...document.querySelectorAll<HTMLButtonElement>('[data-family].filter')];
+  let family = 'All';
+  let revision = 0;
+  const params = new URLSearchParams(location.search);
+  input.value = params.get('q') ?? '';
+  let pagefindPromise: Promise<any> | undefined;
+  async function update() {
+    const current = ++revision;
+    const query = input.value.trim().toLowerCase();
+    const words = query.split(/\s+/).filter(Boolean);
+    let matches: Set<string> | undefined;
+    // Pagefind serves full-document search in production; local matching also works in dev.
+    if (query && import.meta.env.PROD) {
+      try {
+        const moduleURL = '/pagefind/pagefind.js';
+        pagefindPromise ??= import(/* @vite-ignore */ moduleURL);
+        const pagefind = await pagefindPromise;
+        const result = await pagefind.search(query);
+        const pages = await Promise.all(result.results.map((r: any) => r.data()));
+        matches = new Set(pages.map((p: any) => p.meta['entry-id']).filter(Boolean));
+      } catch { /* Metadata + document fallback remains available. */ }
+    }
+    if (current !== revision) return;
+    let count = 0;
+    for (const card of cards) {
+      const textMatch = words.every(word => card.dataset.search!.includes(word));
+      const visible = (family === 'All' || card.dataset.family === family) && (!query || textMatch || matches?.has(card.dataset.id!));
+      card.hidden = !visible; if (visible) count++;
+    }
+    document.querySelector('#result-count')!.textContent = `${count} ${count === 1 ? 'example' : 'examples'}`;
+    (document.querySelector('#empty-state') as HTMLElement).hidden = count !== 0;
+    const url = new URL(location.href);
+    query ? url.searchParams.set('q', input.value.trim()) : url.searchParams.delete('q');
+    history.replaceState(null, '', url);
+  }
+  input.addEventListener('input', update);
+  form.addEventListener('submit', event => { event.preventDefault(); update(); });
+  for (const button of filters) button.addEventListener('click', () => {
+    family = button.dataset.family!;
+    for (const filter of filters) { const active = filter === button; filter.classList.toggle('active', active); filter.setAttribute('aria-pressed', String(active)); }
+    update();
+  });
+  document.querySelector('#reset-search')!.addEventListener('click', () => { input.value = ''; filters[0].click(); input.focus(); });
+  update();
+</script>

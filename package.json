@@ -1,0 +1,21 @@
+{
+  "name": "ios-design-atlas",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "website"
+  ],
+  "scripts": {
+    "sync": "node scripts/sync-catalog.mjs",
+    "validate": "node scripts/validate-catalog.mjs",
+    "dev": "npm run sync && npm run dev --workspace website",
+    "check": "npm run validate && npm run check --workspace website",
+    "build": "npm run sync && npm run check && npm run build --workspace website"
+  },
+  "devDependencies": {
+    "yaml": "2.9.1"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

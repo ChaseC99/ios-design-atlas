@@ -1,0 +1,1 @@
+../../../../catalog/presentation/inspectors/InspectorsDemo.swift
