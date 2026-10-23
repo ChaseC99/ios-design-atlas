@@ -53,6 +53,18 @@ default. light appearance; Large text; en_US.
 default. light appearance; Large text; en_US.
 
 ![An anchored popover on iPhone 17 Pro, iOS 26.5](captures/ios-26-5-iphone-17-pro-default-1792766713.679.png)
+
+### iPad Pro 11-inch (M5) · iOS 27.0
+
+Popover content and source are visible over the postcard. No obvious clipping; native translucent surface is expected.. light appearance; Large text; en_US.
+
+![An anchored popover on iPad Pro 11-inch (M5), iOS 27.0](captures/ios-27-0-ipad-pro-11-inch-m5-default-1792768656.173.png)
+
+### iPhone 18 Pro · iOS 27.0
+
+default. light appearance; Large text; en_US.
+
+![An anchored popover on iPhone 18 Pro, iOS 27.0](captures/ios-27-0-iphone-18-pro-default-1792768890.239.png)
 <!-- captures:end -->
 
 ## Full example

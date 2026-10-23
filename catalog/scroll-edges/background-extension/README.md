@@ -60,6 +60,12 @@ default. light appearance; Large text; en_US.
 default. light appearance; Large text; en_US.
 
 ![Background extension on iPhone Duo, iOS 27.1](captures/ios-27-1-atlas-iphone-duo-default-1792767847.883.png)
+
+### iPad Pro 11-inch (M5) · iOS 27.0
+
+Original artwork visibly extends behind the sidebar. This is the first inspected regular-width evidence for the sidebar background extension.. light appearance; Large text; en_US.
+
+![Background extension on iPad Pro 11-inch (M5), iOS 27.0](captures/ios-27-0-ipad-pro-11-inch-m5-default-1792768495.346.png)
 <!-- captures:end -->
 
 ## Full example

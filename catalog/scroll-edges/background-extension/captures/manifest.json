@@ -46,6 +46,22 @@
       "environmentNotes": "Duo simulator in its initial closed posture. The hinge example reported 0 degrees; no pose change was simulated.",
       "framing": "screen",
       "sourceSHA256": "65037b1fa1947a9818177d5eecb9a024546f1e74e8c31e58a7e6383dc4d3e322"
+    },
+    {
+      "file": "ios-27-0-ipad-pro-11-inch-m5-default-1792768495.346.png",
+      "device": "iPad Pro 11-inch (M5)",
+      "os": "27.0",
+      "osBuild": "24A434",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "Original artwork visibly extends behind the sidebar. This is the first inspected regular-width evidence for the sidebar background extension.",
+      "capturedAt": "2026-10-23T15:14:55.346Z",
+      "environmentNotes": "Portrait iPad simulator; adaptive containers may collapse or overlay columns. No hardware input was simulated.",
+      "framing": "screen",
+      "sourceSHA256": "65037b1fa1947a9818177d5eecb9a024546f1e74e8c31e58a7e6383dc4d3e322"
     }
   ]
 }

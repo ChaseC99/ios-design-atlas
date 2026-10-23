@@ -68,6 +68,18 @@ default. light appearance; Large text; en_US.
 default. light appearance; Large text; en_US.
 
 ![A native drawing canvas on iPhone Duo, iOS 27.1](captures/ios-27-1-atlas-iphone-duo-default-1792767876.276.png)
+
+### iPad Pro 11-inch (M5) · iOS 27.0
+
+Original seeded drawing and editing controls visible. Does not establish actual Pencil pressure or drawing behavior.. light appearance; Large text; en_US.
+
+![A native drawing canvas on iPad Pro 11-inch (M5), iOS 27.0](captures/ios-27-0-ipad-pro-11-inch-m5-default-1792768527.359.png)
+
+### iPhone 18 Pro · iOS 27.0
+
+default. light appearance; Large text; en_US.
+
+![A native drawing canvas on iPhone 18 Pro, iOS 27.0](captures/ios-27-0-iphone-18-pro-default-1792768266.35.png)
 <!-- captures:end -->
 
 ## Full example

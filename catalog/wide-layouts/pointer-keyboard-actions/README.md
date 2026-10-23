@@ -56,6 +56,18 @@ default. light appearance; Large text; en_US.
 default. light appearance; Large text; en_US.
 
 ![Pointer and keyboard actions on iPhone Duo, iOS 27.1](captures/ios-27-1-atlas-iphone-duo-default-1792767885.708.png)
+
+### iPad Pro 11-inch (M5) · iOS 27.0
+
+Readable editor and save controls. Does not establish hover/pointer/shortcut behavior.. light appearance; Large text; en_US.
+
+![Pointer and keyboard actions on iPad Pro 11-inch (M5), iOS 27.0](captures/ios-27-0-ipad-pro-11-inch-m5-default-1792768536.762.png)
+
+### iPhone 18 Pro · iOS 27.0
+
+default. light appearance; Large text; en_US.
+
+![Pointer and keyboard actions on iPhone 18 Pro, iOS 27.0](captures/ios-27-0-iphone-18-pro-default-1792768306.16.png)
 <!-- captures:end -->
 
 ## Full example

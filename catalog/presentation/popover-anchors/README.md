@@ -66,6 +66,12 @@ default. light appearance; Large text; en_US.
 default. light appearance; Large text; en_US.
 
 ![Popover anchors on iPhone Duo, iOS 27.1](captures/ios-27-1-atlas-iphone-duo-default-1792767909.17.png)
+
+### iPad Pro 11-inch (M5) · iOS 27.0
+
+Anchored popover, visible surface and content fit without clipping.. light appearance; Large text; en_US.
+
+![Popover anchors on iPad Pro 11-inch (M5), iOS 27.0](captures/ios-27-0-ipad-pro-11-inch-m5-default-1792768587.87.png)
 <!-- captures:end -->
 
 ## Full example

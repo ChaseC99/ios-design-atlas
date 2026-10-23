@@ -29,6 +29,21 @@
       "capturedAt": "2026-10-23T14:35:32.398Z",
       "framing": "screen",
       "sourceSHA256": "4d59f187fc1c19717c8451718655cae0faee08df9944bfd5151a99063778588c"
+    },
+    {
+      "file": "ios-27-0-iphone-18-pro-default-1792768275.556.png",
+      "device": "iPhone 18 Pro",
+      "os": "27.0",
+      "osBuild": "24A434",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T15:11:15.556Z",
+      "framing": "screen",
+      "sourceSHA256": "4d59f187fc1c19717c8451718655cae0faee08df9944bfd5151a99063778588c"
     }
   ]
 }

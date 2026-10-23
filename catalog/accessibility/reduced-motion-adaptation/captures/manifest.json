@@ -31,6 +31,22 @@
       "environmentNotes": "The default capture is a settled state. Reduced Motion is read from the environment; the preview switch changes only this example. A static capture cannot verify the transition.",
       "framing": "screen",
       "sourceSHA256": "2e943bc186dd0039a716f4af160f769705b27aa61d6cea1d3dd76328fc615e0e"
+    },
+    {
+      "file": "ios-27-0-iphone-18-pro-default-1792768337.424.png",
+      "device": "iPhone 18 Pro",
+      "os": "27.0",
+      "osBuild": "24A434",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T15:12:17.424Z",
+      "environmentNotes": "The default capture is a settled state. Reduced Motion is read from the environment; the preview switch changes only this example. A static capture cannot verify the transition.",
+      "framing": "screen",
+      "sourceSHA256": "2e943bc186dd0039a716f4af160f769705b27aa61d6cea1d3dd76328fc615e0e"
     }
   ]
 }

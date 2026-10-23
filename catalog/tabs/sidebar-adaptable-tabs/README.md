@@ -70,6 +70,12 @@ default. light appearance; Large text; en_US.
 default. light appearance; Large text; en_US.
 
 ![Tabs that become a sidebar on iPhone Duo, iOS 27.1](captures/ios-27-1-atlas-iphone-duo-default-1792767930.366.png)
+
+### iPad Pro 11-inch (M5) · iOS 27.0
+
+Valid top-tab presentation in portrait; the sidebar is not opened, so this does not establish sidebar appearance/customization.. light appearance; Large text; en_US.
+
+![Tabs that become a sidebar on iPad Pro 11-inch (M5), iOS 27.0](captures/ios-27-0-ipad-pro-11-inch-m5-default-1792768614.22.png)
 <!-- captures:end -->
 
 ## Full example

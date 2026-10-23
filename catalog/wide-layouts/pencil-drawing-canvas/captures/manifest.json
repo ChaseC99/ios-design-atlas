@@ -46,6 +46,37 @@
       "environmentNotes": "Duo simulator in its initial closed posture. The hinge example reported 0 degrees; no pose change was simulated.",
       "framing": "screen",
       "sourceSHA256": "fa638cd34cf72cf7aed25898c244a6ac4bb73fc0587bb36c44c338fc5d3b01ab"
+    },
+    {
+      "file": "ios-27-0-ipad-pro-11-inch-m5-default-1792768527.359.png",
+      "device": "iPad Pro 11-inch (M5)",
+      "os": "27.0",
+      "osBuild": "24A434",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "Original seeded drawing and editing controls visible. Does not establish actual Pencil pressure or drawing behavior.",
+      "capturedAt": "2026-10-23T15:15:27.359Z",
+      "environmentNotes": "Portrait iPad simulator; adaptive containers may collapse or overlay columns. No hardware input was simulated.",
+      "framing": "screen",
+      "sourceSHA256": "fa638cd34cf72cf7aed25898c244a6ac4bb73fc0587bb36c44c338fc5d3b01ab"
+    },
+    {
+      "file": "ios-27-0-iphone-18-pro-default-1792768266.35.png",
+      "device": "iPhone 18 Pro",
+      "os": "27.0",
+      "osBuild": "24A434",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T15:11:06.350Z",
+      "framing": "screen",
+      "sourceSHA256": "fa638cd34cf72cf7aed25898c244a6ac4bb73fc0587bb36c44c338fc5d3b01ab"
     }
   ]
 }

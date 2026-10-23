@@ -31,6 +31,22 @@
       "environmentNotes": "The default capture uses the system Large text setting. Preview controls affect only this example.",
       "framing": "screen",
       "sourceSHA256": "4ddad2eeff628e5d388c375d9257a0020cd208b0422f9630621ee36446839939"
+    },
+    {
+      "file": "ios-27-0-iphone-18-pro-default-1792767489.909.png",
+      "device": "iPhone 18 Pro",
+      "os": "27.0",
+      "osBuild": "24A434",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T14:58:09.909Z",
+      "environmentNotes": "The default capture uses the system Large text setting. Preview controls affect only this example.",
+      "framing": "screen",
+      "sourceSHA256": "4ddad2eeff628e5d388c375d9257a0020cd208b0422f9630621ee36446839939"
     }
   ]
 }

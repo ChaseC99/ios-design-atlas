@@ -31,6 +31,22 @@
       "environmentNotes": "English source copy with a local en_US locale override demonstrates system grammatical agreement. Production translations need String Catalog plural variations and language-specific review; this sample does not claim equivalent grammar in every language.",
       "framing": "screen",
       "sourceSHA256": "d5635a0bf6a41b3eceeff1da8f01b116280012a898374bdefe2002ab528622dc"
+    },
+    {
+      "file": "ios-27-0-iphone-18-pro-default-1792767865.128.png",
+      "device": "iPhone 18 Pro",
+      "os": "27.0",
+      "osBuild": "24A434",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T15:04:25.128Z",
+      "environmentNotes": "English source copy with a local en_US locale override demonstrates system grammatical agreement. Production translations need String Catalog plural variations and language-specific review; this sample does not claim equivalent grammar in every language.",
+      "framing": "screen",
+      "sourceSHA256": "d5635a0bf6a41b3eceeff1da8f01b116280012a898374bdefe2002ab528622dc"
     }
   ]
 }

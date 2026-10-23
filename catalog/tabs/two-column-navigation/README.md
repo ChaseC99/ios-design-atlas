@@ -70,6 +70,12 @@ default. light appearance; Large text; en_US.
 default. light appearance; Large text; en_US.
 
 ![Two-column navigation on iPhone Duo, iOS 27.1](captures/ios-27-1-atlas-iphone-duo-default-1792767950.21.png)
+
+### iPad Pro 11-inch (M5) · iOS 27.0
+
+Sidebar and intentional empty-detail prompt are both visible. Selected-detail behavior is not established.. light appearance; Large text; en_US.
+
+![Two-column navigation on iPad Pro 11-inch (M5), iOS 27.0](captures/ios-27-0-ipad-pro-11-inch-m5-default-1792768634.906.png)
 <!-- captures:end -->
 
 ## Full example

@@ -60,6 +60,18 @@ default. light appearance; Large text; en_US.
 default. light appearance; Large text; en_US.
 
 ![A grid that uses the window on iPhone Duo, iOS 27.1](captures/ios-27-1-atlas-iphone-duo-default-1792767836.268.png)
+
+### iPad Pro 11-inch (M5) · iOS 27.0
+
+Four-column artwork grid fits with readable labels; demonstrates this portrait width only.. light appearance; Large text; en_US.
+
+![A grid that uses the window on iPad Pro 11-inch (M5), iOS 27.0](captures/ios-27-0-ipad-pro-11-inch-m5-default-1792768482.122.png)
+
+### iPhone 18 Pro · iOS 27.0
+
+default. light appearance; Large text; en_US.
+
+![A grid that uses the window on iPhone 18 Pro, iOS 27.0](captures/ios-27-0-iphone-18-pro-default-1792767538.621.png)
 <!-- captures:end -->
 
 ## Full example

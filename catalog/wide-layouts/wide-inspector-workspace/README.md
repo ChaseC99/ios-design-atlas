@@ -65,6 +65,18 @@ default. light appearance; Large text; en_US.
 default. light appearance; Large text; en_US.
 
 ![A workspace with an inspector on iPhone Duo, iOS 27.1](captures/ios-27-1-atlas-iphone-duo-default-1792767960.496.png)
+
+### iPad Pro 11-inch (M5) · iOS 27.0
+
+Native inspector overlays and dims the detail in this portrait width; the document is obscured behind it. This is an adapted overlay state, not proof of four simultaneous columns or an unobscured editing workspace.. light appearance; Large text; en_US.
+
+![A workspace with an inspector on iPad Pro 11-inch (M5), iOS 27.0](captures/ios-27-0-ipad-pro-11-inch-m5-default-1792768644.664.png)
+
+### iPhone 18 Pro · iOS 27.0
+
+default. light appearance; Large text; en_US.
+
+![A workspace with an inspector on iPhone 18 Pro, iOS 27.0](captures/ios-27-0-iphone-18-pro-default-1792768880.929.png)
 <!-- captures:end -->
 
 ## Full example

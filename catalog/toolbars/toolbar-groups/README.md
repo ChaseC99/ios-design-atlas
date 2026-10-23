@@ -50,6 +50,12 @@ struct GroupedActions: View {
 default. light appearance; Large text; en_US.
 
 ![Toolbar groups and backgrounds on iPhone 17 Pro, iOS 26.5](captures/ios-26-5-iphone-17-pro-default-1792766665.483.png)
+
+### iPhone 18 Pro · iOS 27.0
+
+default. light appearance; Large text; en_US.
+
+![Toolbar groups and backgrounds on iPhone 18 Pro, iOS 27.0](captures/ios-27-0-iphone-18-pro-default-1792768816.58.png)
 <!-- captures:end -->
 
 ## Full example

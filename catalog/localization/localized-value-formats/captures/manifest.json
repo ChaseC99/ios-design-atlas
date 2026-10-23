@@ -31,6 +31,22 @@
       "environmentNotes": "Capture explicitly formats fixed sample values using de_DE. UI labels remain English. Currency stays USD across locales, and the fixed date is displayed in UTC; global region and time zone are untouched.",
       "framing": "screen",
       "sourceSHA256": "c8ee1873a389fff671dd0c0fab474bc8dba474a7f5a042da8bec8e9573919ab4"
+    },
+    {
+      "file": "ios-27-0-iphone-18-pro-default-1792768116.11.png",
+      "device": "iPhone 18 Pro",
+      "os": "27.0",
+      "osBuild": "24A434",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T15:08:36.110Z",
+      "environmentNotes": "Capture explicitly formats fixed sample values using de_DE. UI labels remain English. Currency stays USD across locales, and the fixed date is displayed in UTC; global region and time zone are untouched.",
+      "framing": "screen",
+      "sourceSHA256": "c8ee1873a389fff671dd0c0fab474bc8dba474a7f5a042da8bec8e9573919ab4"
     }
   ]
 }

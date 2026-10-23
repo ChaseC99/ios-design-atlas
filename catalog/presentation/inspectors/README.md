@@ -58,6 +58,12 @@ default. light appearance; Large text; en_US.
 default. light appearance; Large text; en_US.
 
 ![Adaptive inspectors on iPhone 17 Pro, iOS 26.5](captures/ios-26-5-iphone-17-pro-default-1792765706.965.png)
+
+### iPad Pro 11-inch (M5) · iOS 27.0
+
+Native trailing inspector is visible with selected content. This is an appearance pass, not an edit/close interaction check.. light appearance; Large text; en_US.
+
+![Adaptive inspectors on iPad Pro 11-inch (M5), iOS 27.0](captures/ios-27-0-ipad-pro-11-inch-m5-default-1792768515.299.png)
 <!-- captures:end -->
 
 ## Full example

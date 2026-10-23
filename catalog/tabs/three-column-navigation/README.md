@@ -73,6 +73,12 @@ default. light appearance; Large text; en_US.
 default. light appearance; Large text; en_US.
 
 ![Three-column navigation on iPhone Duo, iOS 27.1](captures/ios-27-1-atlas-iphone-duo-default-1792767940.843.png)
+
+### iPad Pro 11-inch (M5) · iOS 27.0
+
+Valid portrait adaptation showing content list and intentional empty detail. Sidebar is collapsed; does not establish three simultaneously visible columns.. light appearance; Large text; en_US.
+
+![Three-column navigation on iPad Pro 11-inch (M5), iOS 27.0](captures/ios-27-0-ipad-pro-11-inch-m5-default-1792768623.634.png)
 <!-- captures:end -->
 
 ## Full example

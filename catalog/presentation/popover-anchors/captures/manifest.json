@@ -61,6 +61,22 @@
       "environmentNotes": "Duo simulator in its initial closed posture. The hinge example reported 0 degrees; no pose change was simulated.",
       "framing": "screen",
       "sourceSHA256": "f5d70f0d7c8d67434b1aba2f7581a91645085d8fa6a5b26aff09a5429b7c744c"
+    },
+    {
+      "file": "ios-27-0-ipad-pro-11-inch-m5-default-1792768587.87.png",
+      "device": "iPad Pro 11-inch (M5)",
+      "os": "27.0",
+      "osBuild": "24A434",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "Anchored popover, visible surface and content fit without clipping.",
+      "capturedAt": "2026-10-23T15:16:27.870Z",
+      "environmentNotes": "Portrait iPad simulator; adaptive containers may collapse or overlay columns. No hardware input was simulated.",
+      "framing": "screen",
+      "sourceSHA256": "f5d70f0d7c8d67434b1aba2f7581a91645085d8fa6a5b26aff09a5429b7c744c"
     }
   ]
 }

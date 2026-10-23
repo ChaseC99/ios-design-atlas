@@ -31,6 +31,22 @@
       "environmentNotes": "Capture uses hand-authored German fixture strings with a local de locale override. English and Finnish fixtures are selectable. These are layout fixtures, not a production translation catalog.",
       "framing": "screen",
       "sourceSHA256": "ae51d1eabb5d23b92b8e3ec9a1eee61e0b240817fe5e2cfed95d2725858a8aca"
+    },
+    {
+      "file": "ios-27-0-iphone-18-pro-default-1792768107.41.png",
+      "device": "iPhone 18 Pro",
+      "os": "27.0",
+      "osBuild": "24A434",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T15:08:27.410Z",
+      "environmentNotes": "Capture uses hand-authored German fixture strings with a local de locale override. English and Finnish fixtures are selectable. These are layout fixtures, not a production translation catalog.",
+      "framing": "screen",
+      "sourceSHA256": "ae51d1eabb5d23b92b8e3ec9a1eee61e0b240817fe5e2cfed95d2725858a8aca"
     }
   ]
 }

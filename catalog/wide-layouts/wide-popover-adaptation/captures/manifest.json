@@ -29,6 +29,37 @@
       "capturedAt": "2026-10-23T14:45:13.679Z",
       "framing": "screen",
       "sourceSHA256": "02dbbea14d31cb740f7d143ba877b3783ccb8fe02f0eb76504a727b997ddd8ca"
+    },
+    {
+      "file": "ios-27-0-ipad-pro-11-inch-m5-default-1792768656.173.png",
+      "device": "iPad Pro 11-inch (M5)",
+      "os": "27.0",
+      "osBuild": "24A434",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "Popover content and source are visible over the postcard. No obvious clipping; native translucent surface is expected.",
+      "capturedAt": "2026-10-23T15:17:36.173Z",
+      "environmentNotes": "Portrait iPad simulator; adaptive containers may collapse or overlay columns. No hardware input was simulated.",
+      "framing": "screen",
+      "sourceSHA256": "02dbbea14d31cb740f7d143ba877b3783ccb8fe02f0eb76504a727b997ddd8ca"
+    },
+    {
+      "file": "ios-27-0-iphone-18-pro-default-1792768890.239.png",
+      "device": "iPhone 18 Pro",
+      "os": "27.0",
+      "osBuild": "24A434",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T15:21:30.239Z",
+      "framing": "screen",
+      "sourceSHA256": "02dbbea14d31cb740f7d143ba877b3783ccb8fe02f0eb76504a727b997ddd8ca"
     }
   ]
 }

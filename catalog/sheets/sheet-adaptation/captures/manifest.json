@@ -29,6 +29,22 @@
       "capturedAt": "2026-10-23T13:42:35.287Z",
       "framing": "screen",
       "sourceSHA256": "acc5c0b690fbf6ac95ceef724b3778f09d7a47da41014cfa07a929952a090d51"
+    },
+    {
+      "file": "ios-27-0-ipad-pro-11-inch-m5-default-1792768604.617.png",
+      "device": "iPad Pro 11-inch (M5)",
+      "os": "27.0",
+      "osBuild": "24A434",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "Centered native form presentation is visible and legible.",
+      "capturedAt": "2026-10-23T15:16:44.617Z",
+      "environmentNotes": "Portrait iPad simulator; adaptive containers may collapse or overlay columns. No hardware input was simulated.",
+      "framing": "screen",
+      "sourceSHA256": "acc5c0b690fbf6ac95ceef724b3778f09d7a47da41014cfa07a929952a090d51"
     }
   ]
 }

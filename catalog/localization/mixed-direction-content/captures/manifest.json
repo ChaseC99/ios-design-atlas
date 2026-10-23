@@ -31,6 +31,22 @@
       "environmentNotes": "Capture uses Arabic fixture text, Unicode FSI/PDI isolation, and local ar / rightToLeft overrides. The example.com address and 555 phone number are fictional sample data.",
       "framing": "screen",
       "sourceSHA256": "83428520c4ac3620feb5585803c5ae4a116682d055ab11a04ae9f0e6c0dcb785"
+    },
+    {
+      "file": "ios-27-0-iphone-18-pro-default-1792768176.395.png",
+      "device": "iPhone 18 Pro",
+      "os": "27.0",
+      "osBuild": "24A434",
+      "sdk": "iOS 27.1",
+      "xcode": "27.1 (27A9275)",
+      "appearance": "light",
+      "textSize": "Large",
+      "locale": "en_US",
+      "state": "default",
+      "capturedAt": "2026-10-23T15:09:36.395Z",
+      "environmentNotes": "Capture uses Arabic fixture text, Unicode FSI/PDI isolation, and local ar / rightToLeft overrides. The example.com address and 555 phone number are fictional sample data.",
+      "framing": "screen",
+      "sourceSHA256": "83428520c4ac3620feb5585803c5ae4a116682d055ab11a04ae9f0e6c0dcb785"
     }
   ]
 }
