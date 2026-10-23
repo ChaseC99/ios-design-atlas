@@ -4,10 +4,12 @@ This checklist preserves the original scope. Bullets can be grouped into focused
 
 ## Progress
 
-- Presentation: nine runnable examples and recipes; clean alerts captured on iOS 18.5, 26.5, and 27.0. The remaining seven captures are in progress.
-- Sheets (12), Navigation (8), Tabs (8), Scroll edges (8), Materials (8): runnable demos and recipes type-check; app and website build. Native capture review is in progress.
-- Toolbars, Scrolling, Lists, Grids, Buttons, Controls: implementation in progress.
-- Remaining collections: queued below.
+- [CATALOG.md](CATALOG.md) is generated from the current entries and capture manifests, including exact version coverage.
+- Presentation, Sheets, Navigation, Tabs, Toolbars, Scrolling, Scroll edges, Materials, Lists, Grids, Buttons, Controls, Text input, Search, Typography, Visuals, Layout, Animation, Accessibility, and Localization: runnable sources and standalone recipes type-check; the integrated app and website build. Native capture review continues.
+- Device adaptation and Wide layouts: runnable examples are integrated. Five Duo APIs require iOS 27.1; older runtimes skip them. Actual posture and regular-width comparisons remain pending.
+- Gestures, States, Forms, Charts, Media/drawing, and Maps: implementation in progress.
+- Remaining collections: queued below. A runnable entry is not a claim that every related backlog bullet or interaction matrix is complete.
+- Manual checks still needed include VoiceOver/Voice Control/Switch Control, IMEs, interrupted gestures, pointer/Pencil hardware, multiwindow behavior, and motion. Older-SDK comparisons require separate builds; changing only the simulator runtime cannot provide them.
 
 Capture provenance lives beside each example. A missing capture is displayed as pending, and unsupported OS versions are never represented by fabricated screenshots. Static captures document appearance; motion and gesture behavior need a real interaction check.
 

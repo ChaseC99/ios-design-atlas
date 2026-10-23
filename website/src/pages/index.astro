@@ -21,12 +21,12 @@ const captureCount = items.reduce((total, item) => total + item.captures.length,
       <div class="collection-header"><div><p class="eyebrow">THE COLLECTIONS</p><h2 id="collection-title">Explore the details.</h2></div></div>
       <div class="filter-bar"><label class="collection-filter">Collection <select id="collection-filter"><option value="All">All examples</option>{categories.map(category => <option value={category}>{category}</option>)}</select></label><span id="result-count" aria-live="polite">{entries.length} examples</span></div>
       <div class="example-grid" id="example-grid">
-        {items.map(({ entry, captures }) => {
+        {items.map(({ entry, captures }, index) => {
           const hero = captures.at(-1);
           return <article class="example-card" data-id={entry.id} data-category={entry.data.category} data-search={[entry.data.title, entry.data.summary, entry.data.category, ...entry.data.apis, ...entry.data.tags, entry.body].join(' ').toLowerCase()}>
             <a href={`/examples/${entry.id}/`} class="card-link">
               <div class:list={['card-preview', `tone-${(entry.data.order - 1) % 4}`, { 'isolated-capture': hero?.framing === 'isolated' }]}>
-                <span class="preview-index">{String(entry.data.order).padStart(2, '0')}</span>
+                <span class="preview-index">{String(index + 1).padStart(2, '0')}</span>
                 {hero?.image ? <Image src={hero.image} alt={`${entry.data.title} on ${hero.device}, iOS ${hero.os}`} width={600} format="webp" class="capture-thumbnail" /> : <div class="capture-pending"><span aria-hidden="true">▧</span><span>Capture pending</span><small>Runnable in the example app</small></div>}
                 <span class="preview-platform">{hero ? `iOS ${hero.os}` : 'SwiftUI'}</span>
               </div>

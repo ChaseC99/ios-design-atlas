@@ -2,7 +2,7 @@
 
 A visual reference for native iOS interfaces: runnable SwiftUI examples, brief Markdown descriptions and Swift recipes, and original simulator captures.
 
-Browse focused collections of native interface examples. Each entry has a runnable SwiftUI demo, a short recipe, and original simulator captures as they are verified. [The roadmap](ROADMAP.md) tracks the full catalog scope and remaining work.
+Browse [the catalog index](CATALOG.md) for focused collections of native interface examples. Each entry has a runnable SwiftUI demo, a short recipe, and original simulator captures as they are verified. [The roadmap](ROADMAP.md) tracks the full catalog scope and remaining work.
 
 ## Run the website
 
@@ -29,7 +29,7 @@ npm run sync
 open app/Atlas/Atlas.xcodeproj
 ```
 
-Select the **Atlas** scheme and an iPhone or iPad simulator, then Run. The deployment target is iOS 18.0. A development team is only needed when running on a physical device.
+Select the **Atlas** scheme and an iPhone or iPad simulator, then Run. Build with Xcode 27.1 or later. The deployment target is iOS 18.0; newer APIs are guarded at runtime. A development team is only needed when running on a physical device.
 
 The app groups entries by collection and searches their titles, topics, and API names. Newer APIs show their minimum iOS version. Each demo exposes its own options and uses real system presentations. No network services or accounts are required.
 
@@ -66,11 +66,11 @@ Each entry's Markdown frontmatter is the source for its ID, title, summary, API 
 
 ## Captures and verification
 
-Alert captures use an empty presentation screen so the system component is the focus. The website shows a centered preview and keeps the original full-screen PNG available on click. The future comparison set is iOS 18, iOS 26, and iOS 27; only iOS 27 is captured for this review.
+The comparison set is **iOS 18, 26, and 27**, using available point releases. The catalog index shows exactly which captures exist; missing images remain pending. Alerts use an empty presentation screen. Other examples retain the native bars, content, or keyboard needed to understand the component. Clicking a preview opens the original full-screen PNG.
 
-Every capture has a neighboring `captures/manifest.json` recording its device, exact OS/build, build SDK, Xcode version, appearance, text size, locale, scenario, timestamp, and source SHA-256. A screenshot establishes only that recorded state; accessibility and unrecorded versions remain explicit comparison work.
+Every capture has a neighboring `captures/manifest.json` recording its device, exact OS/build, build SDK, Xcode version, appearance, text size, locale, scenario, timestamp, and source SHA-256. Local environment overrides are recorded separately. Different device models and SDK versions are identified so comparisons are not mistaken for controlled same-device or older-SDK builds.
 
-Run the native tests in Xcode with **Product → Test**. The UI suite checks cancellation, rename behavior, and reopening a popover. `testCaptureAlerts` records only the two alert examples as named XCTest attachments. The other examples remain without captures while the initial format is reviewed. See [CONTRIBUTING.md](CONTRIBUTING.md) for the capture workflow and entry format.
+Run the native tests in Xcode with **Product → Test**. `AtlasBehaviorTests` covers sheet editing and dismissal, navigation, restored paths, and independent tab stacks. Generated `CatalogCaptureTests` records one deterministic native state per supported entry. Wide layouts also need iPad or Duo captures; still images do not verify motion, pointer behavior, or assistive technologies. See [CONTRIBUTING.md](CONTRIBUTING.md) for the capture workflow and entry format.
 
 ## Current scope
 

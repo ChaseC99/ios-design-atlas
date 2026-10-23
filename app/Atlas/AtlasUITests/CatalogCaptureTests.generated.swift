@@ -5,17 +5,38 @@ import XCTest
 final class CatalogCaptureTests: XCTestCase {
     override func setUpWithError() throws { continueAfterFailure = false }
 
-    private func capture(_ id: String, minimumMajor: Int, minimumMinor: Int) throws {
+    private func capture(_ id: String, minimumMajor: Int, minimumMinor: Int, action: String? = nil, readyLabel: String? = nil, keyboard: Bool = false, scroll: Bool = false, capturedVersions: [Int] = []) throws {
         let minimum = OperatingSystemVersion(majorVersion: minimumMajor, minorVersion: minimumMinor, patchVersion: 0)
         try XCTSkipUnless(ProcessInfo.processInfo.isOperatingSystemAtLeast(minimum), "Requires iOS \(minimumMajor).\(minimumMinor)")
+        try XCTSkipIf(capturedVersions.contains(ProcessInfo.processInfo.operatingSystemVersion.majorVersion), "This source already has a verified iPhone capture on this OS generation")
         let app = XCUIApplication()
         app.launchArguments = ["--entry", id, "--capture", "-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
         app.launch()
         defer { app.terminate() }
+        if let action {
+            let trigger = app.descendants(matching: .any).matching(identifier: "capture-open").firstMatch
+            XCTAssertTrue(trigger.waitForExistence(timeout: 10), "Missing capture interaction")
+            if action == "longPress" { trigger.press(forDuration: 1) } else { trigger.tap() }
+        }
         if ["alert-actions", "alert-text-fields"].contains(id) {
             XCTAssertTrue(app.alerts.firstMatch.waitForExistence(timeout: 10), "Missing native alert")
+        } else if let readyLabel {
+            XCTAssertTrue(app.buttons[readyLabel].waitForExistence(timeout: 12), "Missing system action")
         } else {
             XCTAssertTrue(app.descendants(matching: .any).matching(identifier: "capture-ready").firstMatch.waitForExistence(timeout: 12), "Capture content did not appear for \(id)")
+        }
+        if scroll {
+            let scrollView = app.scrollViews.firstMatch
+            XCTAssertTrue(scrollView.waitForExistence(timeout: 5), "Missing scroll view")
+            scrollView.swipeUp()
+        }
+        if keyboard {
+            let markedField = app.descendants(matching: .any).matching(identifier: "capture-focus").firstMatch
+            if markedField.exists { markedField.tap() }
+            else if app.searchFields.firstMatch.exists { app.searchFields.firstMatch.tap() }
+            else if app.textViews.firstMatch.exists { app.textViews.firstMatch.tap() }
+            else { app.textFields.firstMatch.tap() }
+            XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 5), "Software keyboard is not visible")
         }
         // Preserve native animations; record only after the transition settles.
         Thread.sleep(forTimeInterval: 1.5)
@@ -26,214 +47,870 @@ final class CatalogCaptureTests: XCTestCase {
     }
 
     func testCapture_alert_actions() throws {
-        try capture("alert-actions", minimumMajor: 18, minimumMinor: 0)
+        try capture("alert-actions", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_alert_text_fields() throws {
-        try capture("alert-text-fields", minimumMajor: 18, minimumMinor: 0)
+        try capture("alert-text-fields", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_confirmation_dialogs() throws {
-        try capture("confirmation-dialogs", minimumMajor: 18, minimumMinor: 0)
+        try capture("confirmation-dialogs", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: "Save a Copy", keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_popover_anchors() throws {
-        try capture("popover-anchors", minimumMajor: 18, minimumMinor: 0)
+        try capture("popover-anchors", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_popover_adaptation() throws {
-        try capture("popover-adaptation", minimumMajor: 18, minimumMinor: 0)
+        try capture("popover-adaptation", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_popover_content() throws {
-        try capture("popover-content", minimumMajor: 18, minimumMinor: 0)
+        try capture("popover-content", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_inspectors() throws {
-        try capture("inspectors", minimumMajor: 18, minimumMinor: 0)
+        try capture("inspectors", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_source_transitions() throws {
-        try capture("source-transitions", minimumMajor: 18, minimumMinor: 0)
+        try capture("source-transitions", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_presentation_stress_tests() throws {
-        try capture("presentation-stress-tests", minimumMajor: 18, minimumMinor: 0)
+        try capture("presentation-stress-tests", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: "Save Changes", keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_sheet_basics() throws {
-        try capture("sheet-basics", minimumMajor: 18, minimumMinor: 0)
+        try capture("sheet-basics", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_sheet_detents() throws {
-        try capture("sheet-detents", minimumMajor: 18, minimumMinor: 0)
+        try capture("sheet-detents", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_content_sized_sheets() throws {
-        try capture("content-sized-sheets", minimumMajor: 18, minimumMinor: 0)
+        try capture("content-sized-sheets", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_sheet_appearance() throws {
-        try capture("sheet-appearance", minimumMajor: 18, minimumMinor: 0)
+        try capture("sheet-appearance", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_sheet_background_interaction() throws {
-        try capture("sheet-background-interaction", minimumMajor: 18, minimumMinor: 0)
+        try capture("sheet-background-interaction", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_sheet_scrolling() throws {
-        try capture("sheet-scrolling", minimumMajor: 18, minimumMinor: 0)
+        try capture("sheet-scrolling", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_sheet_dismissal() throws {
-        try capture("sheet-dismissal", minimumMajor: 18, minimumMinor: 0)
+        try capture("sheet-dismissal", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_sheet_keyboard() throws {
-        try capture("sheet-keyboard", minimumMajor: 18, minimumMinor: 0)
+        try capture("sheet-keyboard", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: true, scroll: false, capturedVersions: [])
     }
 
     func testCapture_sheet_navigation() throws {
-        try capture("sheet-navigation", minimumMajor: 18, minimumMinor: 0)
+        try capture("sheet-navigation", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_sheet_full_screen() throws {
-        try capture("sheet-full-screen", minimumMajor: 18, minimumMinor: 0)
+        try capture("sheet-full-screen", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_sheet_source_zoom() throws {
-        try capture("sheet-source-zoom", minimumMajor: 18, minimumMinor: 0)
+        try capture("sheet-source-zoom", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_sheet_adaptation() throws {
-        try capture("sheet-adaptation", minimumMajor: 18, minimumMinor: 0)
+        try capture("sheet-adaptation", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_navigation_push_pop() throws {
-        try capture("navigation-push-pop", minimumMajor: 18, minimumMinor: 0)
+        try capture("navigation-push-pop", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_navigation_title_styles() throws {
-        try capture("navigation-title-styles", minimumMajor: 18, minimumMinor: 0)
+        try capture("navigation-title-styles", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_navigation_title_menu() throws {
-        try capture("navigation-title-menu", minimumMajor: 18, minimumMinor: 0)
+        try capture("navigation-title-menu", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_navigation_path_restoration() throws {
-        try capture("navigation-path-restoration", minimumMajor: 18, minimumMinor: 0)
+        try capture("navigation-path-restoration", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_navigation_bar_appearance() throws {
-        try capture("navigation-bar-appearance", minimumMajor: 18, minimumMinor: 0)
+        try capture("navigation-bar-appearance", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_navigation_image_header() throws {
-        try capture("navigation-image-header", minimumMajor: 18, minimumMinor: 0)
+        try capture("navigation-image-header", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_navigation_scroll_restoration() throws {
-        try capture("navigation-scroll-restoration", minimumMajor: 18, minimumMinor: 0)
+        try capture("navigation-scroll-restoration", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_navigation_destination_states() throws {
-        try capture("navigation-destination-states", minimumMajor: 18, minimumMinor: 0)
+        try capture("navigation-destination-states", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_standard_tabs() throws {
-        try capture("standard-tabs", minimumMajor: 18, minimumMinor: 0)
+        try capture("standard-tabs", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_tab_navigation_stacks() throws {
-        try capture("tab-navigation-stacks", minimumMajor: 18, minimumMinor: 0)
+        try capture("tab-navigation-stacks", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_search_tab() throws {
-        try capture("search-tab", minimumMajor: 18, minimumMinor: 0)
+        try capture("search-tab", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_minimizing_tab_bars() throws {
-        try capture("minimizing-tab-bars", minimumMajor: 26, minimumMinor: 0)
+        try capture("minimizing-tab-bars", minimumMajor: 26, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_tab_bottom_accessory() throws {
-        try capture("tab-bottom-accessory", minimumMajor: 26, minimumMinor: 0)
+        try capture("tab-bottom-accessory", minimumMajor: 26, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_sidebar_adaptable_tabs() throws {
-        try capture("sidebar-adaptable-tabs", minimumMajor: 18, minimumMinor: 0)
+        try capture("sidebar-adaptable-tabs", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_two_column_navigation() throws {
-        try capture("two-column-navigation", minimumMajor: 18, minimumMinor: 0)
+        try capture("two-column-navigation", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_three_column_navigation() throws {
-        try capture("three-column-navigation", minimumMajor: 18, minimumMinor: 0)
+        try capture("three-column-navigation", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_toolbar_placements() throws {
+        try capture("toolbar-placements", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_toolbar_groups() throws {
+        try capture("toolbar-groups", minimumMajor: 26, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_toolbar_action_roles() throws {
+        try capture("toolbar-action-roles", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_toolbar_menus() throws {
+        try capture("toolbar-menus", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_selection_toolbars() throws {
+        try capture("selection-toolbars", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_keyboard_toolbars() throws {
+        try capture("keyboard-toolbars", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_toolbar_overflow() throws {
+        try capture("toolbar-overflow", minimumMajor: 27, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_toolbar_minimization() throws {
+        try capture("toolbar-minimization", minimumMajor: 27, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_nested_scrolling() throws {
+        try capture("nested-scrolling", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_scroll_snapping() throws {
+        try capture("scroll-snapping", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_scroll_position() throws {
+        try capture("scroll-position", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_bottom_anchored_chat() throws {
+        try capture("bottom-anchored-chat", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_preserving_scroll_target() throws {
+        try capture("preserving-scroll-target", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_scroll_bounce_indicators() throws {
+        try capture("scroll-bounce-indicators", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_refresh_and_pagination() throws {
+        try capture("refresh-and-pagination", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_pinned_headers_scroll_effects() throws {
+        try capture("pinned-headers-scroll-effects", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_scroll_edge_styles() throws {
-        try capture("scroll-edge-styles", minimumMajor: 26, minimumMinor: 0)
+        try capture("scroll-edge-styles", minimumMajor: 26, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: true, capturedVersions: [])
     }
 
     func testCapture_scroll_edge_visibility() throws {
-        try capture("scroll-edge-visibility", minimumMajor: 26, minimumMinor: 0)
+        try capture("scroll-edge-visibility", minimumMajor: 26, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_safe_area_actions() throws {
-        try capture("safe-area-actions", minimumMajor: 18, minimumMinor: 0)
+        try capture("safe-area-actions", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_safe_area_bars() throws {
-        try capture("safe-area-bars", minimumMajor: 26, minimumMinor: 0)
+        try capture("safe-area-bars", minimumMajor: 26, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_scroll_content_margins() throws {
-        try capture("scroll-content-margins", minimumMajor: 18, minimumMinor: 0)
+        try capture("scroll-content-margins", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_full_bleed_safe_areas() throws {
-        try capture("full-bleed-safe-areas", minimumMajor: 18, minimumMinor: 0)
+        try capture("full-bleed-safe-areas", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_keyboard_safe_areas() throws {
-        try capture("keyboard-safe-areas", minimumMajor: 18, minimumMinor: 0)
+        try capture("keyboard-safe-areas", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: true, scroll: false, capturedVersions: [])
     }
 
     func testCapture_background_extension() throws {
-        try capture("background-extension", minimumMajor: 26, minimumMinor: 0)
+        try capture("background-extension", minimumMajor: 26, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_system_materials() throws {
-        try capture("system-materials", minimumMajor: 18, minimumMinor: 0)
+        try capture("system-materials", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_material_versus_opacity() throws {
-        try capture("material-versus-opacity", minimumMajor: 18, minimumMinor: 0)
+        try capture("material-versus-opacity", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_glass_variants() throws {
-        try capture("glass-variants", minimumMajor: 26, minimumMinor: 0)
+        try capture("glass-variants", minimumMajor: 26, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_glass_shapes() throws {
-        try capture("glass-shapes", minimumMajor: 26, minimumMinor: 0)
+        try capture("glass-shapes", minimumMajor: 26, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_glass_containers() throws {
-        try capture("glass-containers", minimumMajor: 26, minimumMinor: 0)
+        try capture("glass-containers", minimumMajor: 26, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_glass_morphing() throws {
-        try capture("glass-morphing", minimumMajor: 26, minimumMinor: 0)
+        try capture("glass-morphing", minimumMajor: 26, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_glass_backgrounds() throws {
-        try capture("glass-backgrounds", minimumMajor: 26, minimumMinor: 0)
+        try capture("glass-backgrounds", minimumMajor: 26, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 
     func testCapture_adaptive_material_fallback() throws {
-        try capture("adaptive-material-fallback", minimumMajor: 18, minimumMinor: 0)
+        try capture("adaptive-material-fallback", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_list_styles() throws {
+        try capture("list-styles", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_list_row_anatomy() throws {
+        try capture("list-row-anatomy", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_list_selection() throws {
+        try capture("list-selection", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_list_swipe_actions() throws {
+        try capture("list-swipe-actions", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_list_editing_reordering() throws {
+        try capture("list-editing-reordering", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_list_outline_hierarchy() throws {
+        try capture("list-outline-hierarchy", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_list_section_index() throws {
+        try capture("list-section-index", minimumMajor: 26, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_list_animated_updates() throws {
+        try capture("list-animated-updates", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_grid_column_sizing() throws {
+        try capture("grid-column-sizing", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_grid_alignment_spanning() throws {
+        try capture("grid-alignment-spanning", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_grid_selection() throws {
+        try capture("grid-selection", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_card_carousels() throws {
+        try capture("card-carousels", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_grid_detail_transitions() throws {
+        try capture("grid-detail-transitions", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_reorderable_grid() throws {
+        try capture("reorderable-grid", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_wrapping_chip_layout() throws {
+        try capture("wrapping-chip-layout", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_masonry_grid_layout() throws {
+        try capture("masonry-grid-layout", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_button_styles() throws {
+        try capture("button-styles", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_button_labels() throws {
+        try capture("button-labels", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_button_states() throws {
+        try capture("button-states", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_repeating_buttons() throws {
+        try capture("repeating-buttons", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_menus() throws {
+        try capture("menus", minimumMajor: 18, minimumMinor: 0, action: "tap", readyLabel: "Open collection", keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_menu_primary_actions() throws {
+        try capture("menu-primary-actions", minimumMajor: 18, minimumMinor: 0, action: "longPress", readyLabel: "Save a copy", keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_context_menus() throws {
+        try capture("context-menus", minimumMajor: 18, minimumMinor: 0, action: "longPress", readyLabel: "Add to Favorites", keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_custom_button_styles() throws {
+        try capture("custom-button-styles", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_picker_styles() throws {
+        try capture("picker-styles", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_toggle_styles() throws {
+        try capture("toggle-styles", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_sliders_and_steppers() throws {
+        try capture("sliders-and-steppers", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_date_picker_styles() throws {
+        try capture("date-picker-styles", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_date_selection() throws {
+        try capture("date-selection", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_color_pickers() throws {
+        try capture("color-pickers", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_choice_chips() throws {
+        try capture("choice-chips", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_rating_controls() throws {
+        try capture("rating-controls", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_text_field_styles() throws {
+        try capture("text-field-styles", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: true, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_secure_field_visibility() throws {
+        try capture("secure-field-visibility", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: true, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_multiline_text_fields() throws {
+        try capture("multiline-text-fields", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: true, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_text_editor_selection() throws {
+        try capture("text-editor-selection", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: true, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_rich_text_editing() throws {
+        try capture("rich-text-editing", minimumMajor: 26, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: true, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_keyboard_focus_flow() throws {
+        try capture("keyboard-focus-flow", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: true, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_formatted_text_input() throws {
+        try capture("formatted-text-input", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: true, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_inline_form_validation() throws {
+        try capture("inline-form-validation", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: true, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_keyboard_safe_area() throws {
+        try capture("keyboard-safe-area", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: true, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_search_placement_activation() throws {
+        try capture("search-placement-activation", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_search_suggestions_history() throws {
+        try capture("search-suggestions-history", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: true, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_search_scopes() throws {
+        try capture("search-scopes", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: true, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_search_tokens() throws {
+        try capture("search-tokens", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: true, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_search_filters() throws {
+        try capture("search-filters", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_search_result_states() throws {
+        try capture("search-result-states", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_search_highlighting_groups() throws {
+        try capture("search-highlighting-groups", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_search_navigation_state() throws {
+        try capture("search-navigation-state", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_split_view_search() throws {
+        try capture("split-view-search", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_keyword_search_phrases() throws {
+        try capture("keyword-search-phrases", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_system_text_styles() throws {
+        try capture("system-text-styles", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_font_design_weight_width() throws {
+        try capture("font-design-weight-width", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_dynamic_type_readable_width() throws {
+        try capture("dynamic-type-readable-width", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_text_wrapping_truncation() throws {
+        try capture("text-wrapping-truncation", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_text_spacing_baselines() throws {
+        try capture("text-spacing-baselines", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_attributed_text_markdown() throws {
+        try capture("attributed-text-markdown", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_numbers_dates_timers() throws {
+        try capture("numbers-dates-timers", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_expandable_selectable_text() throws {
+        try capture("expandable-selectable-text", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_rich_text_editor() throws {
+        try capture("rich-text-editor", minimumMajor: 26, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_symbol_rendering_modes() throws {
+        try capture("symbol-rendering-modes", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_symbol_variants_alignment() throws {
+        try capture("symbol-variants-alignment", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_variable_symbols_effects() throws {
+        try capture("variable-symbols-effects", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_semantic_colors_contrast() throws {
+        try capture("semantic-colors-contrast", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_gradients_and_mesh() throws {
+        try capture("gradients-and-mesh", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_image_fitting_avatars() throws {
+        try capture("image-fitting-avatars", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_concentric_shapes() throws {
+        try capture("concentric-shapes", minimumMajor: 26, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_masks_blending_overlays() throws {
+        try capture("masks-blending-overlays", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_stack_alignment() throws {
+        try capture("stack-alignment", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_flexible_frames() throws {
+        try capture("flexible-frames", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_layout_insets() throws {
+        try capture("layout-insets", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_overlays_and_modifier_order() throws {
+        try capture("overlays-and-modifier-order", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_adaptive_composition() throws {
+        try capture("adaptive-composition", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_layout_switching() throws {
+        try capture("layout-switching", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_wrapping_layout() throws {
+        try capture("wrapping-layout", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_geometry_and_aspect() throws {
+        try capture("geometry-and-aspect", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_animation_curves() throws {
+        try capture("animation-curves", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_view_transitions() throws {
+        try capture("view-transitions", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_matched_geometry() throws {
+        try capture("matched-geometry", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_content_and_symbol_transitions() throws {
+        try capture("content-and-symbol-transitions", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_phase_and_keyframe_animation() throws {
+        try capture("phase-and-keyframe-animation", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_gesture_driven_motion() throws {
+        try capture("gesture-driven-motion", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_animation_completion() throws {
+        try capture("animation-completion", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_navigation_zoom() throws {
+        try capture("navigation-zoom", minimumMajor: 18, minimumMinor: 0, action: "tap", readyLabel: "Take the long way home", keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_tap_and_press() throws {
+        try capture("tap-and-press", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_simultaneous_transforms() throws {
+        try capture("simultaneous-transforms", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_scroll_and_swipe_gestures() throws {
+        try capture("scroll-and-swipe-gestures", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_scrubbing_control() throws {
+        try capture("scrubbing-control", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_drag_previews_and_drops() throws {
+        try capture("drag-previews-and-drops", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_reordering_and_insertion() throws {
+        try capture("reordering-and-insertion", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_multi_item_dragging() throws {
+        try capture("multi-item-dragging", minimumMajor: 27, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_sensory_feedback() throws {
+        try capture("sensory-feedback", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_dynamic_type_layouts() throws {
+        try capture("dynamic-type-layouts", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_accessible_labels_groups() throws {
+        try capture("accessible-labels-groups", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_accessibility_custom_actions() throws {
+        try capture("accessibility-custom-actions", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_accessible_adjustable_controls() throws {
+        try capture("accessible-adjustable-controls", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_accessibility_focus_announcements() throws {
+        try capture("accessibility-focus-announcements", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_contrast_transparency_adaptation() throws {
+        try capture("contrast-transparency-adaptation", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_reduced_motion_adaptation() throws {
+        try capture("reduced-motion-adaptation", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_accessible_input_controls() throws {
+        try capture("accessible-input-controls", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_accessible_data_summaries() throws {
+        try capture("accessible-data-summaries", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_right_to_left_layout() throws {
+        try capture("right-to-left-layout", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_localized_text_expansion() throws {
+        try capture("localized-text-expansion", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_mixed_direction_content() throws {
+        try capture("mixed-direction-content", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_localized_value_formats() throws {
+        try capture("localized-value-formats", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_grammatical_plural_agreement() throws {
+        try capture("grammatical-plural-agreement", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_international_script_input() throws {
+        try capture("international-script-input", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_split_arrangements() throws {
+        try capture("split-arrangements", minimumMajor: 27, minimumMinor: 1, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_overlay_arrangements() throws {
+        try capture("overlay-arrangements", minimumMajor: 27, minimumMinor: 1, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_arrangement_proportions() throws {
+        try capture("arrangement-proportions", minimumMajor: 27, minimumMinor: 1, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_reserved_region_inspection() throws {
+        try capture("reserved-region-inspection", minimumMajor: 27, minimumMinor: 1, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_hinge_observation() throws {
+        try capture("hinge-observation", minimumMajor: 27, minimumMinor: 1, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_size_class_and_geometry() throws {
+        try capture("size-class-and-geometry", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_resize_state_preservation() throws {
+        try capture("resize-state-preservation", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_adaptive_media_composition() throws {
+        try capture("adaptive-media-composition", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_wide_inspector_workspace() throws {
+        try capture("wide-inspector-workspace", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_adaptive_content_density() throws {
+        try capture("adaptive-content-density", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_pointer_keyboard_actions() throws {
+        try capture("pointer-keyboard-actions", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_drag_between_collections() throws {
+        try capture("drag-between-collections", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_wide_popover_adaptation() throws {
+        try capture("wide-popover-adaptation", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_pencil_drawing_canvas() throws {
+        try capture("pencil-drawing-canvas", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_progress_and_cancellation() throws {
+        try capture("progress-and-cancellation", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_skeleton_and_redaction() throws {
+        try capture("skeleton-and-redaction", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_empty_and_unavailable() throws {
+        try capture("empty-and-unavailable", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_recoverable_errors() throws {
+        try capture("recoverable-errors", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_partial_and_offline() throws {
+        try capture("partial-and-offline", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_background_refresh() throws {
+        try capture("background-refresh", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_optimistic_updates() throws {
+        try capture("optimistic-updates", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_success_and_undo() throws {
+        try capture("success-and-undo", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_settings_form() throws {
+        try capture("settings-form", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_draft_editing_flow() throws {
+        try capture("draft-editing-flow", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_conditional_validation_form() throws {
+        try capture("conditional-validation-form", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_multi_step_setup() throws {
+        try capture("multi-step-setup", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_onboarding_preferences() throws {
+        try capture("onboarding-preferences", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_profile_editing() throws {
+        try capture("profile-editing", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_batch_editing_recovery() throws {
+        try capture("batch-editing-recovery", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_import_progress_flow() throws {
+        try capture("import-progress-flow", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_filter_sort_sheet_flow() throws {
+        try capture("filter-sort-sheet-flow", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_chart_mark_types() throws {
+        try capture("chart-mark-types", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_chart_selection() throws {
+        try capture("chart-selection", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_sector_chart_selection() throws {
+        try capture("sector-chart-selection", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_scrolling_time_series() throws {
+        try capture("scrolling-time-series", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_multi_series_chart() throws {
+        try capture("multi-series-chart", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_chart_data_edge_cases() throws {
+        try capture("chart-data-edge-cases", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_live_chart_metrics() throws {
+        try capture("live-chart-metrics", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_heatmap_table_chart() throws {
+        try capture("heatmap-table-chart", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_three_dimensional_charts() throws {
+        try capture("three-dimensional-charts", minimumMajor: 26, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
+    }
+
+    func testCapture_timeline_chart() throws {
+        try capture("timeline-chart", minimumMajor: 18, minimumMinor: 0, action: nil, readyLabel: nil, keyboard: false, scroll: false, capturedVersions: [])
     }
 }

@@ -44,7 +44,11 @@ const digest = bytes => createHash('sha256').update(bytes).digest('hex');
 const slug = text => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const plan = [];
 for (const entry of catalog.filter(entry => selected.has(entry.id))) {
-  const matches = attachments.filter(attachment => attachment.suggestedHumanReadableName?.startsWith(`atlas--${entry.id}--`));
+  const sourceSHA256 = digest(await readFile(path.join(entry.directory, entry.swiftFile)));
+  if (environment.sourceHashes && environment.sourceHashes[entry.id] !== sourceSHA256) {
+    throw new Error(`Source changed since this capture run: ${entry.id}. Restore the matching source or record it again.`);
+  }
+  const matches = attachments.filter(attachment => attachment.deviceName === environment.device && attachment.suggestedHumanReadableName?.startsWith(`atlas--${entry.id}--`));
   if (!matches.length) throw new Error(`No named captures for ${entry.id}`);
   const captures = [...entry.captures];
   for (const attachment of matches) {
@@ -62,9 +66,10 @@ for (const entry of catalog.filter(entry => selected.has(entry.id))) {
       file, device: attachment.deviceName, os: environment.os, osBuild: environment.osBuild,
       sdk: environment.sdk, xcode: environment.xcode, appearance: environment.appearance,
       textSize: environment.textSize, locale: environment.locale,
-      state: environment.states?.[entry.id] ?? scenario, capturedAt,
+      state: environment.states?.[entry.id] ?? entry.captureState ?? scenario, capturedAt,
+      ...(entry.captureEnvironmentNotes ? { environmentNotes: entry.captureEnvironmentNotes } : {}),
       framing: environment.framing ?? entry.captureStyle ?? 'screen',
-      sourceSHA256: digest(await readFile(path.join(entry.directory, entry.swiftFile))),
+      sourceSHA256,
     };
     const existing = captures.find(item => item.file === file);
     if (existing) {

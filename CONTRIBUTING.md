@@ -29,17 +29,26 @@ IDs, Swift filenames, and view names must be unique. Prefer one small concept wi
 
 Keep the short snippet self-contained and focused on the essential API. The full demo stays available in a collapsed disclosure. Avoid walkthroughs, observation lists, comparison checklists, and promotional sidebars on the website.
 
-The first collection uses `Presentation`; adding another category also requires extending the website's category navigation and source-loader paths. Keep the first release deliberately scoped until the entry format has been reviewed.
+Categories and source paths are discovered from the catalog automatically. Adding a collection does not require editing website navigation.
 
 ## Capture a presentation
 
-Run `AtlasUITests.testCaptureAlerts` on the desired simulator. It launches the two alert entries through `--entry <id> --capture` and stores a screenshot attachment named `atlas--<id>--clean`. Capture mode presents the actual system alert on an empty light screen with Large text, hiding navigation, status bar, and demo controls. Normal app launches retain the interactive controls.
+Run `npm run sync`, then select the generated `CatalogCaptureTests` for the desired examples and simulators in Xcode. Each test launches `--entry <id> --capture` and stores an attachment named `atlas--<id>--default`. Capture mode hides unrelated demonstration controls and uses light appearance with Large text. Normal launches retain the interactive controls.
 
-The planned comparison set is **iOS 18, iOS 26, and iOS 27**. Keep source, state, appearance, locale, and text size consistent, and record device differences. Only iOS 27 alerts are captured for the current review; the iOS 18/26 runs and other presentations remain future work.
+The comparison set is **iOS 18, iOS 26, and iOS 27**, where the API and simulator support the example. Keep source, state, appearance, locale, and text size consistent, and record device differences. Use the actual point-release version, not only its generation. Do not automatically open camera, microphone, purchase, or account flows while collecting screenshots.
 
 Use `framing: "isolated"` in capture import metadata for these clean scenes. The website centers the presentation in a square preview; clicking it opens the unedited full-screen PNG. Use `framing: "screen"` for examples where the surrounding interface matters.
 
-Export attachments with Xcode's `xcresulttool`:
+For a repeatable command-line run, list available devices with `xcrun simctl list devices available`, then run:
+
+```sh
+node scripts/capture-catalog.mjs --devices <simulator-UUIDs> \
+  --entries alert-actions,alert-text-fields --output work/alert-comparison
+```
+
+Comma-separate device UUIDs. The runner records runtime metadata and source hashes before building, exports attachments, and leaves import as a separate review step. Its environment JSON lets the importer reject captures if the source has changed since the run. Keep the catalog frozen while the runner is active.
+
+You can also export attachments from an Xcode test run with `xcresulttool`:
 
 ```sh
 xcrun xcresulttool export attachments --path /path/to/TestResults.xcresult --output-path work/exported-captures
@@ -67,3 +76,9 @@ Set `captureNavigation: true` when the subject needs the app's outer navigation 
 A capture-ready example responds to `--entry <id> --capture`, exposes `capture-ready` on its rendered subject, and uses deterministic sample data. `npm run sync` generates a native XCTest per entry. Unsupported runtimes are skipped. Run the selected `CatalogCaptureTests` on iOS 18, 26, and 27, export the attachments, and import them with the existing importer. Use `captureStyle: isolated` only for centered alerts that can safely be previewed in a square; sheets, anchored popovers, and full interfaces use `screen`.
 
 Compare the original images before committing. For split views, sidebars, inspectors, and adaptive popovers, also record a wide iPad capture. A screenshot documents a specific state; it does not prove an animation, gesture, or accessibility behavior.
+
+For a large comparison run, `node scripts/sync-capture-tests.mjs --skip-existing` generates tests that skip OS generations already captured from the same Swift source hash. Regenerate with `npm run sync` afterward to restore normal tests. This optimization is for iPhone-only runs and only uses existing iPhone captures. Generate the normal tests before running iPad or Duo-specific comparisons.
+
+Native menus can declare `captureAction: tap` or `longPress`, with `capture-open` on their real trigger. `captureReadyLabel` waits for a system action whose identifier is not preserved. Keyboard subjects declare `captureKeyboard: true` and put `capture-focus` on the editable field; the harness asserts the real software keyboard is visible.
+
+Use `captureScroll: true` when the initial subject requires an actual upward scroll. `captureState` describes the recorded state, and `captureEnvironmentNotes` records local locale, direction, or display overrides without changing device settings.

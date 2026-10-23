@@ -48,13 +48,13 @@ enum AtlasCatalog {
 ${catalog.map(e => `        AtlasEntry(id: ${quote(e.id)}, title: ${quote(e.title)}, summary: ${quote(e.summary)}, category: ${quote(e.category)}, family: ${quote(e.family)}, apis: [${e.apis.map(quote).join(', ')}], minimumOS: ${quote(e.demoMinIOS)}, captureNavigation: ${captureNavigation(e)}, ownsNavigation: ${e.ownsNavigation ?? false}),`).join('\n')}
     ]
 
-    @MainActor @ViewBuilder
-    static func demo(for id: String) -> some View {
+    @MainActor
+    static func demo(for id: String) -> AnyView {
         switch id {
 ${catalog.map(e => `        case ${quote(e.id)}:
-            if #available(iOS ${e.demoMinIOS}, *) { ${e.view}() }
-            else { ContentUnavailableView("Requires iOS ${e.demoMinIOS}", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }`).join('\n')}
-        default: ContentUnavailableView("Example unavailable", systemImage: "questionmark.folder")
+            if #available(iOS ${e.demoMinIOS}, *) { return AnyView(${e.view}()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS ${e.demoMinIOS}", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }`).join('\n')}
+        default: return AnyView(ContentUnavailableView("Example unavailable", systemImage: "questionmark.folder"))
         }
     }
 }

@@ -17,6 +17,10 @@ for (const entry of catalog) {
   ids.add(entry.id); names.add(entry.swiftFile);
   if (!/^\d+\.\d+$/.test(entry.demoMinIOS ?? '')) fail('demoMinIOS must be major.minor');
   if (!Number.isFinite(entry.order)) fail('order must be a number');
+  for (const field of ['ownsNavigation', 'captureKeyboard', 'captureScroll']) {
+    if (entry[field] !== undefined && typeof entry[field] !== 'boolean') fail(`${field} must be boolean`);
+  }
+  if (entry.captureAction && !['tap', 'longPress'].includes(entry.captureAction)) fail('unsupported captureAction');
   if (entry.captureNavigation !== undefined && typeof entry.captureNavigation !== 'boolean') fail('captureNavigation must be boolean');
   if (!Array.isArray(entry.apis) || !entry.apis.length) fail('APIs are required');
   if (!Array.isArray(entry.tags)) fail('tags must be an array');
@@ -26,7 +30,8 @@ for (const entry of catalog) {
     const link = path.join(root, 'app/Atlas/Atlas/Examples', entry.swiftFile);
     if (path.resolve(path.dirname(link), await readlink(link)) !== path.join(entry.directory, entry.swiftFile)) fail('wrong Swift symlink');
   } catch (error) { fail(error.message); }
-  for (const match of entry.markdown.matchAll(/!?\[[^\]]*\]\(([^)]+)\)/g)) {
+  const prose = entry.markdown.replace(/^```[^\n]*\n[\s\S]*?^```\s*$/gm, '').replace(/`[^`\n]*`/g, '');
+  for (const match of prose.matchAll(/!?\[[^\]]*\]\(([^)]+)\)/g)) {
     const url = match[1];
     if (/^(https?:|#)/.test(url)) continue;
     try { await access(path.resolve(entry.directory, url)); } catch { fail(`broken local link: ${url}`); }

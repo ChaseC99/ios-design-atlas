@@ -59,6 +59,22 @@ enum AtlasCatalog {
         AtlasEntry(id: "sidebar-adaptable-tabs", title: "Tabs that become a sidebar", summary: "A sidebar-adaptable tab view organizes the same sections for compact and wide layouts.", category: "Tabs", family: "Sidebars", apis: ["sidebarAdaptable", "TabSection", "tabViewCustomization"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: true),
         AtlasEntry(id: "two-column-navigation", title: "Two-column navigation", summary: "A split view presents a sidebar and a detail destination, collapsing into a stack in compact layouts.", category: "Tabs", family: "Split views", apis: ["NavigationSplitView", "NavigationSplitViewVisibility", "preferredCompactColumn"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: true),
         AtlasEntry(id: "three-column-navigation", title: "Three-column navigation", summary: "A three-column split view separates collections, items, and the selected detail.", category: "Tabs", family: "Split views", apis: ["NavigationSplitView", "navigationSplitViewColumnWidth", "navigationSplitViewStyle"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: true),
+        AtlasEntry(id: "toolbar-placements", title: "Toolbar placements", summary: "Place actions at the top, bottom, or center of a navigation interface.", category: "Toolbars", family: "Placement", apis: ["ToolbarItem", "ToolbarItemGroup", "ToolbarItemPlacement"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "toolbar-groups", title: "Toolbar groups and backgrounds", summary: "Separate related actions with a native toolbar spacer.", category: "Toolbars", family: "Grouping", apis: ["ToolbarSpacer", "sharedBackgroundVisibility"], minimumOS: "26.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "toolbar-action-roles", title: "Toolbar action roles", summary: "Save, cancel, and delete in a focused editing flow.", category: "Toolbars", family: "Actions", apis: ["ToolbarItemPlacement", "ButtonRole"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "toolbar-menus", title: "Toolbar menus", summary: "Group secondary actions without crowding the bar.", category: "Toolbars", family: "Actions", apis: ["Menu", "Picker", "ToolbarItem"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "selection-toolbars", title: "Selection-dependent toolbars", summary: "Actions appear when they have something to act on.", category: "Toolbars", family: "Actions", apis: ["toolbar", "EditMode", "List"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "keyboard-toolbars", title: "Keyboard toolbars", summary: "Move between fields or dismiss the keyboard from its accessory bar.", category: "Toolbars", family: "Placement", apis: ["ToolbarItemPlacement.keyboard", "FocusState"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "toolbar-overflow", title: "Toolbar overflow and priority", summary: "Let the system favor the most important actions when space is tight.", category: "Toolbars", family: "Adaptation", apis: ["visibilityPriority", "ToolbarItemVisibilityPriority"], minimumOS: "27.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "toolbar-minimization", title: "Toolbar minimization", summary: "Let navigation controls recede during scrolling.", category: "Toolbars", family: "Adaptation", apis: ["toolbarMinimizationBehavior", "toolbarMinimizationRestoration"], minimumOS: "27.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "nested-scrolling", title: "Nested scrolling and carousels", summary: "A vertical collection of independently scrolling horizontal shelves.", category: "Scrolling", family: "Axes", apis: ["ScrollView", "LazyHStack", "LazyVStack"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "scroll-snapping", title: "Paging and view-aligned snapping", summary: "Snap to the viewport or align to individual cards.", category: "Scrolling", family: "Targets", apis: ["scrollTargetBehavior", "scrollTargetLayout", "containerRelativeFrame"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "scroll-position", title: "Programmatic scroll position", summary: "Jump to a target, an edge, or a specific offset.", category: "Scrolling", family: "Targets", apis: ["ScrollPosition", "scrollPosition", "defaultScrollAnchor"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "bottom-anchored-chat", title: "Bottom-anchored conversations", summary: "Start at the latest message and keep new replies in view.", category: "Scrolling", family: "Anchoring", apis: ["defaultScrollAnchor", "ScrollViewReader", "scrollDismissesKeyboard"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "preserving-scroll-target", title: "Preserving a scroll target", summary: "Keep a stable row in view when earlier content is inserted.", category: "Scrolling", family: "Anchoring", apis: ["scrollPosition", "scrollTargetLayout"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "scroll-bounce-indicators", title: "Bounce and scroll indicators", summary: "Choose how a short page behaves when it has little to scroll.", category: "Scrolling", family: "Behavior", apis: ["scrollBounceBehavior", "scrollIndicators", "scrollIndicatorsFlash"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "refresh-and-pagination", title: "Refresh and pagination", summary: "Refresh a collection and load the next page as its end approaches.", category: "Scrolling", family: "Loading", apis: ["refreshable", "task"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "pinned-headers-scroll-effects", title: "Pinned headers and scroll effects", summary: "Keep section context visible as cards enter and leave the viewport.", category: "Scrolling", family: "Effects", apis: ["LazyVStack", "scrollTransition"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
         AtlasEntry(id: "scroll-edge-styles", title: "Scroll edge styles", summary: "Soft, hard, and automatic edges around native bars.", category: "Scroll edges", family: "Scroll edges", apis: ["scrollEdgeEffectStyle", "ScrollEdgeEffectStyle"], minimumOS: "26.0", captureNavigation: true, ownsNavigation: false),
         AtlasEntry(id: "scroll-edge-visibility", title: "Scroll edge visibility", summary: "Control which edges protect content beneath a bar.", category: "Scroll edges", family: "Scroll edges", apis: ["scrollEdgeEffectHidden", "safeAreaBar"], minimumOS: "26.0", captureNavigation: true, ownsNavigation: false),
         AtlasEntry(id: "safe-area-actions", title: "Persistent action areas", summary: "Keep an action visible without covering the last row.", category: "Scroll edges", family: "Safe areas", apis: ["safeAreaInset"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
@@ -75,171 +91,811 @@ enum AtlasCatalog {
         AtlasEntry(id: "glass-morphing", title: "Morphing glass controls", summary: "Animate a compact control into a group of actions.", category: "Materials", family: "Liquid Glass", apis: ["glassEffectID", "glassEffectTransition", "GlassEffectContainer"], minimumOS: "26.0", captureNavigation: true, ownsNavigation: false),
         AtlasEntry(id: "glass-backgrounds", title: "Glass over different backgrounds", summary: "Light, dark, patterned, and moving canvases.", category: "Materials", family: "Liquid Glass", apis: ["glassEffect", "TimelineView"], minimumOS: "26.0", captureNavigation: true, ownsNavigation: false),
         AtlasEntry(id: "adaptive-material-fallback", title: "Adaptive surfaces and fallbacks", summary: "Use glass when available and an opaque surface when requested.", category: "Materials", family: "Adaptation", apis: ["accessibilityReduceTransparency", "colorSchemeContrast", "glassEffect"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "list-styles", title: "List styles", summary: "Plain, grouped, and inset-grouped lists organize the same rows in different ways.", category: "Lists", family: "Structure", apis: ["List", "listStyle", "Section"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "list-row-anatomy", title: "Row anatomy", summary: "Rows combine text, symbols, thumbnails, values, and controls within a consistent alignment.", category: "Lists", family: "Rows", apis: ["LabeledContent", "listRowInsets", "listRowSeparator", "listRowBackground", "listRowSpacing"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "list-selection", title: "List selection", summary: "Native list selection supports one item or a set of items for batch actions.", category: "Lists", family: "Selection", apis: ["List(selection:)", "EditMode", "toolbar"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "list-swipe-actions", title: "Swipe actions", summary: "Leading and trailing swipe actions put contextual commands on individual rows.", category: "Lists", family: "Actions", apis: ["swipeActions", "ButtonRole", "withAnimation"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "list-editing-reordering", title: "Editing and reordering", summary: "Edit mode exposes native deletion and drag handles for an ordered list.", category: "Lists", family: "Actions", apis: ["EditButton", "onDelete", "onMove"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "list-outline-hierarchy", title: "Outlines and expandable sections", summary: "Disclosure groups reveal a hierarchy without leaving the surrounding list.", category: "Lists", family: "Structure", apis: ["OutlineGroup", "DisclosureGroup", "Section"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "list-section-index", title: "Section indexes", summary: "An alphabetical section index lets people jump through a long list.", category: "Lists", family: "Structure", apis: ["sectionIndexLabel", "listSectionIndexVisibility", "Section"], minimumOS: "26.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "list-animated-updates", title: "Animated list updates", summary: "Stable row identities let a list animate insertions, removals, and content changes.", category: "Lists", family: "Updates", apis: ["withAnimation", "Identifiable", "ContentUnavailableView"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "grid-column-sizing", title: "Grid column sizing", summary: "Fixed, flexible, and adaptive columns control how a grid uses the available width.", category: "Grids", family: "Grids", apis: ["LazyVGrid", "GridItem", "ContentUnavailableView"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "grid-alignment-spanning", title: "Grid alignment and spans", summary: "A regular grid aligns rows and columns while selected cells span the whole arrangement.", category: "Grids", family: "Grids", apis: ["Grid", "GridRow", "gridCellColumns", "gridColumnAlignment", "gridCellUnsizedAxes"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "grid-selection", title: "Selectable artwork grids", summary: "Selection overlays keep an image grid compact while supporting individual and batch actions.", category: "Grids", family: "Grids", apis: ["LazyVGrid", "Button", "accessibilityAddTraits"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "card-carousels", title: "Card carousels", summary: "A horizontal carousel can reveal the next card and snap each item into a readable position.", category: "Grids", family: "Carousels", apis: ["scrollTargetBehavior", "scrollTargetLayout", "scrollPosition", "containerRelativeFrame"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "grid-detail-transitions", title: "Grid-to-detail transitions", summary: "A matched source connects a selected grid item to its destination with a native zoom transition.", category: "Grids", family: "Grids", apis: ["matchedTransitionSource", "navigationTransition", "NavigationLink"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "reorderable-grid", title: "Reorderable grids", summary: "Drag-and-drop destinations can move items within a custom grid while preserving their identity.", category: "Grids", family: "Grids", apis: ["draggable", "dropDestination", "LazyVGrid", "accessibilityAction"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "wrapping-chip-layout", title: "Wrapping chip layouts", summary: "A custom layout flows variable-width items into rows that fit the available space.", category: "Grids", family: "Custom layouts", apis: ["Layout", "ProposedViewSize", "sizeThatFits", "placeSubviews"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "masonry-grid-layout", title: "Masonry layouts", summary: "A custom masonry layout places each card in the shortest column to accommodate varied heights.", category: "Grids", family: "Custom layouts", apis: ["Layout", "sizeThatFits", "placeSubviews"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "button-styles", title: "Native button styles", summary: "Compare emphasis, size, and shape.", category: "Buttons", family: "Buttons", apis: ["buttonStyle", "controlSize", "buttonBorderShape"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "button-labels", title: "Button labels and width", summary: "Keep the action clear at every size.", category: "Buttons", family: "Buttons", apis: ["Label", "labelStyle", "frame", "accessibilityLabel"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "button-states", title: "Button states and roles", summary: "Show progress, availability, and consequences.", category: "Buttons", family: "Buttons", apis: ["ButtonRole", "disabled", "ProgressView", "Toggle"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "repeating-buttons", title: "Repeating buttons", summary: "Let a held action continue at the system’s pace.", category: "Buttons", family: "Buttons", apis: ["buttonRepeatBehavior", "disabled", "monospacedDigit"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "menus", title: "Sections and nested menus", summary: "Gather related actions into a compact menu.", category: "Buttons", family: "Menus", apis: ["Menu", "Section", "Picker", "menuOrder"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "menu-primary-actions", title: "Menus with a primary action", summary: "Offer a quick tap and more choices on a long press.", category: "Buttons", family: "Menus", apis: ["Menu", "primaryAction"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "context-menus", title: "Context menus and selection", summary: "Attach actions to an item or a selected group.", category: "Buttons", family: "Menus", apis: ["contextMenu", "List", "selection", "contentShape"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "custom-button-styles", title: "Custom button styles", summary: "Add a visual identity while keeping a real button.", category: "Buttons", family: "Buttons", apis: ["ButtonStyle", "isPressed", "contentShape", "accessibilityReduceMotion"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "picker-styles", title: "Picker styles", summary: "Choose a value with the presentation that fits.", category: "Controls", family: "Pickers", apis: ["Picker", "pickerStyle", "navigationLink"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "toggle-styles", title: "Toggles and labels", summary: "Make a persistent choice clear.", category: "Controls", family: "Toggles", apis: ["Toggle", "toggleStyle", "labelsHidden"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "sliders-and-steppers", title: "Sliders and steppers", summary: "Adjust a value continuously or one step at a time.", category: "Controls", family: "Values", apis: ["Slider", "Stepper", "sensoryFeedback"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "date-picker-styles", title: "Date and time pickers", summary: "Choose a moment in the right format.", category: "Controls", family: "Dates", apis: ["DatePicker", "datePickerStyle", "locale", "timeZone"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "date-selection", title: "Date ranges and multiple dates", summary: "Choose a stay or a few separate days.", category: "Controls", family: "Dates", apis: ["DatePicker", "MultiDatePicker", "DateComponents"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "color-pickers", title: "Color pickers", summary: "Choose a color and optional opacity.", category: "Controls", family: "Values", apis: ["ColorPicker", "supportsOpacity", "Color"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "choice-chips", title: "Single and multiple choices", summary: "Build compact selections with clear semantics.", category: "Controls", family: "Custom controls", apis: ["Button", "LazyVGrid", "accessibilityAddTraits"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "rating-controls", title: "Rating controls", summary: "Make a custom value accessible to touch and VoiceOver.", category: "Controls", family: "Custom controls", apis: ["accessibilityAdjustableAction", "accessibilityValue", "Button"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "text-field-styles", title: "Text-field styles and labels", summary: "Persistent labels remain visible while a person enters text, and field styles establish the editing surface.", category: "Text input", family: "Fields", apis: ["TextField", "textFieldStyle", "textContentType"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "secure-field-visibility", title: "Password visibility", summary: "A secure field obscures a password while an explicit visibility control lets the person check their entry.", category: "Text input", family: "Fields", apis: ["SecureField", "FocusState", "textContentType"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "multiline-text-fields", title: "Multiline text fields", summary: "A vertical-axis text field grows through a range of lines before it begins scrolling.", category: "Text input", family: "Fields", apis: ["TextField", "lineLimit", "FocusState"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "text-editor-selection", title: "Text editing and selection", summary: "A text editor provides native selection handles and editing menus for longer passages.", category: "Text input", family: "Editors", apis: ["TextEditor", "TextSelection", "FocusState"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "rich-text-editing", title: "Rich text editing", summary: "An attributed text editor preserves formatting and allows attributes to be applied to the current selection.", category: "Text input", family: "Editors", apis: ["TextEditor", "AttributedTextSelection", "transformAttributes"], minimumOS: "26.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "keyboard-focus-flow", title: "Focus and submit actions", summary: "A focus binding moves between fields while native submit keys and keyboard accessories guide the next step.", category: "Text input", family: "Keyboards", apis: ["FocusState", "submitLabel", "onSubmit", "ToolbarItemGroup"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "formatted-text-input", title: "Formatted values and keyboard types", summary: "Value formatting and content types help the keyboard match the kind of information a field expects.", category: "Text input", family: "Keyboards", apis: ["TextField(value:format:)", "keyboardType", "textContentType"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "inline-form-validation", title: "Inline validation", summary: "Field-specific feedback explains what needs attention without discarding the person’s input.", category: "Text input", family: "Validation", apis: ["TextField", "FocusState", "disabled"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "keyboard-safe-area", title: "Keyboard-safe composers", summary: "A bottom safe-area inset keeps a composer above the keyboard while the conversation scrolls independently.", category: "Text input", family: "Keyboards", apis: ["safeAreaInset", "scrollDismissesKeyboard", "FocusState"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "search-placement-activation", title: "Search placement and activation", summary: "A native search field can remain visible in the navigation bar and activate through a binding.", category: "Search", family: "Search fields", apis: ["searchable", "searchFocused", "SearchFieldPlacement"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "search-suggestions-history", title: "Suggestions and recent searches", summary: "Native search suggestions offer useful completions before and during text entry.", category: "Search", family: "Search fields", apis: ["searchSuggestions", "searchCompletion", "onSubmit"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "search-scopes", title: "Search scopes", summary: "Scopes narrow a query to a meaningful part of the same collection.", category: "Search", family: "Search fields", apis: ["searchScopes", "SearchScopeActivation", "searchable"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "search-tokens", title: "Search tokens", summary: "Tokens turn structured constraints into removable items inside the native search field.", category: "Search", family: "Search fields", apis: ["searchable(tokens:)", "searchCompletion", "Identifiable"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "search-filters", title: "Search filters", summary: "Filters combine with a text query and expose the constraints that remain active.", category: "Search", family: "Results", apis: ["searchable", "sheet", "Picker", "Toggle"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "search-result-states", title: "Search result states", summary: "A search experience distinguishes an empty query, loading, no matches, and a recoverable error.", category: "Search", family: "Results", apis: ["task(id:)", "ProgressView", "ContentUnavailableView"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "search-highlighting-groups", title: "Highlighted and grouped results", summary: "Grouping gives results context, while highlighted matches show why each item appeared.", category: "Search", family: "Results", apis: ["AttributedString", "Section", "searchable"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "search-navigation-state", title: "Search state during navigation", summary: "Keeping the query in the search screen preserves its results when a detail destination closes.", category: "Search", family: "Navigation", apis: ["NavigationStack", "navigationDestination", "searchable"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: true),
+        AtlasEntry(id: "split-view-search", title: "Search in split views", summary: "A search field can filter the selected sidebar collection while leaving the larger navigation structure intact.", category: "Search", family: "Navigation", apis: ["NavigationSplitView", "searchable", "List(selection:)"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: true),
+        AtlasEntry(id: "keyword-search-phrases", title: "Phrase search patterns", summary: "A small local keyword matcher can turn familiar phrases into explicit search filters.", category: "Search", family: "Custom search", apis: ["searchable", "searchSuggestions", "searchCompletion"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "system-text-styles", title: "System text styles", summary: "A native type scale that responds to Dynamic Type.", category: "Typography", family: "Type scale", apis: ["Font.TextStyle", "font"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "font-design-weight-width", title: "Font design, weight, and width", summary: "Change the character of system typography.", category: "Typography", family: "Type design", apis: ["Font.Design", "Font.Weight", "fontWidth"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "dynamic-type-readable-width", title: "Dynamic Type and readable width", summary: "Scale the type and its surrounding space together.", category: "Typography", family: "Adaptation", apis: ["ScaledMetric", "dynamicTypeSize", "Font.custom"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "text-wrapping-truncation", title: "Wrapping, truncation, and scaling", summary: "Choose which constraint a line of text should respect.", category: "Typography", family: "Layout", apis: ["lineLimit", "truncationMode", "minimumScaleFactor", "fixedSize"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "text-spacing-baselines", title: "Spacing and baselines", summary: "Align mixed type sizes and give prose room to breathe.", category: "Typography", family: "Layout", apis: ["tracking", "kerning", "lineSpacing", "firstTextBaseline"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "attributed-text-markdown", title: "Attributed text and Markdown", summary: "Emphasis, color, and links inside a single passage.", category: "Typography", family: "Rich text", apis: ["AttributedString", "Text"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "numbers-dates-timers", title: "Numbers, dates, and timers", summary: "Stable digits and formatting that follows the locale.", category: "Typography", family: "Formatting", apis: ["monospacedDigit", "Date.FormatStyle", "contentTransition"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "expandable-selectable-text", title: "Expandable and selectable text", summary: "Offer a short preview and let the reader choose the rest.", category: "Typography", family: "Reading", apis: ["lineLimit", "textSelection"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "rich-text-editor", title: "Rich-text editing", summary: "Native attributed-text editing with selection-aware formatting.", category: "Typography", family: "Rich text", apis: ["TextEditor", "AttributedTextSelection", "transformAttributes"], minimumOS: "26.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "symbol-rendering-modes", title: "SF Symbols rendering modes", summary: "Monochrome, hierarchical, palette, and multicolor treatments.", category: "Visuals", family: "Symbols", apis: ["symbolRenderingMode", "foregroundStyle"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "symbol-variants-alignment", title: "Symbol variants and alignment", summary: "Match icon weight, scale, and baseline to nearby text.", category: "Visuals", family: "Symbols", apis: ["symbolVariant", "imageScale", "Font.Weight"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "variable-symbols-effects", title: "Variable symbols and effects", summary: "Show progress, feedback, and state changes with native symbols.", category: "Visuals", family: "Symbols", apis: ["Image.init(systemName:variableValue:)", "symbolEffect", "contentTransition"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "semantic-colors-contrast", title: "Semantic colors and contrast", summary: "Let native foreground and background roles adapt together.", category: "Visuals", family: "Color", apis: ["foregroundStyle", "ColorScheme", "ColorSchemeContrast"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "gradients-and-mesh", title: "Gradients and mesh gradients", summary: "Blend color along a line, around a center, or across a grid.", category: "Visuals", family: "Color", apis: ["LinearGradient", "RadialGradient", "AngularGradient", "MeshGradient"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "image-fitting-avatars", title: "Image fitting and avatar fallbacks", summary: "Fit, fill, and clip original artwork into different frames.", category: "Visuals", family: "Images", apis: ["scaledToFit", "scaledToFill", "clipShape", "ImageRenderer"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "concentric-shapes", title: "Concentric shapes and elevation", summary: "Coordinate nested corners, borders, and shadows.", category: "Visuals", family: "Shapes", apis: ["ConcentricRectangle", "containerShape", "strokeBorder"], minimumOS: "26.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "masks-blending-overlays", title: "Masks, blending, and overlays", summary: "Compose color and shape through transparency.", category: "Visuals", family: "Composition", apis: ["mask", "blendMode", "overlay", "compositingGroup"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "stack-alignment", title: "Stack spacing and alignment", summary: "Give related content a common edge or baseline.", category: "Layout", family: "Stacks", apis: ["HStack", "VStack", "alignmentGuide", "AlignmentID"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "flexible-frames", title: "Frames and layout priority", summary: "Decide what expands and what gets compressed.", category: "Layout", family: "Sizing", apis: ["frame", "layoutPriority", "fixedSize", "lineLimit"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "layout-insets", title: "Padding, margins, and safe areas", summary: "Leave room for content and persistent actions.", category: "Layout", family: "Insets", apis: ["padding", "contentMargins", "safeAreaInset", "ignoresSafeArea"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "overlays-and-modifier-order", title: "Overlays and modifier order", summary: "Change the decoration without changing the same bounds.", category: "Layout", family: "Composition", apis: ["overlay", "background", "padding", "ZStack"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "adaptive-composition", title: "Adaptive composition", summary: "Choose a layout that fits both space and text.", category: "Layout", family: "Adaptation", apis: ["ViewThatFits", "dynamicTypeSize", "fixedSize", "frame"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "layout-switching", title: "Switching layouts with AnyLayout", summary: "Move the same views into a new arrangement.", category: "Layout", family: "Adaptation", apis: ["AnyLayout", "HStackLayout", "VStackLayout", "animation"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "wrapping-layout", title: "A custom wrapping layout", summary: "Let content find its next line.", category: "Layout", family: "Custom layouts", apis: ["Layout", "sizeThatFits", "placeSubviews", "ProposedViewSize"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "geometry-and-aspect", title: "Geometry and aspect ratios", summary: "Respond to the space actually offered.", category: "Layout", family: "Sizing", apis: ["GeometryReader", "aspectRatio", "containerRelativeFrame"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "animation-curves", title: "Springs and timing curves", summary: "Give a state change its pace and character.", category: "Animation", family: "Animation basics", apis: ["withAnimation", "animation", "spring", "easeInOut"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "view-transitions", title: "Insertion and removal transitions", summary: "Explain how content enters and leaves.", category: "Animation", family: "Transitions", apis: ["transition", "AnyTransition", "asymmetric", "withAnimation"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "matched-geometry", title: "Matched geometry", summary: "Keep a visual connection between two arrangements.", category: "Animation", family: "Transitions", apis: ["Namespace", "matchedGeometryEffect", "withAnimation"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "content-and-symbol-transitions", title: "Text and symbol changes", summary: "Preserve continuity when a value or icon changes.", category: "Animation", family: "Content changes", apis: ["contentTransition", "numericText", "symbolEffect", "replace"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "phase-and-keyframe-animation", title: "Phase and keyframe animation", summary: "Build a small sequence from intentional beats.", category: "Animation", family: "Sequences", apis: ["phaseAnimator", "KeyframeAnimator", "KeyframeTrack", "SpringKeyframe"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "gesture-driven-motion", title: "Gesture-driven motion", summary: "Follow the hand, then settle into place.", category: "Animation", family: "Interaction", apis: ["DragGesture", "offset", "rotationEffect", "spring"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "animation-completion", title: "Completion and result states", summary: "Finish an animation before announcing the next step.", category: "Animation", family: "Sequences", apis: ["withAnimation", "AnimationCompletionCriteria", "ProgressView", "Task"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "navigation-zoom", title: "Navigation zoom", summary: "Connect a pushed destination to its source.", category: "Animation", family: "Transitions", apis: ["matchedTransitionSource", "navigationTransition", "NavigationStack"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: true),
+        AtlasEntry(id: "tap-and-press", title: "Taps and long presses", summary: "Resolve taps, double taps, and a held touch.", category: "Gestures", family: "Gesture composition", apis: ["TapGesture", "LongPressGesture", "exclusively", "GestureState"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "simultaneous-transforms", title: "Magnify and rotate", summary: "Combine two continuous gestures on one canvas.", category: "Gestures", family: "Direct manipulation", apis: ["MagnifyGesture", "RotateGesture", "simultaneously", "GestureState"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "scroll-and-swipe-gestures", title: "Swiping inside a scroll view", summary: "Compare simultaneous and competing drag gestures.", category: "Gestures", family: "Gesture arbitration", apis: ["DragGesture", "simultaneousGesture", "highPriorityGesture", "GestureState"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "scrubbing-control", title: "Scrubbing and direct manipulation", summary: "Map a drag position directly to a value.", category: "Gestures", family: "Direct manipulation", apis: ["DragGesture", "GeometryReader", "accessibilityAdjustableAction"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "drag-previews-and-drops", title: "Drag previews and drop targets", summary: "Move transferable content between sections.", category: "Gestures", family: "Drag and drop", apis: ["draggable", "dropDestination", "Transferable"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "reordering-and-insertion", title: "Reordering and insertion", summary: "Use native list handles and drop insertion positions.", category: "Gestures", family: "Drag and drop", apis: ["onMove", "dropDestination", "EditMode", "draggable"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "multi-item-dragging", title: "Multi-item dragging", summary: "Drag the selected items as one native session.", category: "Gestures", family: "Drag and drop", apis: ["dragContainer", "dragContainerSelection", "draggable(containerItemID:)", "onDragSessionUpdated"], minimumOS: "27.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "sensory-feedback", title: "Haptics and visible feedback", summary: "Pair a sensory cue with a readable result.", category: "Gestures", family: "Feedback", apis: ["sensoryFeedback", "SensoryFeedback", "UIAccessibility.post"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "dynamic-type-layouts", title: "Dynamic Type layouts", summary: "Scaled typography and flexible arrangements let a layout grow with the person’s preferred reading size.", category: "Accessibility", family: "Adaptation", apis: ["dynamicTypeSize", "ScaledMetric", "ViewThatFits", "legibilityWeight"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "accessible-labels-groups", title: "Labels and logical groups", summary: "Accessible labels and groups turn a visual arrangement into a concise, meaningful reading order.", category: "Accessibility", family: "Semantics", apis: ["accessibilityElement", "accessibilityLabel", "accessibilityValue", "accessibilitySortPriority"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "accessibility-custom-actions", title: "Custom accessibility actions", summary: "Custom actions expose row commands to assistive technology alongside visible swipe and button interactions.", category: "Accessibility", family: "Semantics", apis: ["accessibilityActions", "swipeActions", "accessibilityHint"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "accessible-adjustable-controls", title: "Adjustable controls", summary: "An adjustable accessibility action gives a custom visual control an increment-and-decrement interface.", category: "Accessibility", family: "Semantics", apis: ["accessibilityAdjustableAction", "accessibilityValue", "accessibilityElement"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "accessibility-focus-announcements", title: "Presentation focus and announcements", summary: "Accessibility focus can move to a newly presented heading, and a brief announcement can confirm an action.", category: "Accessibility", family: "Semantics", apis: ["AccessibilityFocusState", "accessibilityFocused", "AccessibilityNotification"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "contrast-transparency-adaptation", title: "Contrast and transparency", summary: "Semantic colors, opaque fallbacks, and explicit symbols preserve meaning across accessibility display preferences.", category: "Accessibility", family: "Adaptation", apis: ["accessibilityReduceTransparency", "colorSchemeContrast", "accessibilityDifferentiateWithoutColor"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "reduced-motion-adaptation", title: "Reduced motion", summary: "Motion-sensitive interfaces can replace spatial transitions with a simpler, immediate state change.", category: "Accessibility", family: "Adaptation", apis: ["accessibilityReduceMotion", "withAnimation", "transition"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "accessible-input-controls", title: "Touch, keyboard, and voice labels", summary: "Comfortable targets, meaningful input labels, and keyboard shortcuts make the same controls usable in different ways.", category: "Accessibility", family: "Input", apis: ["accessibilityInputLabels", "keyboardShortcut", "contentShape", "FocusState"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "accessible-data-summaries", title: "Accessible data and image summaries", summary: "Meaningful text descriptions complement visual information without forcing a person to interpret color or shape.", category: "Accessibility", family: "Semantics", apis: ["Chart", "accessibilityLabel", "accessibilityValue", "accessibilityHidden"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "right-to-left-layout", title: "Right-to-left layouts", summary: "Semantic leading and trailing alignment lets a native interface mirror for right-to-left languages.", category: "Localization", family: "Language", apis: ["layoutDirection", "locale", "NavigationStack"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: true),
+        AtlasEntry(id: "localized-text-expansion", title: "Text expansion", summary: "Flexible rows and multiline buttons leave room for translated labels to become longer.", category: "Localization", family: "Language", apis: ["fixedSize", "ViewThatFits", "Toggle", "lineLimit"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "mixed-direction-content", title: "Mixed-direction text", summary: "Direction isolation keeps addresses, phone numbers, and other left-to-right fragments readable within right-to-left text.", category: "Localization", family: "Language", apis: ["layoutDirection", "Text", "textSelection"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "localized-value-formats", title: "Localized value formats", summary: "Locale-aware format styles control dates, currencies, numbers, percentages, and measurements consistently.", category: "Localization", family: "Formats", apis: ["Locale", "Date.FormatStyle", "FloatingPointFormatStyle", "Measurement"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "grammatical-plural-agreement", title: "Grammatical agreement", summary: "Automatic inflection can adjust supported words to a count while keeping the full phrase together.", category: "Localization", family: "Formats", apis: ["Text", "LocalizedStringKey", "inflect"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "international-script-input", title: "International scripts and input", summary: "System fonts and unrestricted text bindings accommodate different writing systems and ongoing text composition.", category: "Localization", family: "Language", apis: ["TextField", "locale", "textInputAutocapitalization", "lineLimit"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "split-arrangements", title: "Native split arrangements", summary: "Let the system arrange primary and secondary content.", category: "Device adaptation", family: "iPhone Duo", apis: ["ArrangementView", "arrangementViewStyle"], minimumOS: "27.1", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "overlay-arrangements", title: "Native overlay arrangements", summary: "Let a foreground panel move into its own region when needed.", category: "Device adaptation", family: "iPhone Duo", apis: ["ArrangementView", "overlayArrangementEdge"], minimumOS: "27.1", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "arrangement-proportions", title: "Arrangement proportions", summary: "Give primary content a preferred share of an adaptive split.", category: "Device adaptation", family: "iPhone Duo", apis: ["splitArrangementLayoutRatio", "splitArrangementLayoutSize"], minimumOS: "27.1", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "reserved-region-inspection", title: "Reserved regions", summary: "Inspect the real division and occlusion regions reported by the system.", category: "Device adaptation", family: "Device geometry", apis: ["GeometryProxy.reservedRegions", "ReservedRegion"], minimumOS: "27.1", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "hinge-observation", title: "Live hinge observation", summary: "Read the system’s actual hinge angle and status.", category: "Device adaptation", family: "iPhone Duo", apis: ["onHingeChange", "DeviceHinge"], minimumOS: "27.1", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "size-class-and-geometry", title: "Size class and actual geometry", summary: "Describe the space a view has, without guessing the device.", category: "Device adaptation", family: "Adaptive foundations", apis: ["GeometryReader", "horizontalSizeClass", "verticalSizeClass"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "resize-state-preservation", title: "Preserving state while resizing", summary: "Change the layout without recreating its stateful children.", category: "Device adaptation", family: "Adaptive foundations", apis: ["AnyLayout", "GeometryReader"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "adaptive-media-composition", title: "Adaptive media composition", summary: "Use the available shape to choose where controls belong.", category: "Device adaptation", family: "Adaptive foundations", apis: ["GeometryReader", "AnyLayout", "aspectRatio"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "wide-inspector-workspace", title: "A workspace with an inspector", summary: "Keep navigation, content, and document settings within reach.", category: "Wide layouts", family: "Adaptive workspaces", apis: ["NavigationSplitView", "inspector", "inspectorColumnWidth"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: true),
+        AtlasEntry(id: "adaptive-content-density", title: "A grid that uses the window", summary: "Fit more columns while keeping each card readable.", category: "Wide layouts", family: "Adaptive workspaces", apis: ["LazyVGrid", "GridItem", "ViewThatFits"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "pointer-keyboard-actions", title: "Pointer and keyboard actions", summary: "Give the same actions touch, hover, and shortcut affordances.", category: "Wide layouts", family: "Input adaptation", apis: ["keyboardShortcut", "hoverEffect", "FocusState"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "drag-between-collections", title: "Drag between collections", summary: "Move an idea from one board to another.", category: "Wide layouts", family: "Input adaptation", apis: ["draggable", "dropDestination", "AnyLayout"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "wide-popover-adaptation", title: "An anchored popover", summary: "Show options beside their control when space allows.", category: "Wide layouts", family: "Presentation adaptation", apis: ["popover", "presentationCompactAdaptation"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "pencil-drawing-canvas", title: "A native drawing canvas", summary: "Draw with a finger or Apple Pencil using PencilKit.", category: "Wide layouts", family: "Input adaptation", apis: ["PKCanvasView", "PKDrawing", "UIViewRepresentable"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "progress-and-cancellation", title: "Progress and cancellation", summary: "Show progress at the right scale and let work stop.", category: "States", family: "Loading", apis: ["ProgressView", "Task", "Task.cancel"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "skeleton-and-redaction", title: "Skeletons and redaction", summary: "Keep content geometry stable while a local task loads.", category: "States", family: "Loading", apis: ["redacted", "unredacted", "Task"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "empty-and-unavailable", title: "Empty and unavailable content", summary: "Make the absence of content useful.", category: "States", family: "Empty states", apis: ["ContentUnavailableView", "ContentUnavailableView.search"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "recoverable-errors", title: "Recoverable errors and retry", summary: "Turn a failed local load into a clear next action.", category: "States", family: "Recovery", apis: ["ContentUnavailableView", "ProgressView", "Task"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "partial-and-offline", title: "Partial failures and offline content", summary: "Keep saved content useful when one part fails.", category: "States", family: "Degraded states", apis: ["List", "LabeledContent", "ProgressView", "Task"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "background-refresh", title: "Refreshing existing content", summary: "Update stable rows while the collection stays visible.", category: "States", family: "Loading", apis: ["refreshable", "List", "Task", "ProgressView"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "optimistic-updates", title: "Optimistic updates and rollback", summary: "Show a change immediately and reconcile its result.", category: "States", family: "Recovery", apis: ["Task", "Button", "ProgressView"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "success-and-undo", title: "Success confirmation and undo", summary: "Confirm a local change with an immediate way back.", category: "States", family: "Recovery", apis: ["safeAreaInset", "swipeActions", "Button"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "settings-form", title: "Settings forms", summary: "Grouped settings expose preferences and reveal dependent options only when they apply.", category: "Forms", family: "Forms", apis: ["Form", "Section", "Toggle", "Picker", "DatePicker"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "draft-editing-flow", title: "Draft editing and unsaved changes", summary: "Editing a separate draft lets Save commit changes and Cancel discard them deliberately.", category: "Forms", family: "Forms", apis: ["sheet", "interactiveDismissDisabled", "confirmationDialog", "ToolbarItem"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "conditional-validation-form", title: "Conditional forms and validation", summary: "Required fields and conditional questions make the form respond to the choices already made.", category: "Forms", family: "Forms", apis: ["Form", "Picker", "Stepper", "onChange"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "multi-step-setup", title: "Multi-step forms", summary: "A small sequence keeps progress visible while preserving earlier answers.", category: "Forms", family: "Flows", apis: ["ProgressView", "Form", "safeAreaInset", "Button"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "onboarding-preferences", title: "Onboarding and preferences", summary: "A short introduction leads into useful choices and a clear completion state.", category: "Forms", family: "Flows", apis: ["TabView", "tabViewStyle", "Button", "Toggle"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "profile-editing", title: "Profile editing", summary: "An editable profile keeps its draft separate from the saved summary and offers an explicit way to reset changes.", category: "Forms", family: "Forms", apis: ["Form", "TextField", "ColorPicker", "toolbar"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "batch-editing-recovery", title: "Batch actions and recovery", summary: "A selection flow groups related actions, confirms destructive changes, and offers a direct undo.", category: "Forms", family: "Flows", apis: ["List(selection:)", "confirmationDialog", "sheet", "EditMode"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "import-progress-flow", title: "Import progress and cancellation", summary: "A processing flow keeps progress, pause, cancellation, and completion tied to the same state.", category: "Forms", family: "Flows", apis: ["ProgressView", "task(id:)", "ContentUnavailableView"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "filter-sort-sheet-flow", title: "Filter and sort sheets", summary: "A separate draft lets a sheet apply several filter and sort changes together.", category: "Forms", family: "Forms", apis: ["sheet", "Form", "Picker", "Toggle", "presentationDetents"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "chart-mark-types", title: "Chart marks and axes", summary: "Bar, line, area, and point marks present the same data with different emphasis.", category: "Charts", family: "Charts", apis: ["Chart", "BarMark", "LineMark", "AreaMark", "PointMark", "RuleMark", "AxisMarks"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "chart-selection", title: "Chart selection and scrubbing", summary: "Native chart selection maps a gesture to a domain value that drives a visible annotation.", category: "Charts", family: "Charts", apis: ["Chart", "chartXSelection", "RuleMark", "PointMark", "annotation"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "sector-chart-selection", title: "Sector and donut charts", summary: "Sector marks show parts of a whole and expose their selected angular value.", category: "Charts", family: "Charts", apis: ["Chart", "SectorMark", "chartAngleSelection", "chartForegroundStyleScale"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "scrolling-time-series", title: "Scrollable time series", summary: "A visible domain lets a long time series scroll while its axes retain a useful scale.", category: "Charts", family: "Charts", apis: ["Chart", "chartScrollableAxes", "chartXVisibleDomain", "chartScrollPosition", "AxisMarks"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "multi-series-chart", title: "Comparing chart series", summary: "Consistent colors, symbols, and a shared scale make multiple series easier to compare.", category: "Charts", family: "Charts", apis: ["Chart", "LineMark", "BarMark", "foregroundStyle(by:)", "symbol(by:)", "chartLegend"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "chart-data-edge-cases", title: "Chart data edge cases", summary: "Empty, missing, negative, and extreme values need deliberate domains and honest gaps.", category: "Charts", family: "Charts", apis: ["Chart", "LineMark", "PointMark", "RuleMark", "chartYScale", "ContentUnavailableView"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "live-chart-metrics", title: "Live charts and metrics", summary: "Appending readings updates a chart and its summary metrics from the same state.", category: "Charts", family: "Charts", apis: ["Chart", "LineMark", "AreaMark", "Gauge", "withAnimation", "task"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "heatmap-table-chart", title: "Heatmaps and sortable data", summary: "Rectangle marks reveal a two-dimensional pattern while a table exposes exact values.", category: "Charts", family: "Charts", apis: ["Chart", "RectangleMark", "chartForegroundStyleScale", "Table", "TableColumn", "KeyPathComparator"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "three-dimensional-charts", title: "Three-dimensional charts", summary: "Chart3D plots three numeric dimensions and lets the viewer rotate the native chart.", category: "Charts", family: "Charts", apis: ["Chart3D", "PointMark", "chart3DPose", "chartZScale"], minimumOS: "26.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "timeline-chart", title: "Timeline charts", summary: "Ranged bar marks place durations on a shared timeline and make overlaps visible.", category: "Charts", family: "Charts", apis: ["Chart", "BarMark", "RuleMark", "chartXScale", "AxisMarks"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
     ]
 
-    @MainActor @ViewBuilder
-    static func demo(for id: String) -> some View {
+    @MainActor
+    static func demo(for id: String) -> AnyView {
         switch id {
         case "alert-actions":
-            if #available(iOS 18.0, *) { AlertActionsDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(AlertActionsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "alert-text-fields":
-            if #available(iOS 18.0, *) { AlertTextFieldsDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(AlertTextFieldsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "confirmation-dialogs":
-            if #available(iOS 18.0, *) { ConfirmationDialogsDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(ConfirmationDialogsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "popover-anchors":
-            if #available(iOS 18.0, *) { PopoverAnchorsDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(PopoverAnchorsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "popover-adaptation":
-            if #available(iOS 18.0, *) { PopoverAdaptationDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(PopoverAdaptationDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "popover-content":
-            if #available(iOS 18.0, *) { PopoverContentDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(PopoverContentDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "inspectors":
-            if #available(iOS 18.0, *) { InspectorsDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(InspectorsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "source-transitions":
-            if #available(iOS 18.0, *) { SourceTransitionsDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(SourceTransitionsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "presentation-stress-tests":
-            if #available(iOS 18.0, *) { PresentationStressTestsDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(PresentationStressTestsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "sheet-basics":
-            if #available(iOS 18.0, *) { SheetBasicsDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(SheetBasicsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "sheet-detents":
-            if #available(iOS 18.0, *) { SheetDetentsDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(SheetDetentsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "content-sized-sheets":
-            if #available(iOS 18.0, *) { ContentSizedSheetsDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(ContentSizedSheetsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "sheet-appearance":
-            if #available(iOS 18.0, *) { SheetAppearanceDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(SheetAppearanceDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "sheet-background-interaction":
-            if #available(iOS 18.0, *) { SheetBackgroundInteractionDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(SheetBackgroundInteractionDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "sheet-scrolling":
-            if #available(iOS 18.0, *) { SheetScrollingDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(SheetScrollingDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "sheet-dismissal":
-            if #available(iOS 18.0, *) { SheetDismissalDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(SheetDismissalDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "sheet-keyboard":
-            if #available(iOS 18.0, *) { SheetKeyboardDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(SheetKeyboardDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "sheet-navigation":
-            if #available(iOS 18.0, *) { SheetNavigationDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(SheetNavigationDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "sheet-full-screen":
-            if #available(iOS 18.0, *) { SheetFullScreenDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(SheetFullScreenDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "sheet-source-zoom":
-            if #available(iOS 18.0, *) { SheetSourceZoomDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(SheetSourceZoomDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "sheet-adaptation":
-            if #available(iOS 18.0, *) { SheetAdaptationDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(SheetAdaptationDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "navigation-push-pop":
-            if #available(iOS 18.0, *) { NavigationPushPopDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(NavigationPushPopDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "navigation-title-styles":
-            if #available(iOS 18.0, *) { NavigationTitleStylesDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(NavigationTitleStylesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "navigation-title-menu":
-            if #available(iOS 18.0, *) { NavigationTitleMenuDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(NavigationTitleMenuDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "navigation-path-restoration":
-            if #available(iOS 18.0, *) { NavigationPathRestorationDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(NavigationPathRestorationDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "navigation-bar-appearance":
-            if #available(iOS 18.0, *) { NavigationBarAppearanceDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(NavigationBarAppearanceDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "navigation-image-header":
-            if #available(iOS 18.0, *) { NavigationImageHeaderDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(NavigationImageHeaderDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "navigation-scroll-restoration":
-            if #available(iOS 18.0, *) { NavigationScrollRestorationDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(NavigationScrollRestorationDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "navigation-destination-states":
-            if #available(iOS 18.0, *) { NavigationDestinationStatesDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(NavigationDestinationStatesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "standard-tabs":
-            if #available(iOS 18.0, *) { StandardTabsDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(StandardTabsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "tab-navigation-stacks":
-            if #available(iOS 18.0, *) { TabNavigationStacksDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(TabNavigationStacksDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "search-tab":
-            if #available(iOS 18.0, *) { SearchTabDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(SearchTabDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "minimizing-tab-bars":
-            if #available(iOS 26.0, *) { MinimizingTabBarsDemo() }
-            else { ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 26.0, *) { return AnyView(MinimizingTabBarsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "tab-bottom-accessory":
-            if #available(iOS 26.0, *) { TabBottomAccessoryDemo() }
-            else { ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 26.0, *) { return AnyView(TabBottomAccessoryDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "sidebar-adaptable-tabs":
-            if #available(iOS 18.0, *) { SidebarAdaptableTabsDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(SidebarAdaptableTabsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "two-column-navigation":
-            if #available(iOS 18.0, *) { TwoColumnNavigationDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(TwoColumnNavigationDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "three-column-navigation":
-            if #available(iOS 18.0, *) { ThreeColumnNavigationDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(ThreeColumnNavigationDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "toolbar-placements":
+            if #available(iOS 18.0, *) { return AnyView(ToolbarPlacementsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "toolbar-groups":
+            if #available(iOS 26.0, *) { return AnyView(ToolbarGroupsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "toolbar-action-roles":
+            if #available(iOS 18.0, *) { return AnyView(ToolbarActionRolesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "toolbar-menus":
+            if #available(iOS 18.0, *) { return AnyView(ToolbarMenusDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "selection-toolbars":
+            if #available(iOS 18.0, *) { return AnyView(SelectionToolbarsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "keyboard-toolbars":
+            if #available(iOS 18.0, *) { return AnyView(KeyboardToolbarsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "toolbar-overflow":
+            if #available(iOS 27.0, *) { return AnyView(ToolbarOverflowDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 27.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "toolbar-minimization":
+            if #available(iOS 27.0, *) { return AnyView(ToolbarMinimizationDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 27.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "nested-scrolling":
+            if #available(iOS 18.0, *) { return AnyView(NestedScrollingDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "scroll-snapping":
+            if #available(iOS 18.0, *) { return AnyView(ScrollSnappingDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "scroll-position":
+            if #available(iOS 18.0, *) { return AnyView(ScrollPositionDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "bottom-anchored-chat":
+            if #available(iOS 18.0, *) { return AnyView(BottomAnchoredChatDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "preserving-scroll-target":
+            if #available(iOS 18.0, *) { return AnyView(PreservingScrollTargetDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "scroll-bounce-indicators":
+            if #available(iOS 18.0, *) { return AnyView(ScrollBounceIndicatorsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "refresh-and-pagination":
+            if #available(iOS 18.0, *) { return AnyView(RefreshPaginationDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "pinned-headers-scroll-effects":
+            if #available(iOS 18.0, *) { return AnyView(PinnedHeadersScrollEffectsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "scroll-edge-styles":
-            if #available(iOS 26.0, *) { ScrollEdgeStylesDemo() }
-            else { ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 26.0, *) { return AnyView(ScrollEdgeStylesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "scroll-edge-visibility":
-            if #available(iOS 26.0, *) { ScrollEdgeVisibilityDemo() }
-            else { ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 26.0, *) { return AnyView(ScrollEdgeVisibilityDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "safe-area-actions":
-            if #available(iOS 18.0, *) { SafeAreaActionsDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(SafeAreaActionsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "safe-area-bars":
-            if #available(iOS 26.0, *) { SafeAreaBarsDemo() }
-            else { ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 26.0, *) { return AnyView(SafeAreaBarsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "scroll-content-margins":
-            if #available(iOS 18.0, *) { ScrollContentMarginsDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(ScrollContentMarginsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "full-bleed-safe-areas":
-            if #available(iOS 18.0, *) { FullBleedSafeAreasDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(FullBleedSafeAreasDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "keyboard-safe-areas":
-            if #available(iOS 18.0, *) { KeyboardSafeAreasDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(KeyboardSafeAreasDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "background-extension":
-            if #available(iOS 26.0, *) { BackgroundExtensionDemo() }
-            else { ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 26.0, *) { return AnyView(BackgroundExtensionDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "system-materials":
-            if #available(iOS 18.0, *) { SystemMaterialsDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(SystemMaterialsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "material-versus-opacity":
-            if #available(iOS 18.0, *) { MaterialVersusOpacityDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 18.0, *) { return AnyView(MaterialVersusOpacityDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "glass-variants":
-            if #available(iOS 26.0, *) { GlassVariantsDemo() }
-            else { ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 26.0, *) { return AnyView(GlassVariantsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "glass-shapes":
-            if #available(iOS 26.0, *) { GlassShapesDemo() }
-            else { ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 26.0, *) { return AnyView(GlassShapesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "glass-containers":
-            if #available(iOS 26.0, *) { GlassContainersDemo() }
-            else { ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 26.0, *) { return AnyView(GlassContainersDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "glass-morphing":
-            if #available(iOS 26.0, *) { GlassMorphingDemo() }
-            else { ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 26.0, *) { return AnyView(GlassMorphingDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "glass-backgrounds":
-            if #available(iOS 26.0, *) { GlassBackgroundsDemo() }
-            else { ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+            if #available(iOS 26.0, *) { return AnyView(GlassBackgroundsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
         case "adaptive-material-fallback":
-            if #available(iOS 18.0, *) { AdaptiveMaterialFallbackDemo() }
-            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
-        default: ContentUnavailableView("Example unavailable", systemImage: "questionmark.folder")
+            if #available(iOS 18.0, *) { return AnyView(AdaptiveMaterialFallbackDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "list-styles":
+            if #available(iOS 18.0, *) { return AnyView(ListStylesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "list-row-anatomy":
+            if #available(iOS 18.0, *) { return AnyView(ListRowAnatomyDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "list-selection":
+            if #available(iOS 18.0, *) { return AnyView(ListSelectionDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "list-swipe-actions":
+            if #available(iOS 18.0, *) { return AnyView(ListSwipeActionsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "list-editing-reordering":
+            if #available(iOS 18.0, *) { return AnyView(ListEditingReorderingDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "list-outline-hierarchy":
+            if #available(iOS 18.0, *) { return AnyView(ListOutlineHierarchyDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "list-section-index":
+            if #available(iOS 26.0, *) { return AnyView(ListSectionIndexDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "list-animated-updates":
+            if #available(iOS 18.0, *) { return AnyView(ListAnimatedUpdatesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "grid-column-sizing":
+            if #available(iOS 18.0, *) { return AnyView(GridColumnSizingDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "grid-alignment-spanning":
+            if #available(iOS 18.0, *) { return AnyView(GridAlignmentSpanningDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "grid-selection":
+            if #available(iOS 18.0, *) { return AnyView(GridSelectionDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "card-carousels":
+            if #available(iOS 18.0, *) { return AnyView(CardCarouselsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "grid-detail-transitions":
+            if #available(iOS 18.0, *) { return AnyView(GridDetailTransitionsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "reorderable-grid":
+            if #available(iOS 18.0, *) { return AnyView(ReorderableGridDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "wrapping-chip-layout":
+            if #available(iOS 18.0, *) { return AnyView(WrappingChipLayoutDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "masonry-grid-layout":
+            if #available(iOS 18.0, *) { return AnyView(MasonryGridLayoutDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "button-styles":
+            if #available(iOS 18.0, *) { return AnyView(NativeButtonStylesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "button-labels":
+            if #available(iOS 18.0, *) { return AnyView(ButtonLabelsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "button-states":
+            if #available(iOS 18.0, *) { return AnyView(ButtonStatesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "repeating-buttons":
+            if #available(iOS 18.0, *) { return AnyView(RepeatingButtonsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "menus":
+            if #available(iOS 18.0, *) { return AnyView(NativeMenusDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "menu-primary-actions":
+            if #available(iOS 18.0, *) { return AnyView(MenuPrimaryActionsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "context-menus":
+            if #available(iOS 18.0, *) { return AnyView(ContextMenusDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "custom-button-styles":
+            if #available(iOS 18.0, *) { return AnyView(CustomButtonStylesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "picker-styles":
+            if #available(iOS 18.0, *) { return AnyView(PickerStylesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "toggle-styles":
+            if #available(iOS 18.0, *) { return AnyView(ToggleStylesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "sliders-and-steppers":
+            if #available(iOS 18.0, *) { return AnyView(SlidersAndSteppersDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "date-picker-styles":
+            if #available(iOS 18.0, *) { return AnyView(DatePickerStylesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "date-selection":
+            if #available(iOS 18.0, *) { return AnyView(DateSelectionDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "color-pickers":
+            if #available(iOS 18.0, *) { return AnyView(ColorPickersDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "choice-chips":
+            if #available(iOS 18.0, *) { return AnyView(ChoiceChipsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "rating-controls":
+            if #available(iOS 18.0, *) { return AnyView(RatingControlsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "text-field-styles":
+            if #available(iOS 18.0, *) { return AnyView(TextFieldStylesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "secure-field-visibility":
+            if #available(iOS 18.0, *) { return AnyView(SecureFieldVisibilityDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "multiline-text-fields":
+            if #available(iOS 18.0, *) { return AnyView(MultilineTextFieldsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "text-editor-selection":
+            if #available(iOS 18.0, *) { return AnyView(TextEditorSelectionDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "rich-text-editing":
+            if #available(iOS 26.0, *) { return AnyView(RichTextEditingDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "keyboard-focus-flow":
+            if #available(iOS 18.0, *) { return AnyView(KeyboardFocusFlowDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "formatted-text-input":
+            if #available(iOS 18.0, *) { return AnyView(FormattedTextInputDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "inline-form-validation":
+            if #available(iOS 18.0, *) { return AnyView(InlineFormValidationDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "keyboard-safe-area":
+            if #available(iOS 18.0, *) { return AnyView(KeyboardSafeAreaDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "search-placement-activation":
+            if #available(iOS 18.0, *) { return AnyView(SearchPlacementActivationDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "search-suggestions-history":
+            if #available(iOS 18.0, *) { return AnyView(SearchSuggestionsHistoryDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "search-scopes":
+            if #available(iOS 18.0, *) { return AnyView(SearchScopesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "search-tokens":
+            if #available(iOS 18.0, *) { return AnyView(SearchTokensDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "search-filters":
+            if #available(iOS 18.0, *) { return AnyView(SearchFiltersDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "search-result-states":
+            if #available(iOS 18.0, *) { return AnyView(SearchResultStatesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "search-highlighting-groups":
+            if #available(iOS 18.0, *) { return AnyView(SearchHighlightingGroupsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "search-navigation-state":
+            if #available(iOS 18.0, *) { return AnyView(SearchNavigationStateDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "split-view-search":
+            if #available(iOS 18.0, *) { return AnyView(SplitViewSearchDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "keyword-search-phrases":
+            if #available(iOS 18.0, *) { return AnyView(KeywordSearchPhrasesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "system-text-styles":
+            if #available(iOS 18.0, *) { return AnyView(SystemTextStylesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "font-design-weight-width":
+            if #available(iOS 18.0, *) { return AnyView(FontDesignWeightWidthDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "dynamic-type-readable-width":
+            if #available(iOS 18.0, *) { return AnyView(DynamicTypeReadableWidthDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "text-wrapping-truncation":
+            if #available(iOS 18.0, *) { return AnyView(TextWrappingTruncationDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "text-spacing-baselines":
+            if #available(iOS 18.0, *) { return AnyView(TextSpacingBaselinesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "attributed-text-markdown":
+            if #available(iOS 18.0, *) { return AnyView(AttributedTextMarkdownDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "numbers-dates-timers":
+            if #available(iOS 18.0, *) { return AnyView(NumbersDatesTimersDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "expandable-selectable-text":
+            if #available(iOS 18.0, *) { return AnyView(ExpandableSelectableTextDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "rich-text-editor":
+            if #available(iOS 26.0, *) { return AnyView(RichTextEditorDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "symbol-rendering-modes":
+            if #available(iOS 18.0, *) { return AnyView(SymbolRenderingModesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "symbol-variants-alignment":
+            if #available(iOS 18.0, *) { return AnyView(SymbolVariantsAlignmentDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "variable-symbols-effects":
+            if #available(iOS 18.0, *) { return AnyView(VariableSymbolsEffectsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "semantic-colors-contrast":
+            if #available(iOS 18.0, *) { return AnyView(SemanticColorsContrastDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "gradients-and-mesh":
+            if #available(iOS 18.0, *) { return AnyView(GradientsMeshDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "image-fitting-avatars":
+            if #available(iOS 18.0, *) { return AnyView(ImageFittingAvatarsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "concentric-shapes":
+            if #available(iOS 26.0, *) { return AnyView(ConcentricShapesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "masks-blending-overlays":
+            if #available(iOS 18.0, *) { return AnyView(MasksBlendingOverlaysDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "stack-alignment":
+            if #available(iOS 18.0, *) { return AnyView(StackAlignmentDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "flexible-frames":
+            if #available(iOS 18.0, *) { return AnyView(FlexibleFramesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "layout-insets":
+            if #available(iOS 18.0, *) { return AnyView(LayoutInsetsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "overlays-and-modifier-order":
+            if #available(iOS 18.0, *) { return AnyView(OverlayModifierOrderDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "adaptive-composition":
+            if #available(iOS 18.0, *) { return AnyView(AdaptiveCompositionDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "layout-switching":
+            if #available(iOS 18.0, *) { return AnyView(LayoutSwitchingDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "wrapping-layout":
+            if #available(iOS 18.0, *) { return AnyView(WrappingLayoutDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "geometry-and-aspect":
+            if #available(iOS 18.0, *) { return AnyView(GeometryAspectDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "animation-curves":
+            if #available(iOS 18.0, *) { return AnyView(AnimationCurvesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "view-transitions":
+            if #available(iOS 18.0, *) { return AnyView(ViewTransitionsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "matched-geometry":
+            if #available(iOS 18.0, *) { return AnyView(MatchedGeometryDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "content-and-symbol-transitions":
+            if #available(iOS 18.0, *) { return AnyView(ContentSymbolTransitionsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "phase-and-keyframe-animation":
+            if #available(iOS 18.0, *) { return AnyView(PhaseKeyframeDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "gesture-driven-motion":
+            if #available(iOS 18.0, *) { return AnyView(GestureDrivenMotionDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "animation-completion":
+            if #available(iOS 18.0, *) { return AnyView(AnimationCompletionDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "navigation-zoom":
+            if #available(iOS 18.0, *) { return AnyView(NavigationZoomDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "tap-and-press":
+            if #available(iOS 18.0, *) { return AnyView(TapAndPressDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "simultaneous-transforms":
+            if #available(iOS 18.0, *) { return AnyView(SimultaneousTransformsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "scroll-and-swipe-gestures":
+            if #available(iOS 18.0, *) { return AnyView(ScrollSwipeGesturesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "scrubbing-control":
+            if #available(iOS 18.0, *) { return AnyView(ScrubbingControlDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "drag-previews-and-drops":
+            if #available(iOS 18.0, *) { return AnyView(DragPreviewsAndDropsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "reordering-and-insertion":
+            if #available(iOS 18.0, *) { return AnyView(ReorderingInsertionDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "multi-item-dragging":
+            if #available(iOS 27.0, *) { return AnyView(MultiItemDraggingDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 27.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "sensory-feedback":
+            if #available(iOS 18.0, *) { return AnyView(SensoryFeedbackDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "dynamic-type-layouts":
+            if #available(iOS 18.0, *) { return AnyView(DynamicTypeLayoutsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "accessible-labels-groups":
+            if #available(iOS 18.0, *) { return AnyView(AccessibleLabelsGroupsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "accessibility-custom-actions":
+            if #available(iOS 18.0, *) { return AnyView(AccessibilityCustomActionsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "accessible-adjustable-controls":
+            if #available(iOS 18.0, *) { return AnyView(AccessibleAdjustableControlsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "accessibility-focus-announcements":
+            if #available(iOS 18.0, *) { return AnyView(AccessibilityFocusAnnouncementsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "contrast-transparency-adaptation":
+            if #available(iOS 18.0, *) { return AnyView(ContrastTransparencyAdaptationDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "reduced-motion-adaptation":
+            if #available(iOS 18.0, *) { return AnyView(ReducedMotionAdaptationDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "accessible-input-controls":
+            if #available(iOS 18.0, *) { return AnyView(AccessibleInputControlsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "accessible-data-summaries":
+            if #available(iOS 18.0, *) { return AnyView(AccessibleDataSummariesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "right-to-left-layout":
+            if #available(iOS 18.0, *) { return AnyView(RightToLeftLayoutDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "localized-text-expansion":
+            if #available(iOS 18.0, *) { return AnyView(LocalizedTextExpansionDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "mixed-direction-content":
+            if #available(iOS 18.0, *) { return AnyView(MixedDirectionContentDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "localized-value-formats":
+            if #available(iOS 18.0, *) { return AnyView(LocalizedValueFormatsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "grammatical-plural-agreement":
+            if #available(iOS 18.0, *) { return AnyView(GrammaticalPluralAgreementDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "international-script-input":
+            if #available(iOS 18.0, *) { return AnyView(InternationalScriptInputDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "split-arrangements":
+            if #available(iOS 27.1, *) { return AnyView(SplitArrangementsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 27.1", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "overlay-arrangements":
+            if #available(iOS 27.1, *) { return AnyView(OverlayArrangementsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 27.1", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "arrangement-proportions":
+            if #available(iOS 27.1, *) { return AnyView(ArrangementProportionsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 27.1", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "reserved-region-inspection":
+            if #available(iOS 27.1, *) { return AnyView(ReservedRegionInspectionDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 27.1", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "hinge-observation":
+            if #available(iOS 27.1, *) { return AnyView(HingeObservationDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 27.1", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "size-class-and-geometry":
+            if #available(iOS 18.0, *) { return AnyView(SizeClassGeometryDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "resize-state-preservation":
+            if #available(iOS 18.0, *) { return AnyView(ResizeStatePreservationDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "adaptive-media-composition":
+            if #available(iOS 18.0, *) { return AnyView(AdaptiveMediaCompositionDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "wide-inspector-workspace":
+            if #available(iOS 18.0, *) { return AnyView(WideInspectorWorkspaceDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "adaptive-content-density":
+            if #available(iOS 18.0, *) { return AnyView(AdaptiveContentDensityDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "pointer-keyboard-actions":
+            if #available(iOS 18.0, *) { return AnyView(PointerKeyboardActionsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "drag-between-collections":
+            if #available(iOS 18.0, *) { return AnyView(DragBetweenCollectionsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "wide-popover-adaptation":
+            if #available(iOS 18.0, *) { return AnyView(WidePopoverAdaptationDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "pencil-drawing-canvas":
+            if #available(iOS 18.0, *) { return AnyView(PencilDrawingCanvasDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "progress-and-cancellation":
+            if #available(iOS 18.0, *) { return AnyView(ProgressCancellationDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "skeleton-and-redaction":
+            if #available(iOS 18.0, *) { return AnyView(SkeletonRedactionDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "empty-and-unavailable":
+            if #available(iOS 18.0, *) { return AnyView(EmptyUnavailableDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "recoverable-errors":
+            if #available(iOS 18.0, *) { return AnyView(RecoverableErrorsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "partial-and-offline":
+            if #available(iOS 18.0, *) { return AnyView(PartialOfflineDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "background-refresh":
+            if #available(iOS 18.0, *) { return AnyView(BackgroundRefreshDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "optimistic-updates":
+            if #available(iOS 18.0, *) { return AnyView(OptimisticUpdatesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "success-and-undo":
+            if #available(iOS 18.0, *) { return AnyView(SuccessUndoDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "settings-form":
+            if #available(iOS 18.0, *) { return AnyView(SettingsFormDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "draft-editing-flow":
+            if #available(iOS 18.0, *) { return AnyView(DraftEditingFlowDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "conditional-validation-form":
+            if #available(iOS 18.0, *) { return AnyView(ConditionalValidationFormDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "multi-step-setup":
+            if #available(iOS 18.0, *) { return AnyView(MultiStepSetupDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "onboarding-preferences":
+            if #available(iOS 18.0, *) { return AnyView(OnboardingPreferencesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "profile-editing":
+            if #available(iOS 18.0, *) { return AnyView(ProfileEditingDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "batch-editing-recovery":
+            if #available(iOS 18.0, *) { return AnyView(BatchEditingRecoveryDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "import-progress-flow":
+            if #available(iOS 18.0, *) { return AnyView(ImportProgressFlowDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "filter-sort-sheet-flow":
+            if #available(iOS 18.0, *) { return AnyView(FilterSortSheetFlowDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "chart-mark-types":
+            if #available(iOS 18.0, *) { return AnyView(ChartMarkTypesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "chart-selection":
+            if #available(iOS 18.0, *) { return AnyView(ChartSelectionDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "sector-chart-selection":
+            if #available(iOS 18.0, *) { return AnyView(SectorChartSelectionDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "scrolling-time-series":
+            if #available(iOS 18.0, *) { return AnyView(ScrollingTimeSeriesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "multi-series-chart":
+            if #available(iOS 18.0, *) { return AnyView(MultiSeriesChartDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "chart-data-edge-cases":
+            if #available(iOS 18.0, *) { return AnyView(ChartDataEdgeCasesDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "live-chart-metrics":
+            if #available(iOS 18.0, *) { return AnyView(LiveChartMetricsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "heatmap-table-chart":
+            if #available(iOS 18.0, *) { return AnyView(HeatmapTableChartDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "three-dimensional-charts":
+            if #available(iOS 26.0, *) { return AnyView(ThreeDimensionalChartsDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        case "timeline-chart":
+            if #available(iOS 18.0, *) { return AnyView(TimelineChartDemo()) }
+            else { return AnyView(ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device."))) }
+        default: return AnyView(ContentUnavailableView("Example unavailable", systemImage: "questionmark.folder"))
         }
     }
 }

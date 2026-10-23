@@ -6,7 +6,7 @@
     "website"
   ],
   "scripts": {
-    "sync": "node scripts/sync-catalog.mjs && node scripts/sync-capture-tests.mjs",
+    "sync": "node scripts/sync-catalog.mjs && node scripts/sync-capture-tests.mjs && node scripts/sync-catalog-index.mjs",
     "validate": "node scripts/validate-catalog.mjs",
     "dev": "npm run sync && npm run dev --workspace website",
     "check": "npm run validate && npm run check --workspace website",

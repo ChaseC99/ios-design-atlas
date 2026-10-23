@@ -1,5 +1,8 @@
 import type { CollectionEntry } from 'astro:content';
 import type { ImageMetadata } from 'astro';
+import { createMarkdownProcessor } from '@astrojs/markdown-remark';
+
+const markdown = createMarkdownProcessor();
 
 const images = import.meta.glob<ImageMetadata>('../../../catalog/**/captures/**/*.png', { eager: true, import: 'default' });
 const manifests = import.meta.glob<{ captures: Capture[] }>('../../../catalog/**/captures/manifest.json', { eager: true, import: 'default' });
@@ -8,7 +11,7 @@ export interface Capture {
   file: string; device: string; os: string; osBuild: string; state: string;
   appearance: string; textSize: string; locale: string; xcode: string; sdk: string;
   capturedAt: string; sourceSHA256: string; image?: ImageMetadata;
-  framing?: 'screen' | 'isolated';
+  framing?: 'screen' | 'isolated'; environmentNotes?: string;
 }
 export async function details(entry: CollectionEntry<'catalog'>) {
   const manifestPath = Object.keys(manifests).find(key => key.endsWith(`/${entry.id}/captures/manifest.json`));
@@ -26,7 +29,8 @@ export async function details(entry: CollectionEntry<'catalog'>) {
   const description = body.split(/\n\s*\n/).map(part => part.trim())
     .find(part => part && !/^(#|```|<!--)/.test(part)) ?? entry.data.summary;
   const snippet = body.match(/^```swift\s*\n([\s\S]*?)^```/m)?.[1].trim();
-  return { captures, source, description, snippet, catalogPath: directory.replace('../../../', '') };
+  const descriptionHTML = (await (await markdown).render(description)).code;
+  return { captures, source, description: description.replace(/`([^`]+)`/g, '$1'), descriptionHTML, snippet, catalogPath: directory.replace('../../../', '') };
 }
 export function collections(entries: CollectionEntry<'catalog'>[]) {
   return [...new Set(entries.map(entry => entry.data.category))].map(name => ({
