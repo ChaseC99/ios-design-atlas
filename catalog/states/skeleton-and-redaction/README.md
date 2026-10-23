@@ -1,0 +1,56 @@
+---
+id: "skeleton-and-redaction"
+title: "Skeletons and redaction"
+summary: "Keep content geometry stable while a local task loads."
+category: "States"
+family: "Loading"
+order: 2402
+kind: "native"
+demoMinIOS: "18.0"
+swiftFile: "SkeletonRedactionDemo.swift"
+view: "SkeletonRedactionDemo"
+apis: ["redacted", "unredacted", "Task"]
+tags: ["skeleton", "placeholder", "redaction", "layout-stability", "cancellation"]
+captureNavigation: true
+captureStyle: "screen"
+---
+
+# Skeletons and redaction
+
+Redaction turns a representative content shape into a native placeholder without changing its layout. Hide placeholder data from accessibility and disable its actions, then replace it in place when the local task completes; cancellation keeps the preview ready for another attempt.
+
+## SwiftUI
+
+```swift
+import SwiftUI
+
+struct SkeletonRecipe: View {
+    @State private var loaded = false
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("A weekend in the mountains").font(.title2.bold())
+                Text("Three trails, a small cabin, and a slower pace.")
+            }
+            .redacted(reason: loaded ? [] : .placeholder)
+            .accessibilityHidden(!loaded)
+            if !loaded { Text("Collection preview").font(.caption).foregroundStyle(.secondary) }
+            Button(loaded ? "Show placeholder" : "Reveal content") { loaded.toggle() }
+        }.padding()
+    }
+}
+```
+
+## Captures
+
+<!-- captures:start -->
+Captures have not been recorded yet.
+<!-- captures:end -->
+
+## Full example
+
+[Open the complete runnable example](SkeletonRedactionDemo.swift).
+
+## Reference
+
+[Apple: loading](https://developer.apple.com/design/human-interface-guidelines/loading).
