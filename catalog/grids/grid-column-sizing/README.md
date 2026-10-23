@@ -31,11 +31,12 @@ struct AdaptiveArtwork: View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(0..<12) { index in
-                    Image(systemName: "leaf")
-                        .font(.largeTitle)
-                        .frame(maxWidth: .infinity)
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(.teal.opacity(0.1))
                         .aspectRatio(1, contentMode: .fit)
-                        .background(.teal.opacity(0.1), in: .rect(cornerRadius: 16))
+                        .overlay {
+                            Image(systemName: "leaf").font(.largeTitle)
+                        }
                         .accessibilityLabel("Artwork \(index + 1)")
                 }
             }

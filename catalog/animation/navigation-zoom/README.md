@@ -15,7 +15,6 @@ captureNavigation: false
 captureStyle: "screen"
 ownsNavigation: true
 captureAction: "tap"
-captureReadyLabel: "Take the long way home"
 ---
 
 # Navigation zoom

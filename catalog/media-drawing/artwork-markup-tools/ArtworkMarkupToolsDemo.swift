@@ -3,6 +3,7 @@ import SwiftUI
 struct ArtworkMarkupToolsDemo: View {
     @State private var strokes = [Stroke(points: [CGPoint(x: 0.15, y: 0.64), CGPoint(x: 0.32, y: 0.48), CGPoint(x: 0.48, y: 0.59), CGPoint(x: 0.70, y: 0.36), CGPoint(x: 0.85, y: 0.46)], orange: true)]
     @State private var current: [CGPoint] = []
+    @GestureState private var isDrawing = false
     @State private var orange = true
     @State private var squareCrop = false
     var body: some View {
@@ -17,6 +18,7 @@ struct ArtworkMarkupToolsDemo: View {
                     }
                 }.clipShape(.rect(cornerRadius: 24)).contentShape(Rectangle())
                 .gesture(DragGesture(minimumDistance: 0)
+                    .updating($isDrawing) { _, active, _ in active = true }
                     .onChanged { value in current.append(CGPoint(x: value.location.x / proxy.size.width, y: value.location.y / proxy.size.height)) }
                     .onEnded { _ in if !current.isEmpty { strokes.append(Stroke(points: current, orange: orange)); current = [] } })
                 .accessibilityLabel("Artwork annotation surface")
@@ -32,6 +34,12 @@ struct ArtworkMarkupToolsDemo: View {
             Spacer(minLength: 0)
         }.padding(24).frame(maxWidth: 650).frame(maxWidth: .infinity)
         .navigationTitle("Markup studio").navigationBarTitleDisplayMode(.inline)
+        .onChange(of: isDrawing) { _, active in if !active { current = [] } }
+        .onChange(of: current.count) { _, count in
+            // Also clear a gesture cancelled before SwiftUI rendered its active state.
+            if count > 0 && !isDrawing { current = [] }
+        }
+        .onDisappear { current = [] }
         .accessibilityIdentifier("capture-ready")
     }
     private func draw(_ points: [CGPoint], color: Color, context: GraphicsContext, size: CGSize) {

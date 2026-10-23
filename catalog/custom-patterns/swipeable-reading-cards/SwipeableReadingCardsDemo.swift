@@ -3,13 +3,15 @@ import SwiftUI
 struct SwipeableReadingCardsDemo: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var index = 0
-    @State private var offset: CGFloat = 0
+    @GestureState private var dragOffset: CGFloat = 0
+    @State private var exitOffset: CGFloat = 0
     @State private var saved: [String] = []
     @State private var skipped = 0
     @State private var moving = false
     @State private var moveTask: Task<Void, Never>?
     private let titles = ["The long way home", "A room with a view", "Notes from the garden", "An ordinary afternoon"]
     private let subtitles = ["A story about paying attention", "On making space for quiet", "Small things, slowly growing", "The art of doing less"]
+    private var offset: CGFloat { moving ? exitOffset : dragOffset }
     var body: some View {
         VStack(spacing: 28) {
             HStack { Text("Your next read").font(.system(.largeTitle, design: .serif)); Spacer() }
@@ -30,11 +32,13 @@ struct SwipeableReadingCardsDemo: View {
                     }
                     .rotationEffect(.degrees(Double(offset / 25))).offset(x: offset)
                     .gesture(DragGesture(minimumDistance: 15)
-                        .onChanged { value in if !moving && abs(value.translation.width) > abs(value.translation.height) { offset = value.translation.width } }
+                        .updating($dragOffset) { value, offset, _ in
+                            offset = !moving && abs(value.translation.width) > abs(value.translation.height) ? value.translation.width : 0
+                        }
                         .onEnded { value in
-                            guard !moving else { return }
-                            if abs(value.translation.width) > 100 { decide(save: value.translation.width > 0) }
-                            else { withAnimation(reduceMotion ? nil : .spring()) { offset = 0 } }
+                            guard !moving, abs(value.translation.width) > 100,
+                                  abs(value.translation.width) > abs(value.translation.height) else { return }
+                            decide(save: value.translation.width > 0, from: value.translation.width)
                         })
                     .accessibilityAction(named: "Save this card") { decide(save: true) }
                     .accessibilityAction(named: "Skip this card") { decide(save: false) }
@@ -51,19 +55,29 @@ struct SwipeableReadingCardsDemo: View {
             Spacer(minLength: 0)
         }.padding(24).frame(maxWidth: 650).frame(maxWidth: .infinity).clipped()
         .navigationTitle("Reading cards").navigationBarTitleDisplayMode(.inline)
-        .onDisappear { moveTask?.cancel() }
+        .onDisappear { cancelMove() }
         .accessibilityIdentifier("capture-ready")
     }
-    private func decide(save: Bool) {
+    private func decide(save: Bool, from dragOffset: CGFloat = 0) {
         guard index < titles.count, !moving else { return }
-        moving = true
-        withAnimation(reduceMotion ? nil : .easeIn(duration: 0.18)) { offset = save ? 600 : -600 }
+        let currentIndex = index
+        let title = titles[currentIndex]
+        exitOffset = dragOffset; moving = true
+        withAnimation(reduceMotion ? nil : .easeIn(duration: 0.18)) { exitOffset = save ? 600 : -600 }
         moveTask = Task {
-            if !reduceMotion { try? await Task.sleep(for: .milliseconds(180)) }
-            guard !Task.isCancelled else { return }
-            if save { saved.append(titles[index]) } else { skipped += 1 }
-            index += 1; offset = 0; moving = false
+            if !reduceMotion {
+                do { try await Task.sleep(for: .milliseconds(180)) } catch { return }
+            }
+            guard !Task.isCancelled, index == currentIndex else { return }
+            if save { saved.append(title) } else { skipped += 1 }
+            index += 1; exitOffset = 0; moving = false; moveTask = nil
         }
+    }
+    private func cancelMove() {
+        moveTask?.cancel(); moveTask = nil
+        var transaction = Transaction()
+        transaction.disablesAnimations = true
+        withTransaction(transaction) { exitOffset = 0; moving = false }
     }
 }
 #Preview { NavigationStack { SwipeableReadingCardsDemo() } }

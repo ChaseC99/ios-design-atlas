@@ -35,6 +35,7 @@ struct ReorderableGridDemo: View {
             }.padding(20)
         }
         .navigationTitle("Arrange artwork")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar { ToolbarItem(placement: .topBarTrailing) { Button("Reset") { withAnimation { order = Array(0..<9) } } } }
         .accessibilityIdentifier("capture-ready")
     }

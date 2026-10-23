@@ -16,10 +16,13 @@ struct GridColumnSizingDemo: View {
             LazyVGrid(columns: columns, spacing: 18) {
                 ForEach(0..<count, id: \.self) { index in
                     VStack(spacing: 10) {
-                        Image(systemName: ["sun.horizon", "leaf", "water.waves", "moon.stars", "mountain.2", "cloud.sun"][index % 6])
-                            .font(.system(size: 32)).foregroundStyle(.white)
-                            .frame(maxWidth: .infinity).aspectRatio(1, contentMode: .fit)
-                            .background([Color.orange, .teal, .blue, .indigo, .brown, .cyan][index % 6].gradient, in: .rect(cornerRadius: 20))
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill([Color.orange, .teal, .blue, .indigo, .brown, .cyan][index % 6].gradient)
+                            .aspectRatio(1, contentMode: .fit)
+                            .overlay {
+                                Image(systemName: ["sun.horizon", "leaf", "water.waves", "moon.stars", "mountain.2", "cloud.sun"][index % 6])
+                                    .font(.system(size: 32)).foregroundStyle(.white)
+                            }
                         Text(["First light", "Slow days", "Open water", "After dark", "Higher ground", "Passing clouds"][index % 6])
                             .font(.caption.weight(.medium)).lineLimit(2).multilineTextAlignment(.center)
                     }

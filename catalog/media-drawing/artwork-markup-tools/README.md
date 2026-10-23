@@ -26,18 +26,33 @@ A Canvas renders normalized annotation strokes over original artwork; undo remov
 import SwiftUI
 
 struct DrawAStroke: View {
-    @State private var points: [CGPoint] = []
+    @State private var strokes: [[CGPoint]] = []
+    @State private var current: [CGPoint] = []
+    @GestureState private var isDrawing = false
     var body: some View {
         Canvas { context, _ in
-            var path = Path()
-            if let first = points.first {
-                path.move(to: first)
-                for point in points.dropFirst() { path.addLine(to: point) }
+            for points in strokes + [current] {
+                var path = Path()
+                if let first = points.first {
+                    path.move(to: first)
+                    for point in points.dropFirst() { path.addLine(to: point) }
+                }
+                context.stroke(path, with: .color(.teal), style: StrokeStyle(lineWidth: 4, lineCap: .round))
             }
-            context.stroke(path, with: .color(.teal), style: StrokeStyle(lineWidth: 4, lineCap: .round))
         }
         .background(.teal.opacity(0.08))
-        .gesture(DragGesture(minimumDistance: 0).onChanged { points.append($0.location) })
+        .gesture(DragGesture(minimumDistance: 0)
+            .updating($isDrawing) { _, active, _ in active = true }
+            .onChanged { current.append($0.location) }
+            .onEnded { _ in
+                if !current.isEmpty { strokes.append(current) }
+                current = []
+            })
+        .onChange(of: isDrawing) { _, active in if !active { current = [] } }
+        .onChange(of: current.count) { _, count in
+            if count > 0 && !isDrawing { current = [] }
+        }
+        .onDisappear { current = [] }
     }
 }
 ```

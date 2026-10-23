@@ -26,17 +26,16 @@ A custom card stack offers swipe decisions with equivalent buttons and accessibi
 import SwiftUI
 
 struct SwipeDecision: View {
-    @State private var offset: CGFloat = 0
+    @GestureState private var offset: CGFloat = 0
     @State private var saved = false
     var body: some View {
         Text(saved ? "Saved" : "Swipe right to save")
             .padding(40).background(.teal.opacity(0.1), in: .rect(cornerRadius: 24))
             .offset(x: offset)
             .gesture(DragGesture()
-                .onChanged { offset = $0.translation.width }
+                .updating($offset) { value, offset, _ in offset = value.translation.width }
                 .onEnded { value in
                     if value.translation.width > 100 { saved = true }
-                    withAnimation(.snappy) { offset = 0 }
                 })
             .accessibilityAction(named: "Save") { saved = true }
         Button("Save") { saved = true }

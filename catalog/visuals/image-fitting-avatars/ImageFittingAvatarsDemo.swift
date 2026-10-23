@@ -17,8 +17,13 @@ struct ImageFittingAvatarsDemo: View {
                 artwork.resizable().scaledToFit().frame(maxWidth: .infinity).frame(height: 180)
                     .background(Color(uiColor: .secondarySystemBackground)).clipShape(RoundedRectangle(cornerRadius: 24))
                 Text("FILL").font(.caption2).tracking(2).foregroundStyle(.secondary)
-                artwork.resizable().scaledToFill().frame(height: 220, alignment: cropAlignment).clipped()
-                    .clipShape(RoundedRectangle(cornerRadius: 24))
+                GeometryReader { geometry in
+                    artwork.resizable().scaledToFill()
+                        .frame(width: geometry.size.width, height: 220, alignment: cropAlignment)
+                        .clipped()
+                }
+                .frame(height: 220)
+                .clipShape(RoundedRectangle(cornerRadius: 24))
                 HStack(spacing: 24) {
                     Group {
                         if imageAvailable { artwork.resizable().scaledToFill() }
