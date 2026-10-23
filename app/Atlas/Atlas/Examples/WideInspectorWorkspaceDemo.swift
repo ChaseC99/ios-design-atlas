@@ -1,0 +1,1 @@
+../../../../catalog/wide-layouts/wide-inspector-workspace/WideInspectorWorkspaceDemo.swift

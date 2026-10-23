@@ -1,0 +1,1 @@
+../../../../catalog/device-adaptation/hinge-observation/HingeObservationDemo.swift

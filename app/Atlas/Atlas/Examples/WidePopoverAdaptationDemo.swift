@@ -1,0 +1,1 @@
+../../../../catalog/wide-layouts/wide-popover-adaptation/WidePopoverAdaptationDemo.swift

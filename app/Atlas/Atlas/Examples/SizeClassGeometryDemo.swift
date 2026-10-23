@@ -1,0 +1,1 @@
+../../../../catalog/device-adaptation/size-class-and-geometry/SizeClassGeometryDemo.swift

@@ -1,0 +1,55 @@
+---
+id: "adaptive-media-composition"
+title: "Adaptive media composition"
+summary: "Use the available shape to choose where controls belong."
+category: "Device adaptation"
+family: "Adaptive foundations"
+order: 2208
+kind: "native"
+demoMinIOS: "18.0"
+swiftFile: "AdaptiveMediaCompositionDemo.swift"
+view: "AdaptiveMediaCompositionDemo"
+captureNavigation: true
+ownsNavigation: false
+captureStyle: "screen"
+apis: ["GeometryReader", "AnyLayout", "aspectRatio"]
+tags: ["media", "controls", "aspect ratio"]
+---
+
+# Adaptive media composition
+
+A media composition can move its controls beside or below content using the current view size, without relying on screen dimensions or device orientation.
+
+## SwiftUI
+
+```swift
+import SwiftUI
+
+struct MediaAndControls: View {
+    var body: some View {
+        GeometryReader { proxy in
+            let layout = proxy.size.width > 700
+                ? AnyLayout(HStackLayout()) : AnyLayout(VStackLayout())
+            layout {
+                Rectangle().fill(.indigo.gradient)
+                    .aspectRatio(16.0 / 9.0, contentMode: .fit)
+                Button("Play", systemImage: "play.fill") { }
+                    .buttonStyle(.bordered)
+            }.padding()
+        }
+    }
+}
+```
+
+## Captures
+
+<!-- captures:start -->
+<!-- captures:end -->
+
+## Full example
+
+[Open the complete runnable example](AdaptiveMediaCompositionDemo.swift).
+
+## Reference
+
+[Apple: GeometryReader](https://developer.apple.com/documentation/swiftui/geometryreader).

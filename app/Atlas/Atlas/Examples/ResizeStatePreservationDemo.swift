@@ -1,0 +1,1 @@
+../../../../catalog/device-adaptation/resize-state-preservation/ResizeStatePreservationDemo.swift
