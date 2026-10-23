@@ -7,6 +7,7 @@ import { entries, root } from './catalog.mjs';
 
 const { values } = parseArgs({ options: {
   devices: { type: 'string' }, entries: { type: 'string' }, output: { type: 'string' }, help: { type: 'boolean' },
+  'derived-data': { type: 'string' },
 } });
 if (values.help) {
   console.log(`Record native XCTest captures for review (macOS with Xcode required).
@@ -19,12 +20,16 @@ Use a new output folder for each run. This builds the app, runs native capture
 tests, exports original attachments, and saves one import-metadata JSON per
 device. Review the images before using import-captures.mjs; nothing is imported
 automatically. A failed test run still exports available evidence and exits 1.
+Optionally reuse a build cache with --derived-data work/capture-build; the app
+is still rebuilt when its sources change. Devices run serially without clones.
 Do not edit the catalog or run another build while this command is running.`);
   process.exit(0);
 }
 if (!values.devices || !values.output) throw new Error('Provide --devices and --output. See --help.');
 const output = path.resolve(root, values.output);
 if (!output.startsWith(`${path.join(root, 'work')}${path.sep}`)) throw new Error('Keep capture-run artifacts in a new folder under work/.');
+const derivedData = values['derived-data'] ? path.resolve(root, values['derived-data']) : path.join(output, 'DerivedData');
+if (!derivedData.startsWith(`${path.join(root, 'work')}${path.sep}`)) throw new Error('Keep the build cache under work/.');
 
 async function command(program, args, { allowFailure = false, quiet = false } = {}) {
   let stdout = '', stderr = '';
@@ -71,9 +76,14 @@ for (const { device, runtime } of devices) {
   }, null, 2)}\n`);
 }
 await writeFile(path.join(output, 'run.json'), `${JSON.stringify({ selectedIDs: [...selectedIDs], devices: devices.map(item => item.device.udid), sourceHashes }, null, 2)}\n`);
+for (const { device } of devices) {
+  if (device.state !== 'Booted') await command('xcrun', ['simctl', 'boot', device.udid], { quiet: true });
+  await command('xcrun', ['simctl', 'bootstatus', device.udid, '-b'], { quiet: true });
+  await command('xcrun', ['simctl', 'status_bar', device.udid, 'override', '--time', '9:41', '--dataNetwork', 'wifi', '--wifiMode', 'active', '--wifiBars', '3', '--batteryState', 'charged', '--batteryLevel', '100'], { quiet: true });
+}
 const resultBundle = path.join(output, 'Results.xcresult');
 const args = ['-project', 'app/Atlas/Atlas.xcodeproj', '-scheme', 'Atlas',
-  '-derivedDataPath', path.join(output, 'DerivedData'), '-resultBundlePath', resultBundle,
+  '-derivedDataPath', derivedData, '-resultBundlePath', resultBundle,
   '-parallel-testing-enabled', 'NO',
   '-maximum-concurrent-test-simulator-destinations', '1', '-collect-test-diagnostics', 'never'];
 for (const { device } of devices) args.push('-destination', `platform=iOS Simulator,id=${device.udid}`);

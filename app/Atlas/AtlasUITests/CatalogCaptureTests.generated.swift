@@ -58,7 +58,12 @@ final class CatalogCaptureTests: XCTestCase {
             else if app.textViews.firstMatch.exists { app.textViews.firstMatch.tap() }
             else { app.textFields.firstMatch.tap() }
         }
-        if keyboard { XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 5), "Software keyboard is not visible") }
+        if keyboard {
+            XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 5), "Software keyboard is not visible")
+            let typingIntroduction = app.staticTexts["Speed up your typing by sliding your finger across the letters to compose a word."]
+            if typingIntroduction.exists { app.buttons["Continue"].tap() }
+            XCTAssertGreaterThan(app.keyboards.firstMatch.keys.count, 0, "Keyboard onboarding is covering the software keys")
+        }
         // Preserve native animations; record only after the transition settles.
         Thread.sleep(forTimeInterval: 1.5)
         let attachment = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
