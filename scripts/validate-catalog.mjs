@@ -15,6 +15,9 @@ for (const entry of catalog) {
   if (ids.has(entry.id)) fail('duplicate ID');
   if (names.has(entry.swiftFile)) fail('duplicate Swift filename');
   ids.add(entry.id); names.add(entry.swiftFile);
+  if (!/^\d+\.\d+$/.test(entry.demoMinIOS ?? '')) fail('demoMinIOS must be major.minor');
+  if (!Number.isFinite(entry.order)) fail('order must be a number');
+  if (entry.captureNavigation !== undefined && typeof entry.captureNavigation !== 'boolean') fail('captureNavigation must be boolean');
   if (!Array.isArray(entry.apis) || !entry.apis.length) fail('APIs are required');
   if (!Array.isArray(entry.tags)) fail('tags must be an array');
   try {

@@ -63,7 +63,7 @@ for (const entry of catalog.filter(entry => selected.has(entry.id))) {
       sdk: environment.sdk, xcode: environment.xcode, appearance: environment.appearance,
       textSize: environment.textSize, locale: environment.locale,
       state: environment.states?.[entry.id] ?? scenario, capturedAt,
-      framing: environment.framing ?? 'screen',
+      framing: environment.framing ?? entry.captureStyle ?? 'screen',
       sourceSHA256: digest(await readFile(path.join(entry.directory, entry.swiftFile))),
     };
     const existing = captures.find(item => item.file === file);

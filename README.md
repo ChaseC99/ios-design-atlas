@@ -2,7 +2,7 @@
 
 A visual reference for native iOS interfaces: runnable SwiftUI examples, brief Markdown descriptions and Swift recipes, and original simulator captures.
 
-The first collection covers **alerts, confirmation dialogs, popovers, and inspectors**. There are nine focused examples; the rest of the catalog will grow after this foundation is reviewed.
+Browse focused collections of native interface examples. Each entry has a runnable SwiftUI demo, a short recipe, and original simulator captures as they are verified. [The roadmap](ROADMAP.md) tracks the full catalog scope and remaining work.
 
 ## Run the website
 
@@ -13,7 +13,7 @@ npm ci
 npm run dev
 ```
 
-Open the localhost URL printed by Astro. Search by pattern, API, or topic and filter by presentation family.
+Open the localhost URL printed by Astro. Search by pattern, API, or topic and filter by collection.
 
 ```sh
 npm run build     # validate the catalog, type-check, build, and index search
@@ -31,7 +31,7 @@ open app/Atlas/Atlas.xcodeproj
 
 Select the **Atlas** scheme and an iPhone or iPad simulator, then Run. The deployment target is iOS 18.0. A development team is only needed when running on a physical device.
 
-The app offers the same nine entries and searchable API names. Each demo exposes its own options and uses real system presentations. No network services or accounts are required.
+The app groups entries by collection and searches their titles, topics, and API names. Newer APIs show their minimum iOS version. Each demo exposes its own options and uses real system presentations. No network services or accounts are required.
 
 For a direct launch during debugging:
 
@@ -43,7 +43,7 @@ xcrun simctl launch booted com.chase.Atlas --entry alert-actions
 
 ```text
 app/Atlas/                Xcode project, app shell, and native tests
-catalog/presentation/     One folder per example: README, Swift, captures
+catalog/<collection>/     One folder per example: README, Swift, captures
 website/                  Astro templates, styles, and search
 scripts/                  Catalog synchronization, validation, capture import
 ```

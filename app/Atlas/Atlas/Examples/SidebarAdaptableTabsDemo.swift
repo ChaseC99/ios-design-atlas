@@ -1,0 +1,1 @@
+../../../../catalog/tabs/sidebar-adaptable-tabs/SidebarAdaptableTabsDemo.swift

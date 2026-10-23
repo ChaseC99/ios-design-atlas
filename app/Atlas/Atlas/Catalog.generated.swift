@@ -5,35 +5,240 @@ struct AtlasEntry: Identifiable, Hashable {
     let id: String
     let title: String
     let summary: String
+    let category: String
     let family: String
     let apis: [String]
+    let minimumOS: String
+    let captureNavigation: Bool
+    let ownsNavigation: Bool
+
+    var isSupported: Bool {
+        let components = minimumOS.split(separator: ".").compactMap { Int($0) }
+        return ProcessInfo.processInfo.isOperatingSystemAtLeast(
+            OperatingSystemVersion(majorVersion: components[0], minorVersion: components.count > 1 ? components[1] : 0, patchVersion: 0)
+        )
+    }
 }
 
 enum AtlasCatalog {
     static let entries: [AtlasEntry] = [
-        AtlasEntry(id: "alert-actions", title: "Alert actions", summary: "One decision. A clear set of actions.", family: "Alerts", apis: ["alert", "ButtonRole", "keyboardShortcut"]),
-        AtlasEntry(id: "alert-text-fields", title: "Alert text fields", summary: "A small edit without leaving the task.", family: "Alerts", apis: ["alert", "TextField", "disabled"]),
-        AtlasEntry(id: "confirmation-dialogs", title: "Confirmation dialogs", summary: "Related actions, attached to their context.", family: "Dialogs", apis: ["confirmationDialog", "ButtonRole"]),
-        AtlasEntry(id: "popover-anchors", title: "Popover anchors", summary: "Keep a little context close to its source.", family: "Popovers", apis: ["popover", "PopoverAttachmentAnchor", "presentationCompactAdaptation"]),
-        AtlasEntry(id: "popover-adaptation", title: "Popover adaptation", summary: "One view, two presentation contexts.", family: "Popovers", apis: ["popover", "presentationCompactAdaptation"]),
-        AtlasEntry(id: "popover-content", title: "Content inside popovers", summary: "Lists, forms, and a small navigation stack.", family: "Popovers", apis: ["popover", "NavigationStack", "List", "Form"]),
-        AtlasEntry(id: "inspectors", title: "Adaptive inspectors", summary: "Attributes alongside the selected content.", family: "Inspectors", apis: ["inspector", "inspectorColumnWidth", "presentationDetents"]),
-        AtlasEntry(id: "source-transitions", title: "Source-linked transitions", summary: "A presentation with a visible origin.", family: "Transitions", apis: ["matchedTransitionSource", "navigationTransition", "sheet"]),
-        AtlasEntry(id: "presentation-stress-tests", title: "Long text & accessibility", summary: "Make room for the less convenient cases.", family: "Accessibility", apis: ["alert", "DynamicTypeSize", "ButtonRole"]),
+        AtlasEntry(id: "alert-actions", title: "Alert actions", summary: "One decision. A clear set of actions.", category: "Presentation", family: "Alerts", apis: ["alert", "ButtonRole", "keyboardShortcut"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "alert-text-fields", title: "Alert text fields", summary: "A small edit without leaving the task.", category: "Presentation", family: "Alerts", apis: ["alert", "TextField", "disabled"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "confirmation-dialogs", title: "Confirmation dialogs", summary: "Related actions, attached to their context.", category: "Presentation", family: "Dialogs", apis: ["confirmationDialog", "ButtonRole"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "popover-anchors", title: "Popover anchors", summary: "Keep a little context close to its source.", category: "Presentation", family: "Popovers", apis: ["popover", "PopoverAttachmentAnchor", "presentationCompactAdaptation"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "popover-adaptation", title: "Popover adaptation", summary: "One view, two presentation contexts.", category: "Presentation", family: "Popovers", apis: ["popover", "presentationCompactAdaptation"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "popover-content", title: "Content inside popovers", summary: "Lists, forms, and a small navigation stack.", category: "Presentation", family: "Popovers", apis: ["popover", "NavigationStack", "List", "Form"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "inspectors", title: "Adaptive inspectors", summary: "Attributes alongside the selected content.", category: "Presentation", family: "Inspectors", apis: ["inspector", "inspectorColumnWidth", "presentationDetents"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "source-transitions", title: "Source-linked transitions", summary: "A presentation with a visible origin.", category: "Presentation", family: "Transitions", apis: ["matchedTransitionSource", "navigationTransition", "sheet"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "presentation-stress-tests", title: "Long text & accessibility", summary: "Make room for the less convenient cases.", category: "Presentation", family: "Accessibility", apis: ["alert", "DynamicTypeSize", "ButtonRole"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "sheet-basics", title: "Default sheets", summary: "A focused task above the current screen.", category: "Sheets", family: "Sizing", apis: ["sheet", "presentationSizing", "dismiss"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "sheet-detents", title: "Sheet detents", summary: "Give a sheet a few useful resting heights.", category: "Sheets", family: "Sizing", apis: ["presentationDetents", "PresentationDetent", "CustomPresentationDetent"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "content-sized-sheets", title: "Content-sized sheets", summary: "Let a presentation fit the content inside it.", category: "Sheets", family: "Sizing", apis: ["presentationSizing", "FittedPresentationSizing", "sticky"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "sheet-appearance", title: "Sheet appearance", summary: "Shape, surface, and a small invitation to drag.", category: "Sheets", family: "Appearance", apis: ["presentationDragIndicator", "presentationCornerRadius", "presentationBackground"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "sheet-background-interaction", title: "Background interaction", summary: "Keep the screen behind a small sheet useful.", category: "Sheets", family: "Interaction", apis: ["presentationBackgroundInteraction", "presentationDetents"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "sheet-scrolling", title: "Scrolling and resizing", summary: "Decide what an upward swipe does first.", category: "Sheets", family: "Interaction", apis: ["presentationContentInteraction", "presentationDetents"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "sheet-dismissal", title: "Dismissal and unsaved changes", summary: "Protect edits without trapping the user.", category: "Sheets", family: "Interaction", apis: ["interactiveDismissDisabled", "confirmationDialog", "dismiss"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "sheet-keyboard", title: "Keyboards inside sheets", summary: "Keep an editing task comfortable as the keyboard appears.", category: "Sheets", family: "Interaction", apis: ["FocusState", "scrollDismissesKeyboard", "toolbar", "presentationDetents"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "sheet-navigation", title: "Navigation and nested sheets", summary: "Keep a small flow together inside its presentation.", category: "Sheets", family: "Flows", apis: ["NavigationStack", "NavigationLink", "sheet", "dismiss"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "sheet-full-screen", title: "From sheet to full screen", summary: "Give a focused task more room when it needs it.", category: "Sheets", family: "Flows", apis: ["sheet", "fullScreenCover", "onDismiss"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "sheet-source-zoom", title: "Sheets from a source view", summary: "Connect a presentation to the item that opened it.", category: "Sheets", family: "Transitions", apis: ["matchedTransitionSource", "navigationTransition", "Namespace"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "sheet-adaptation", title: "Compact sheet adaptation", summary: "Let a presentation respond to the available room.", category: "Sheets", family: "Adaptation", apis: ["presentationCompactAdaptation", "presentationSizing", "horizontalSizeClass", "verticalSizeClass"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: false),
+        AtlasEntry(id: "navigation-push-pop", title: "Push and pop", summary: "A stack of destinations with a native back button.", category: "Navigation", family: "Stacks", apis: ["NavigationStack", "NavigationLink", "dismiss"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: true),
+        AtlasEntry(id: "navigation-title-styles", title: "Navigation titles", summary: "Large and inline titles establish the hierarchy of a destination.", category: "Navigation", family: "Titles", apis: ["navigationTitle", "navigationBarTitleDisplayMode", "ToolbarItem"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: true),
+        AtlasEntry(id: "navigation-title-menu", title: "Title menus and subtitles", summary: "A title menu keeps document actions next to the document name.", category: "Navigation", family: "Titles", apis: ["toolbarTitleMenu", "navigationTitle", "navigationSubtitle"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: true),
+        AtlasEntry(id: "navigation-path-restoration", title: "Paths and restoration", summary: "A typed path makes deep links and navigation restoration explicit.", category: "Navigation", family: "Stacks", apis: ["NavigationStack", "navigationDestination", "SceneStorage"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: true),
+        AtlasEntry(id: "navigation-bar-appearance", title: "Navigation bar appearance", summary: "Backgrounds, visibility, and color schemes change how content meets a navigation bar.", category: "Navigation", family: "Bars", apis: ["toolbarBackground", "toolbarColorScheme", "toolbar"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: true),
+        AtlasEntry(id: "navigation-image-header", title: "Artwork beneath navigation", summary: "Full-bleed artwork can extend behind a transparent navigation bar.", category: "Navigation", family: "Bars", apis: ["toolbarBackground", "ignoresSafeArea", "ScrollView"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: true),
+        AtlasEntry(id: "navigation-scroll-restoration", title: "Returning to a scroll position", summary: "Keeping scroll state in the root view preserves a place when a detail screen closes.", category: "Navigation", family: "Stacks", apis: ["scrollPosition", "scrollTargetLayout", "NavigationLink"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: true),
+        AtlasEntry(id: "navigation-destination-states", title: "Destination states", summary: "Loading and unavailable views keep navigation usable when a destination has no content.", category: "Navigation", family: "Stacks", apis: ["ContentUnavailableView", "ProgressView", "task"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: true),
+        AtlasEntry(id: "standard-tabs", title: "Standard tabs", summary: "A tab bar switches between the main sections of an app.", category: "Tabs", family: "Tab bars", apis: ["TabView", "Tab", "badge"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: true),
+        AtlasEntry(id: "tab-navigation-stacks", title: "Independent tab stacks", summary: "Each tab can keep its own navigation path while the user switches sections.", category: "Tabs", family: "Tab bars", apis: ["TabView", "NavigationStack", "Binding"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: true),
+        AtlasEntry(id: "search-tab", title: "Search tabs", summary: "A dedicated search tab gives discovery its own place in the tab bar.", category: "Tabs", family: "Tab bars", apis: ["TabRole.search", "searchable", "ContentUnavailableView.search"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: true),
+        AtlasEntry(id: "minimizing-tab-bars", title: "Minimizing tab bars", summary: "A tab bar can become compact as content scrolls and expand when the user returns.", category: "Tabs", family: "Tab bars", apis: ["tabBarMinimizeBehavior", "TabBarMinimizeBehavior", "TabView"], minimumOS: "26.0", captureNavigation: false, ownsNavigation: true),
+        AtlasEntry(id: "tab-bottom-accessory", title: "Tab bottom accessories", summary: "A bottom accessory keeps a compact task, such as playback, close to the tab bar.", category: "Tabs", family: "Tab bars", apis: ["tabViewBottomAccessory", "tabViewBottomAccessoryPlacement", "tabBarMinimizeBehavior"], minimumOS: "26.0", captureNavigation: false, ownsNavigation: true),
+        AtlasEntry(id: "sidebar-adaptable-tabs", title: "Tabs that become a sidebar", summary: "A sidebar-adaptable tab view organizes the same sections for compact and wide layouts.", category: "Tabs", family: "Sidebars", apis: ["sidebarAdaptable", "TabSection", "tabViewCustomization"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: true),
+        AtlasEntry(id: "two-column-navigation", title: "Two-column navigation", summary: "A split view presents a sidebar and a detail destination, collapsing into a stack in compact layouts.", category: "Tabs", family: "Split views", apis: ["NavigationSplitView", "NavigationSplitViewVisibility", "preferredCompactColumn"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: true),
+        AtlasEntry(id: "three-column-navigation", title: "Three-column navigation", summary: "A three-column split view separates collections, items, and the selected detail.", category: "Tabs", family: "Split views", apis: ["NavigationSplitView", "navigationSplitViewColumnWidth", "navigationSplitViewStyle"], minimumOS: "18.0", captureNavigation: false, ownsNavigation: true),
+        AtlasEntry(id: "scroll-edge-styles", title: "Scroll edge styles", summary: "Soft, hard, and automatic edges around native bars.", category: "Scroll edges", family: "Scroll edges", apis: ["scrollEdgeEffectStyle", "ScrollEdgeEffectStyle"], minimumOS: "26.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "scroll-edge-visibility", title: "Scroll edge visibility", summary: "Control which edges protect content beneath a bar.", category: "Scroll edges", family: "Scroll edges", apis: ["scrollEdgeEffectHidden", "safeAreaBar"], minimumOS: "26.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "safe-area-actions", title: "Persistent action areas", summary: "Keep an action visible without covering the last row.", category: "Scroll edges", family: "Safe areas", apis: ["safeAreaInset"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "safe-area-bars", title: "Custom safe-area bars", summary: "Give custom controls the system’s scroll edge treatment.", category: "Scroll edges", family: "Safe areas", apis: ["safeAreaBar", "scrollEdgeEffectStyle"], minimumOS: "26.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "scroll-content-margins", title: "Content and indicator margins", summary: "Inset the reading column while keeping the indicator near the edge.", category: "Scroll edges", family: "Margins", apis: ["contentMargins", "ContentMarginPlacement"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "full-bleed-safe-areas", title: "Full-bleed backgrounds", summary: "Let artwork reach the edges while controls respect safe areas.", category: "Scroll edges", family: "Safe areas", apis: ["ignoresSafeArea", "safeAreaInset"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "keyboard-safe-areas", title: "Keyboard safe areas", summary: "A composer follows the keyboard while its background stays full bleed.", category: "Scroll edges", family: "Safe areas", apis: ["safeAreaInset", "scrollDismissesKeyboard", "ignoresSafeArea"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "background-extension", title: "Background extension", summary: "Extend a hero’s colors beneath neighboring interface elements.", category: "Scroll edges", family: "Backgrounds", apis: ["backgroundExtensionEffect", "NavigationSplitView"], minimumOS: "26.0", captureNavigation: false, ownsNavigation: true),
+        AtlasEntry(id: "system-materials", title: "System materials", summary: "Five translucent surfaces over the same artwork.", category: "Materials", family: "Materials", apis: ["Material", "background"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "material-versus-opacity", title: "Material and opacity", summary: "Compare a translucent fill with a blurred material.", category: "Materials", family: "Materials", apis: ["Material", "opacity"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "glass-variants", title: "Regular, clear, and tinted glass", summary: "Different glass treatments on the same background.", category: "Materials", family: "Liquid Glass", apis: ["glassEffect", "Glass"], minimumOS: "26.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "glass-shapes", title: "Glass shapes and interaction", summary: "Define a glass surface with its shape.", category: "Materials", family: "Liquid Glass", apis: ["glassEffect", "Glass.interactive"], minimumOS: "26.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "glass-containers", title: "Joining glass elements", summary: "Spacing and unions control how neighboring surfaces combine.", category: "Materials", family: "Liquid Glass", apis: ["GlassEffectContainer", "glassEffectUnion"], minimumOS: "26.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "glass-morphing", title: "Morphing glass controls", summary: "Animate a compact control into a group of actions.", category: "Materials", family: "Liquid Glass", apis: ["glassEffectID", "glassEffectTransition", "GlassEffectContainer"], minimumOS: "26.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "glass-backgrounds", title: "Glass over different backgrounds", summary: "Light, dark, patterned, and moving canvases.", category: "Materials", family: "Liquid Glass", apis: ["glassEffect", "TimelineView"], minimumOS: "26.0", captureNavigation: true, ownsNavigation: false),
+        AtlasEntry(id: "adaptive-material-fallback", title: "Adaptive surfaces and fallbacks", summary: "Use glass when available and an opaque surface when requested.", category: "Materials", family: "Adaptation", apis: ["accessibilityReduceTransparency", "colorSchemeContrast", "glassEffect"], minimumOS: "18.0", captureNavigation: true, ownsNavigation: false),
     ]
 
     @MainActor @ViewBuilder
     static func demo(for id: String) -> some View {
         switch id {
-        case "alert-actions": AlertActionsDemo()
-        case "alert-text-fields": AlertTextFieldsDemo()
-        case "confirmation-dialogs": ConfirmationDialogsDemo()
-        case "popover-anchors": PopoverAnchorsDemo()
-        case "popover-adaptation": PopoverAdaptationDemo()
-        case "popover-content": PopoverContentDemo()
-        case "inspectors": InspectorsDemo()
-        case "source-transitions": SourceTransitionsDemo()
-        case "presentation-stress-tests": PresentationStressTestsDemo()
+        case "alert-actions":
+            if #available(iOS 18.0, *) { AlertActionsDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "alert-text-fields":
+            if #available(iOS 18.0, *) { AlertTextFieldsDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "confirmation-dialogs":
+            if #available(iOS 18.0, *) { ConfirmationDialogsDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "popover-anchors":
+            if #available(iOS 18.0, *) { PopoverAnchorsDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "popover-adaptation":
+            if #available(iOS 18.0, *) { PopoverAdaptationDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "popover-content":
+            if #available(iOS 18.0, *) { PopoverContentDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "inspectors":
+            if #available(iOS 18.0, *) { InspectorsDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "source-transitions":
+            if #available(iOS 18.0, *) { SourceTransitionsDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "presentation-stress-tests":
+            if #available(iOS 18.0, *) { PresentationStressTestsDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "sheet-basics":
+            if #available(iOS 18.0, *) { SheetBasicsDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "sheet-detents":
+            if #available(iOS 18.0, *) { SheetDetentsDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "content-sized-sheets":
+            if #available(iOS 18.0, *) { ContentSizedSheetsDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "sheet-appearance":
+            if #available(iOS 18.0, *) { SheetAppearanceDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "sheet-background-interaction":
+            if #available(iOS 18.0, *) { SheetBackgroundInteractionDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "sheet-scrolling":
+            if #available(iOS 18.0, *) { SheetScrollingDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "sheet-dismissal":
+            if #available(iOS 18.0, *) { SheetDismissalDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "sheet-keyboard":
+            if #available(iOS 18.0, *) { SheetKeyboardDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "sheet-navigation":
+            if #available(iOS 18.0, *) { SheetNavigationDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "sheet-full-screen":
+            if #available(iOS 18.0, *) { SheetFullScreenDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "sheet-source-zoom":
+            if #available(iOS 18.0, *) { SheetSourceZoomDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "sheet-adaptation":
+            if #available(iOS 18.0, *) { SheetAdaptationDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "navigation-push-pop":
+            if #available(iOS 18.0, *) { NavigationPushPopDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "navigation-title-styles":
+            if #available(iOS 18.0, *) { NavigationTitleStylesDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "navigation-title-menu":
+            if #available(iOS 18.0, *) { NavigationTitleMenuDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "navigation-path-restoration":
+            if #available(iOS 18.0, *) { NavigationPathRestorationDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "navigation-bar-appearance":
+            if #available(iOS 18.0, *) { NavigationBarAppearanceDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "navigation-image-header":
+            if #available(iOS 18.0, *) { NavigationImageHeaderDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "navigation-scroll-restoration":
+            if #available(iOS 18.0, *) { NavigationScrollRestorationDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "navigation-destination-states":
+            if #available(iOS 18.0, *) { NavigationDestinationStatesDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "standard-tabs":
+            if #available(iOS 18.0, *) { StandardTabsDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "tab-navigation-stacks":
+            if #available(iOS 18.0, *) { TabNavigationStacksDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "search-tab":
+            if #available(iOS 18.0, *) { SearchTabDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "minimizing-tab-bars":
+            if #available(iOS 26.0, *) { MinimizingTabBarsDemo() }
+            else { ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "tab-bottom-accessory":
+            if #available(iOS 26.0, *) { TabBottomAccessoryDemo() }
+            else { ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "sidebar-adaptable-tabs":
+            if #available(iOS 18.0, *) { SidebarAdaptableTabsDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "two-column-navigation":
+            if #available(iOS 18.0, *) { TwoColumnNavigationDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "three-column-navigation":
+            if #available(iOS 18.0, *) { ThreeColumnNavigationDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "scroll-edge-styles":
+            if #available(iOS 26.0, *) { ScrollEdgeStylesDemo() }
+            else { ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "scroll-edge-visibility":
+            if #available(iOS 26.0, *) { ScrollEdgeVisibilityDemo() }
+            else { ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "safe-area-actions":
+            if #available(iOS 18.0, *) { SafeAreaActionsDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "safe-area-bars":
+            if #available(iOS 26.0, *) { SafeAreaBarsDemo() }
+            else { ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "scroll-content-margins":
+            if #available(iOS 18.0, *) { ScrollContentMarginsDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "full-bleed-safe-areas":
+            if #available(iOS 18.0, *) { FullBleedSafeAreasDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "keyboard-safe-areas":
+            if #available(iOS 18.0, *) { KeyboardSafeAreasDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "background-extension":
+            if #available(iOS 26.0, *) { BackgroundExtensionDemo() }
+            else { ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "system-materials":
+            if #available(iOS 18.0, *) { SystemMaterialsDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "material-versus-opacity":
+            if #available(iOS 18.0, *) { MaterialVersusOpacityDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "glass-variants":
+            if #available(iOS 26.0, *) { GlassVariantsDemo() }
+            else { ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "glass-shapes":
+            if #available(iOS 26.0, *) { GlassShapesDemo() }
+            else { ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "glass-containers":
+            if #available(iOS 26.0, *) { GlassContainersDemo() }
+            else { ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "glass-morphing":
+            if #available(iOS 26.0, *) { GlassMorphingDemo() }
+            else { ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "glass-backgrounds":
+            if #available(iOS 26.0, *) { GlassBackgroundsDemo() }
+            else { ContentUnavailableView("Requires iOS 26.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
+        case "adaptive-material-fallback":
+            if #available(iOS 18.0, *) { AdaptiveMaterialFallbackDemo() }
+            else { ContentUnavailableView("Requires iOS 18.0", systemImage: "iphone", description: Text("Run this example on a newer simulator or device.")) }
         default: ContentUnavailableView("Example unavailable", systemImage: "questionmark.folder")
         }
     }

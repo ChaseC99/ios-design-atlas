@@ -4,29 +4,36 @@ struct ContentView: View {
     @State private var query = ""
     @State private var path: [String] = []
 
-    private var captureEntry: String? {
+    private var requestedEntry: AtlasEntry? {
         let args = ProcessInfo.processInfo.arguments
-        guard args.contains("--capture"),
-              let index = args.firstIndex(of: "--entry"),
-              args.indices.contains(index + 1),
-              ["alert-actions", "alert-text-fields"].contains(args[index + 1]) else { return nil }
-        return args[index + 1]
+        guard let index = args.firstIndex(of: "--entry"), args.indices.contains(index + 1) else { return nil }
+        return AtlasCatalog.entries.first { $0.id == args[index + 1] }
     }
 
     private var filtered: [AtlasEntry] {
         guard !query.isEmpty else { return AtlasCatalog.entries }
         return AtlasCatalog.entries.filter {
-            [$0.title, $0.summary, $0.family, $0.apis.joined(separator: " ")]
+            [$0.title, $0.summary, $0.category, $0.family, $0.apis.joined(separator: " ")]
                 .joined(separator: " ").localizedCaseInsensitiveContains(query)
         }
     }
 
+    private var categories: [String] {
+        filtered.reduce(into: []) { if !$0.contains($1.category) { $0.append($1.category) } }
+    }
+
     var body: some View {
-        if let captureEntry {
-            AtlasCatalog.demo(for: captureEntry)
-                .preferredColorScheme(.light)
-                .dynamicTypeSize(.large)
-                .statusBarHidden()
+        if ProcessInfo.processInfo.arguments.contains("--capture"), let entry = requestedEntry {
+            Group {
+                if entry.captureNavigation {
+                    NavigationStack { AtlasCatalog.demo(for: entry.id) }
+                } else {
+                    AtlasCatalog.demo(for: entry.id)
+                }
+            }
+            .preferredColorScheme(.light)
+            .dynamicTypeSize(.large)
+            .statusBarHidden()
         } else {
             catalog
         }
@@ -38,20 +45,24 @@ struct ContentView: View {
                 Section {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("iOS Design Atlas").font(.title2.bold())
-                        Text("A field guide to native interfaces.")
-                            .foregroundStyle(.secondary)
-                        Text("01 / PRESENTATION")
-                            .font(.caption.monospaced()).foregroundStyle(.indigo)
+                        Text("A field guide to native interfaces.").foregroundStyle(.secondary)
+                        Text("\(AtlasCatalog.entries.count) EXAMPLES")
+                            .font(.caption.monospaced()).foregroundStyle(.secondary)
                     }.padding(.vertical, 8)
                 }
-                Section("\(filtered.count) examples") {
-                    ForEach(filtered) { entry in
-                        NavigationLink(value: entry.id) {
-                            VStack(alignment: .leading, spacing: 5) {
-                                Text(entry.title).font(.headline)
-                                Text(entry.summary).font(.subheadline).foregroundStyle(.secondary)
-                            }.padding(.vertical, 5)
-                        }.accessibilityIdentifier("entry-\(entry.id)")
+                ForEach(categories, id: \.self) { category in
+                    Section(category) {
+                        ForEach(filtered.filter { $0.category == category }) { entry in
+                            NavigationLink(value: entry.id) {
+                                VStack(alignment: .leading, spacing: 5) {
+                                    Text(entry.title).font(.headline)
+                                    Text(entry.summary).font(.subheadline).foregroundStyle(.secondary)
+                                    if !entry.isSupported {
+                                        Text("iOS \(entry.minimumOS)+").font(.caption).foregroundStyle(.secondary)
+                                    }
+                                }.padding(.vertical, 5)
+                            }.accessibilityIdentifier("entry-\(entry.id)")
+                        }
                     }
                 }
             }
@@ -61,19 +72,27 @@ struct ContentView: View {
             .navigationTitle("Atlas")
             .searchable(text: $query, prompt: "Search examples or APIs")
             .navigationDestination(for: String.self) { id in
-                AtlasCatalog.demo(for: id)
+                if AtlasCatalog.entries.first(where: { $0.id == id })?.ownsNavigation == true {
+                    AtlasCatalog.demo(for: id)
+                        .safeAreaInset(edge: .top, spacing: 0) {
+                            HStack {
+                                Button { path = [] } label: { Label("Atlas", systemImage: "chevron.left") }
+                                    .accessibilityIdentifier("back-to-atlas")
+                                Spacer()
+                            }
+                            .font(.subheadline).padding(.horizontal).padding(.vertical, 8)
+                            .background(.bar)
+                        }
+                        .toolbar(.hidden, for: .navigationBar)
+                } else {
+                    AtlasCatalog.demo(for: id)
+                }
             }
             .onAppear {
-                let args = ProcessInfo.processInfo.arguments
-                if let index = args.firstIndex(of: "--entry"), args.indices.contains(index + 1), path.isEmpty {
-                    let id = args[index + 1]
-                    if AtlasCatalog.entries.contains(where: { $0.id == id }) { path = [id] }
-                }
+                if path.isEmpty, let entry = requestedEntry { path = [entry.id] }
             }
         }
     }
 }
 
-#Preview {
-    ContentView()
-}
+#Preview { ContentView() }

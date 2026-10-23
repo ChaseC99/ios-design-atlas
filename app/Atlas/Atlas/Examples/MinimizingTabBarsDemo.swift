@@ -1,0 +1,1 @@
+../../../../catalog/tabs/minimizing-tab-bars/MinimizingTabBarsDemo.swift

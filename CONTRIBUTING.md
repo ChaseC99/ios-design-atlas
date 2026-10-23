@@ -57,3 +57,13 @@ Use a fixed appearance, locale, and text size for comparisons. Record accessibil
 - Visually inspect a phone layout, a wide layout, and at least one example detail page on the website.
 
 Generated outputs in `work/`, `website/dist/`, and `website/.astro/` are ignored. Generated app registration and source symlinks are tracked so a fresh checkout can open in Xcode immediately.
+
+## Collections and availability
+
+Use a unique kebab-case entry ID and Swift filename across the catalog. `category` groups the app and website; `order` places entries within the overall catalog. `demoMinIOS` is the actual minimum runtime, and sync generates the corresponding availability guard.
+
+Set `captureNavigation: true` when the subject needs the app's outer navigation stack. Set it to `false` for isolated presentations or examples that own a navigation container. Set `ownsNavigation: true` only for the latter; the normal app then provides a separate route back to Atlas. Capture mode omits that catalog control.
+
+A capture-ready example responds to `--entry <id> --capture`, exposes `capture-ready` on its rendered subject, and uses deterministic sample data. `npm run sync` generates a native XCTest per entry. Unsupported runtimes are skipped. Run the selected `CatalogCaptureTests` on iOS 18, 26, and 27, export the attachments, and import them with the existing importer. Use `captureStyle: isolated` only for centered alerts that can safely be previewed in a square; sheets, anchored popovers, and full interfaces use `screen`.
+
+Compare the original images before committing. For split views, sidebars, inspectors, and adaptive popovers, also record a wide iPad capture. A screenshot documents a specific state; it does not prove an animation, gesture, or accessibility behavior.
