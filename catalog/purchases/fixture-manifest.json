@@ -22,7 +22,7 @@
   "captureReadyIdentifier": "storekit-products-loaded",
   "initialTransactions": [],
   "captureActions": "Read product metadata and capture only; do not activate purchase, restore, redemption, management, sign-in, or account commands.",
-  "runtimeValidation": "Pending integration and serial UI-test capture. No transactions have been initiated.",
+  "runtimeValidation": "Local ProductView, StoreView, SubscriptionStoreView, and custom-plan captures are verified on iOS 18.5 and 27.0. The iOS 26.5 run returned unavailable fixture products and requires an isolated activation check. Purchase-management refresh was subsequently simplified and awaits recapture. No transactions have been initiated.",
   "schemaReferences": [
     "https://developer.apple.com/documentation/swiftui/backyard-birds-sample",
     "https://developer.apple.com/documentation/storekit/implementing-a-store-in-your-app-using-the-storekit-api"

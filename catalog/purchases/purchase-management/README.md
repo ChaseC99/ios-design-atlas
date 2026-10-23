@@ -12,7 +12,7 @@ view: "PurchaseManagementDemo"
 captureNavigation: true
 ownsNavigation: false
 captureStoreKit: true
-apis: ["Transaction.currentEntitlements", "Product.SubscriptionInfo.status", "AppStore.sync", "manageSubscriptionsSheet", "offerCodeRedemption"]
+apis: ["Transaction.currentEntitlements", "Product.products(for:)", "AppStore.sync", "manageSubscriptionsSheet", "offerCodeRedemption"]
 tags: ["restore purchases", "entitlements", "subscription management", "offer redemption", "verification"]
 ---
 
@@ -52,7 +52,7 @@ struct RestoreAndManagePurchases: View {
 
 ## Example notes
 
-The initial capture is an actual empty local entitlement state. Only verified transactions matching the fixture IDs grant access; subscription status is read from StoreKit. Restore, management, and offer redemption are explicit native affordances and are never activated during capture. The iOS 27 offer-redemption overload is availability guarded. Existing-subscriber and billing-retry captures need a separately authorized local transaction test; this example does not manufacture them.
+The initial capture is an actual empty local entitlement state. Only verified transactions matching the fixture IDs grant access. Active subscription access comes from current entitlements matched to the loaded subscription product IDs; renewal status is not requested. Capture readiness waits for both product loading and entitlement iteration to finish. Restore, management, and offer redemption are explicit native affordances and are never activated during capture. The iOS 27 offer-redemption overload is availability guarded. Existing-subscriber and billing-retry captures need a separately authorized local transaction test; this example does not manufacture them.
 
 ## Local StoreKit setup
 

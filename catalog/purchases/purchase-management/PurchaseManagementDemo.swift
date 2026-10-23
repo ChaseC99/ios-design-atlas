@@ -7,6 +7,7 @@ struct PurchaseManagementDemo: View {
     @State private var products: [Product] = []
     @State private var status = "Checking local access…"
     @State private var loading = true
+    @State private var accessLoaded = false
     @State private var restoring = false
     @State private var manage = false
     @State private var redeem = false
@@ -45,7 +46,7 @@ struct PurchaseManagementDemo: View {
                 Section("Verified local access") {
                     LabeledContent("Purchased products", value: "\(owned.count)")
                     ForEach(products.filter { owned.contains($0.id) }) { product in Label(product.displayName, systemImage: "checkmark.circle") }
-                }.accessibilityIdentifier("storekit-products-loaded")
+                }.accessibilityIdentifier(accessLoaded ? "storekit-products-loaded" : "storekit-access-loading")
             } else if loading { ProgressView("Loading local products…") }
             else { Text("Enable AtlasPurchases.storekit in Xcode to inspect fictional products.").foregroundStyle(.secondary) }
             Section("Purchases") {
@@ -65,21 +66,23 @@ struct PurchaseManagementDemo: View {
     }
     private func refresh() async {
         loading = true
+        accessLoaded = false
         do {
             products = try await Product.products(for: ids)
+            guard products.count == ids.count else {
+                status = "Local StoreKit configuration is not available."
+                loading = false
+                return
+            }
             var verified: Set<String> = []
             for await result in Transaction.currentEntitlements {
                 if case .verified(let transaction) = result, ids.contains(transaction.productID) { verified.insert(transaction.productID) }
             }
             owned = verified
-            if let subscription = products.first(where: { $0.subscription != nil })?.subscription {
-                let statuses = try await subscription.status
-                let hasVerifiedSubscription = statuses.contains { entry in
-                    guard case .verified(let transaction) = entry.transaction, verified.contains(transaction.productID) else { return false }
-                    return entry.state == .subscribed || entry.state == .inGracePeriod
-                }
-                status = hasVerifiedSubscription ? "Atlas Plus access is active." : verified.isEmpty ? "No local purchases yet." : "Your verified packs are ready."
-            } else { status = "Local StoreKit configuration is not available." }
+            let subscriptionIDs = Set(products.filter { $0.subscription != nil }.map(\.id))
+            let hasVerifiedSubscription = !verified.isDisjoint(with: subscriptionIDs)
+            status = hasVerifiedSubscription ? "Atlas Plus access is active." : verified.isEmpty ? "No local purchases yet." : "Your verified packs are ready."
+            accessLoaded = products.count == ids.count
         } catch { status = "Could not read local purchase status." }
         loading = false
     }

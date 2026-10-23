@@ -6,7 +6,7 @@ The five affected entry IDs and product IDs are listed in [fixture-manifest.json
 
 ## UI-test integration
 
-Add or symlink this file into the `AtlasUITests` target's resources, named `AtlasPurchases.storekit`. Keep it out of the shipping app target. For filesystem-synchronized targets, confirm that the resulting test bundle actually contains the resource. No app entitlements, App Store Connect products, sandbox account, or real product IDs are required for this local fixture.
+`AtlasUITests` already bundles `AtlasPurchases.storekit`. When reusing the fixture in another target, include it in that UI-test bundle and verify the resource exists. Keep it out of the shipping app target. For filesystem-synchronized targets, confirm that the resulting test bundle actually contains the resource. No app entitlements, App Store Connect products, sandbox account, or real product IDs are required for this local fixture.
 
 Retain a test session for the duration of each affected capture. The following helper belongs in the existing UI-test class, with `import StoreKitTest`, `import Foundation`, and `import XCTest`:
 
@@ -45,7 +45,7 @@ The management example exposes genuine native affordances, but its initial captu
 
 For an interactive local run, select `AtlasPurchases.storekit` in **Edit Scheme → Run → Options → StoreKit Configuration**. This scheme setting is an alternative to the UI-test setup, not a reason to create App Store Connect products. Keep the scheme configuration local to the sample workflow. The atlas examples display an honest unavailable/setup state if their products cannot load.
 
-The configuration has been checked as JSON against the structure of Apple's sample. Actual product loading and cross-runtime capture validation remain pending until integration; a parse check is not proof that StoreKit activated the fixture.
+Local ProductView, StoreView, SubscriptionStoreView, and custom-plan captures are verified on iOS 18.5 and 27.0. The iOS 26.5 run returned unavailable fixture products and requires an isolated activation check. Purchase-management refresh was subsequently simplified and awaits recapture. No transactions have been initiated.
 
 ## Sources
 

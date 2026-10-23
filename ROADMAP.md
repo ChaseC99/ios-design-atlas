@@ -8,7 +8,7 @@ This checklist preserves the original scope. Bullets can be grouped into focused
 - Collections 1–31 and 34–35 have grouped runnable examples and concise recipes. The integrated app and website build; capture and interaction verification continue. [COVERAGE.md](COVERAGE.md) records the concrete gaps within each collection.
 - Device adaptation and Wide layouts include actual iPhone Duo captures in its initial closed posture. Five Duo APIs require iOS 27.1; older runtimes skip them. Open-posture, hinge-transition, and regular-width comparisons remain pending.
 - System surfaces has an embedded WidgetKit extension with two real widgets and clearly labeled app previews. Home/Lock Screen captures, Live Activities, controls, and App Intents system surfaces remain pending.
-- Purchases includes local StoreKit fixtures; product loading and native purchase-view captures still require serial runtime verification. Apple-app case studies (33) remain queued.
+- Purchases includes local StoreKit fixtures and verified native store captures on iOS 18.5 and 27.0. The iOS 26.5 fixture returned unavailable products; activation and the revised access refresh remain under verification. Apple-app case studies (33) remain queued.
 - A runnable entry is not a claim that every related backlog bullet or interaction matrix is complete.
 - Manual checks still needed include VoiceOver/Voice Control/Switch Control, IMEs, interrupted gestures, pointer/Pencil hardware, multiwindow behavior, and motion. Older-SDK comparisons require separate builds; changing only the simulator runtime cannot provide them.
 
